@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Library.Domain.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Data
@@ -9,5 +10,8 @@ namespace Library.Application.Data
             : base(options)
         {
         }
+
+        public DbSet<NewsMessage> NewsMessages { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }

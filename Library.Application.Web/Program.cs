@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Library.Application.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace Library.Application.Web
 {
@@ -14,7 +11,24 @@ namespace Library.Application.Web
     {
         public static void Main(string[] args)
         {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if (string.IsNullOrWhiteSpace(environment))
+            {
+                throw new Exception("ASPNETCORE_ENVIRONMENT is not set");
+            }
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile($"appsettings.{environment}.json")
+                .Build();
+
+            DatabaseInitialize(configuration);
             CreateWebHostBuilder(args).Build().Run();
+        }
+
+        private static void DatabaseInitialize(IConfigurationRoot configuration)
+        {
+            var dbManager = new DatabaseManager(configuration.GetConnectionString("DefaultConnection"));
+            dbManager.Initialize();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

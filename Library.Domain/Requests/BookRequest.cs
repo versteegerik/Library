@@ -6,6 +6,6 @@ namespace Library.Domain.Requests
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public Person Owner { get; set; }
+        public ApplicationUser Owner { get; set; }
     }
 }

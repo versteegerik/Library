@@ -7,7 +7,7 @@ namespace Library.Domain.Model
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public Person Owner { get; set; }
+        public ApplicationUser Owner { get; set; }
 
         private Book() { }
 
