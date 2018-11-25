@@ -3,9 +3,9 @@ using Library.Domain.Requests;
 
 namespace Library.Domain.Validators
 {
-    public class CreateBookValidators : AbstractValidator<CreateBookRequest>
+    public class CreateBookRequestValidator : AbstractValidator<CreateBookRequest>
     {
-        public CreateBookValidators()
+        public CreateBookRequestValidator()
         {
             RuleFor(r => r.Title)
                 .NotEmpty();

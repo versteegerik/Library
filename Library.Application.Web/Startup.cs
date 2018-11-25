@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Library.Application.Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Library.Domain.Model;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Library.Application.Web
 {
@@ -37,10 +39,16 @@ namespace Library.Application.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddIdentityCore<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddSignInManager()
+                .AddDefaultTokenProviders();
+
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +75,7 @@ namespace Library.Application.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}");
             });
         }
     }
