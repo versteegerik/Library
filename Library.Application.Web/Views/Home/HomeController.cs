@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
 using Library.Application.Web.Models;
+using Library.Domain.Services;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Library.Application.Web.Controllers
+namespace Library.Application.Web.Views.Home
 {
     public class HomeController : Controller
     {
+        private readonly BookService _bookService;
+
+        public HomeController(BookService bookService)
+        {
+            _bookService = bookService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var myBooks = _bookService.GetMyBooks();
+            var homeModel = new HomeModel(myBooks);
+            return View(homeModel);
         }
 
         public IActionResult About()

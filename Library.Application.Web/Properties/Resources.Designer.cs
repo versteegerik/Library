@@ -88,6 +88,33 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acties.
+        /// </summary>
+        public static string MyBooksPartial_Actions {
+            get {
+                return ResourceManager.GetString("MyBooksPartial_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auteur.
+        /// </summary>
+        public static string MyBooksPartial_Author {
+            get {
+                return ResourceManager.GetString("MyBooksPartial_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titel.
+        /// </summary>
+        public static string MyBooksPartial_Title {
+            get {
+                return ResourceManager.GetString("MyBooksPartial_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Opslaan.
         /// </summary>
         public static string Save {

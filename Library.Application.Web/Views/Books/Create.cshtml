@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="View">
+        <form >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.HiddenFor(_ => _.Owner)
             <div class="form-group">
@@ -26,8 +26,8 @@
             </div>
             <hr />
             <div class="form-group">
-                <a class="btn btn-warning" asp-action="Index">@Resources.Cancel</a>
-                <button class="btn btn-primary" type="submit">@Resources.Create</button>
+                @*<a class="btn btn-warning" asp-action="Details">@Resources.Cancel</a>
+                <button class="btn btn-primary" type="submit">@Resources.Create</button>*@
             </div>
         </form>
     </div>

@@ -1,4 +1,9 @@
-﻿@{
+﻿@model Library.Application.Web.Views.Home.HomeModel
+@{
     ViewData["Title"] = "Home Page";
 }
+<h1>My books</h1>
 
+<div class="col-md-12">
+    <partial name="MyBooksPartial" for="MyBooks"/>
+</div>

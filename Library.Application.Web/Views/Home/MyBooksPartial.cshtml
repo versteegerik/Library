@@ -1,0 +1,25 @@
+﻿@using Library.Application.Web.Properties
+@model IEnumerable<Library.Application.Web.Views.Home.BookViewModel>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">@Resources.MyBooksPartial_Title</th>
+        <th scope="col">@Resources.MyBooksPartial_Author</th>
+        <th scope="col" class="align-right">@Resources.MyBooksPartial_Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-controller="Books"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Books"><i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
