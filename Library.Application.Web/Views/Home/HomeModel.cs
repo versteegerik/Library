@@ -1,4 +1,5 @@
-﻿using Library.Domain.Model;
+﻿using System;
+using Library.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,10 +19,11 @@ namespace Library.Application.Web.Views.Home
     {
         public BookViewModel(Book book)
         {
+            Id = book.Id;
             Title = book.Title;
             Author = book.Author;
         }
-
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
     }

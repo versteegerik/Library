@@ -6,7 +6,7 @@
     <tr>
         <th scope="col">@Resources.MyBooksPartial_Title</th>
         <th scope="col">@Resources.MyBooksPartial_Author</th>
-        <th scope="col" class="align-right">@Resources.MyBooksPartial_Actions</th>
+        <th scope="col">@Resources.MyBooksPartial_Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -16,8 +16,8 @@
                 <td>@book.Title</td>
                 <td>@book.Author</td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Details" asp-controller="Books"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Books"><i class="fa fa-times"></i></a>
+                    <a class="btn btn-primary" asp-action="Details" asp-controller="Books" asp-route-id="@book.Id"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Books" asp-route-id="@book.Id"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
         }

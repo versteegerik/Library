@@ -1,10 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Library.Domain.Requests;
+using Library.Domain.Services;
 
 namespace Library.Application.Web.Views.Books
 {
     public class BooksController : Controller
     {
+        private readonly BookService _bookService;
+
+        public BooksController(BookService bookService)
+        {
+            _bookService = bookService;
+        }
+
         [HttpGet]
         public ViewResult Create()
         {
@@ -12,15 +21,19 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
-        public ViewResult Details()
+        public ViewResult Details(Guid id)
         {
-            return View();
+            var book = _bookService.GetBookById(id);
+            var bookDetailsModel = new BookDetailsModel(book);
+            return View(bookDetailsModel);
         }
 
         [HttpGet]
-        public ViewResult Delete()
+        public ViewResult Delete(Guid id)
         {
-            return View();
+            var book = _bookService.GetBookById(id);
+            var bookDetailsModel = new BookDetailsModel(book);
+            return View(bookDetailsModel);
         }
     }
 }
