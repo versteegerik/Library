@@ -2,8 +2,21 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h2>My books</h2>
+<nav  class="nav nav-tabs nav-justified" aria-orientation="vertical">
+    <a class="nav-item nav-link active" data-toggle="tab" href="#home">MyBooks</a>
+    <a class="nav-item nav-link" data-toggle="tab" href="#wishlist">Wishlist</a>
+</nav>
 
-<div class="col-md-12">
-    <partial name="MyBooksPartial" for="MyBooks"/>
+<div class="tab-content">
+    <div id="home" class="tab-pane active">
+        <hr/>
+        <h2>MyBooks</h2>
+        
+        <partial name="MyBooksPartial" for="MyBooks" />
+    </div>
+    <div id="wishlist" class="tab-pane fade">
+        <h2>Wishlist</h2>
+        <p>Wishlist content.</p>
+    </div>
 </div>
+
