@@ -81,6 +81,11 @@ namespace Library.Domain.Services
             };
         }
 
+        public void EditBook(EditBookRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(DeleteRequest request)
         {
             throw new NotImplementedException();

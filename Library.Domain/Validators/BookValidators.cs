@@ -7,12 +7,18 @@ namespace Library.Domain.Validators
     {
         public CreateBookRequestValidator()
         {
-            RuleFor(r => r.Title)
-                .NotEmpty();
-            RuleFor(r => r.Author)
-                .NotEmpty();
-            RuleFor(r => r.Owner)
-                .NotEmpty();
+            RuleFor(r => r.Title).NotEmpty();
+            RuleFor(r => r.Author).NotEmpty();
+            RuleFor(r => r.Owner).NotEmpty();
+        }
+    }
+
+    public class EditBookRequestValidator : AbstractValidator<CreateBookRequest>
+    {
+        public EditBookRequestValidator()
+        {
+            RuleFor(r => r.Title).NotEmpty();
+            RuleFor(r => r.Author).NotEmpty();
         }
     }
 }

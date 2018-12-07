@@ -42,6 +42,25 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
+        public ViewResult Edit()
+        {
+            return View(new EditBookRequest());
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditBookRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
+
+            _bookService.EditBook(request);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public ViewResult Details(Guid id)
         {
             var book = _bookService.GetBookById(id);
