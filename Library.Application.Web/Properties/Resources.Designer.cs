@@ -106,6 +106,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instellingen.
+        /// </summary>
+        public static string Home_Index_Settings {
+            get {
+                return ResourceManager.GetString("Home_Index_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acties.
         /// </summary>
         public static string MyBooksPartial_Actions {

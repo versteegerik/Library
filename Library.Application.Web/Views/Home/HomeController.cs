@@ -1,25 +1,18 @@
 ﻿using System.Diagnostics;
 using Library.Application.Web.Models;
-using Library.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Application.Web.Views.Home
 {
     public class HomeController : Controller
     {
-        private readonly BookService _bookService;
-
-        public HomeController(BookService bookService)
+        public HomeController()
         {
-            _bookService = bookService;
         }
 
         public IActionResult Index()
         {
-            var myBooks = _bookService.GetMyBooks();
-            var myWishList = _bookService.GetMyWishList();
-            var homeModel = new HomeModel(myBooks, myWishList);
-            return View(homeModel);
+            return View();
         }
 
         public IActionResult About()

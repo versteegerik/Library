@@ -14,6 +14,14 @@ namespace Library.Application.Web.Views.Books
             _bookService = bookService;
         }
 
+        public IActionResult Index()
+        {
+            var myBooks = _bookService.GetMyBooks();
+            var myWishList = _bookService.GetMyWishList();
+            var homeModel = new BooksModel(myBooks, myWishList);
+            return View(homeModel);
+        }
+
         [HttpGet]
         public ViewResult Create()
         {

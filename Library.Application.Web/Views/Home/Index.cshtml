@@ -1,23 +1,41 @@
 ﻿@using Library.Application.Web.Properties
-@model Library.Application.Web.Views.Home.HomeModel
 @{
     ViewData["Title"] = "Home Page";
 }
-<nav  class="nav nav-tabs nav-justified" aria-orientation="vertical">
-    <a class="nav-item nav-link active" data-toggle="tab" href="#home">@Resources.Home_Index_MyBooks</a>
-    <a class="nav-item nav-link" data-toggle="tab" href="#wishlist">@Resources.Home_Index_MyWishlist</a>
-</nav>
 
-<div class="tab-content">
-    <div id="home" class="tab-pane active">
-        <h2>@Resources.Home_Index_MyBooks</h2>
-        
-        <partial name="BookListPartial" for="MyBooks" />
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("Index", "Books")" role="button">
+            <div class="card bg-primary text-white text-center configuration-card">
+                <div class="card-body">
+                    <i class="fa fa-book configuration-card__icon"></i>
+                    <h4>@Resources.Home_Index_MyBooks</h4>
+                </div>
+            </div>
+        </a>
     </div>
-    <div id="wishlist" class="tab-pane fade">
-        <h2>@Resources.Home_Index_MyWishlist</h2>
-
-        <partial name="BookListPartial" for="MyWishList" />
+    <div class="col-md-4">
+        <a href="@Url.Action("Index", "Books")" role="button">
+            <div class="card bg-primary text-white text-center configuration-card">
+                <div class="card-body">
+                    <i class="fa fa-shopping-cart configuration-card__icon"></i>
+                    <h4>@Resources.Home_Index_MyWishlist</h4>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("Index", "Books")" role="button">
+            <div class="card bg-primary text-white text-center configuration-card">
+                <div class="card-body">
+                    <i class="fa fa-cogs configuration-card__icon"></i>
+                    <h4>@Resources.Home_Index_Settings</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

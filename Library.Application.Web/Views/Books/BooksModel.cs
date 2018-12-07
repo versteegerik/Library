@@ -3,11 +3,11 @@ using Library.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Library.Application.Web.Views.Home
+namespace Library.Application.Web.Views.Books
 {
-    public class HomeModel
+    public class BooksModel
     {
-        public HomeModel(IEnumerable<Book> myBooks, IEnumerable<Book> myWishList)
+        public BooksModel(IEnumerable<Book> myBooks, IEnumerable<Book> myWishList)
         {
             MyBooks = myBooks.Select(book => new BookViewModel(book));
             MyWishList = myWishList.Select(book => new BookViewModel(book));

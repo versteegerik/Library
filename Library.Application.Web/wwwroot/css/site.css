@@ -34,3 +34,26 @@ body {
         display: none;
     }
 }
+
+.configuration-card {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .configuration-card {
+        min-height: 164px;
+    }
+}
+
+.configuration-card:hover {
+    text-decoration: none !important;
+}
+
+.configuration-card__icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.row {
+    margin-bottom: 15px;
+}
