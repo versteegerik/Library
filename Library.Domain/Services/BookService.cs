@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Library.Domain.Model;
 using Library.Domain.Requests;
+using Library.Domain.Validators;
 
 namespace Library.Domain.Services
 {
@@ -45,6 +46,11 @@ namespace Library.Domain.Services
 
         public void CreateBook(CreateBookRequest request)
         {
+            if (!new CreateBookRequestValidator().Validate(request).IsValid)
+            {
+                throw new Exception("CreateBook validation error");
+            }
+
             var book = new Book(request);
         }
 
@@ -73,6 +79,11 @@ namespace Library.Domain.Services
                     Title = "Test"
                 })
             };
+        }
+
+        public void Delete(DeleteRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }

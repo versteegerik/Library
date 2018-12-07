@@ -18,14 +18,27 @@ namespace Library.Application.Web.Views.Books
         {
             var myBooks = _bookService.GetMyBooks();
             var myWishList = _bookService.GetMyWishList();
-            var homeModel = new BooksModel(myBooks, myWishList);
-            return View(homeModel);
+            var booksModel = new BooksModel(myBooks, myWishList);
+            return View(booksModel);
         }
 
         [HttpGet]
         public ViewResult Create()
         {
             return View(new CreateBookRequest());
+        }
+
+        [HttpPost]
+        public IActionResult Create(CreateBookRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(request);
+            }
+
+            _bookService.CreateBook(request);
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -42,6 +55,14 @@ namespace Library.Application.Web.Views.Books
             var book = _bookService.GetBookById(id);
             var bookDetailsModel = new BookDetailsModel(book);
             return View(bookDetailsModel);
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(DeleteRequest request)
+        {
+            _bookService.Delete(request);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
