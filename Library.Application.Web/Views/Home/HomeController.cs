@@ -17,7 +17,8 @@ namespace Library.Application.Web.Views.Home
         public IActionResult Index()
         {
             var myBooks = _bookService.GetMyBooks();
-            var homeModel = new HomeModel(myBooks);
+            var myWishList = _bookService.GetMyWishList();
+            var homeModel = new HomeModel(myBooks, myWishList);
             return View(homeModel);
         }
 

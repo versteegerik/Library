@@ -88,6 +88,24 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mijn boeken.
+        /// </summary>
+        public static string Home_Index_MyBooks {
+            get {
+                return ResourceManager.GetString("Home_Index_MyBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mijn wensenlijst.
+        /// </summary>
+        public static string Home_Index_MyWishlist {
+            get {
+                return ResourceManager.GetString("Home_Index_MyWishlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acties.
         /// </summary>
         public static string MyBooksPartial_Actions {

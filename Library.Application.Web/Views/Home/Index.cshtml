@@ -1,22 +1,23 @@
-﻿@model Library.Application.Web.Views.Home.HomeModel
+﻿@using Library.Application.Web.Properties
+@model Library.Application.Web.Views.Home.HomeModel
 @{
     ViewData["Title"] = "Home Page";
 }
 <nav  class="nav nav-tabs nav-justified" aria-orientation="vertical">
-    <a class="nav-item nav-link active" data-toggle="tab" href="#home">MyBooks</a>
-    <a class="nav-item nav-link" data-toggle="tab" href="#wishlist">Wishlist</a>
+    <a class="nav-item nav-link active" data-toggle="tab" href="#home">@Resources.Home_Index_MyBooks</a>
+    <a class="nav-item nav-link" data-toggle="tab" href="#wishlist">@Resources.Home_Index_MyWishlist</a>
 </nav>
 
 <div class="tab-content">
     <div id="home" class="tab-pane active">
-        <hr/>
-        <h2>MyBooks</h2>
+        <h2>@Resources.Home_Index_MyBooks</h2>
         
-        <partial name="MyBooksPartial" for="MyBooks" />
+        <partial name="BookListPartial" for="MyBooks" />
     </div>
     <div id="wishlist" class="tab-pane fade">
-        <h2>Wishlist</h2>
-        <p>Wishlist content.</p>
+        <h2>@Resources.Home_Index_MyWishlist</h2>
+
+        <partial name="BookListPartial" for="MyWishList" />
     </div>
 </div>
 

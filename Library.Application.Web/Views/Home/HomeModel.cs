@@ -7,12 +7,14 @@ namespace Library.Application.Web.Views.Home
 {
     public class HomeModel
     {
-        public HomeModel(IEnumerable<Book> myBooks)
+        public HomeModel(IEnumerable<Book> myBooks, IEnumerable<Book> myWishList)
         {
             MyBooks = myBooks.Select(book => new BookViewModel(book));
+            MyWishList = myWishList.Select(book => new BookViewModel(book));
         }
 
         public IEnumerable<BookViewModel> MyBooks { get; set; }
+        public IEnumerable<BookViewModel> MyWishList { get; set; }
     }
 
     public class BookViewModel

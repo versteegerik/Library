@@ -126,6 +126,12 @@
   <data name="Delete" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
+  <data name="Home_Index_MyBooks" xml:space="preserve">
+    <value>Mijn boeken</value>
+  </data>
+  <data name="Home_Index_MyWishlist" xml:space="preserve">
+    <value>Mijn wensenlijst</value>
+  </data>
   <data name="MyBooksPartial_Actions" xml:space="preserve">
     <value>Acties</value>
   </data>

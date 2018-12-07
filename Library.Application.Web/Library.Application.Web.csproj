@@ -37,7 +37,7 @@
     <Content Update="Views\Books\Details.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Home\MyBooksPartial.cshtml">
+    <Content Update="Views\Home\BookListPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

@@ -27,17 +27,17 @@ namespace Library.Domain.Services
                 }),
                 new Book(new CreateBookRequest
                 {
-                    Author = "Test",
+                    Author = "Test2",
                     Title = "Test"
                 }),
                 new Book(new CreateBookRequest
                 {
-                    Author = "Test",
+                    Author = "Test3",
                     Title = "Test"
                 }),
                 new Book(new CreateBookRequest
                 {
-                    Author = "Test",
+                    Author = "Test4",
                     Title = "Test"
                 })
             };
@@ -46,6 +46,33 @@ namespace Library.Domain.Services
         public void CreateBook(CreateBookRequest request)
         {
             var book = new Book(request);
+        }
+
+        public IEnumerable<Book> GetMyWishList()
+        {
+            return new List<Book>
+            {
+                new Book(new CreateBookRequest
+                {
+                    Author = "Test",
+                    Title = "Test"
+                }),
+                new Book(new CreateBookRequest
+                {
+                    Author = "Test2",
+                    Title = "Test"
+                }),
+                new Book(new CreateBookRequest
+                {
+                    Author = "Test3",
+                    Title = "Test"
+                }),
+                new Book(new CreateBookRequest
+                {
+                    Author = "Test4",
+                    Title = "Test"
+                })
+            };
         }
     }
 }
