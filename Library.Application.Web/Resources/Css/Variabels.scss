@@ -1,0 +1,23 @@
+﻿//Colors
+$walaa-primary: #01689b;
+$walaa-secondary: #6c757d;
+$walaa-info: #DEE9EE;
+$walaa-light: #F3F3F3;
+$walaa-medium: #E6E6E6;
+$walaa-medium-dark: #CCCCCC;
+$walaa-white: white;
+$walaa-text-default: #333333;
+$walaa-text-gray: darken($walaa-light, 37.5%);
+$eHerkenning: #DE0367;
+$walaa-primary-light: lighten($walaa-primary, 10%);
+$walaa-primary-extra-light: lighten($walaa-primary, 65%);
+$walaa-maintenance-background: #94710a;
+$walaa-maintenance-foreground: #efeada;
+
+//Sizes
+$size_xxs: .125rem;
+$size_xs: .25rem;
+$size_sm: .375rem;
+$size_md: .75rem;
+$size_lg: 1.5rem;
+$size_xl: 3rem;

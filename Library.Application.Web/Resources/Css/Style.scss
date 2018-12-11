@@ -1,0 +1,11 @@
+﻿//Variabels
+@import "Variabels.scss";
+
+//Bootstrap overrides
+@import "Bootstrap-theme.scss";
+
+//NPM package style
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+
