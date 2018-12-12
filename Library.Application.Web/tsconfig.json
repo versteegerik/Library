@@ -1,14 +1,22 @@
 {
   "compilerOptions": {
-    "lib": [ "es5", "dom" ],
+    "outDir": "./wwwroot/build/",
     "noImplicitAny": true,
     "noEmitOnError": true,
     "module": "es6",
     "target": "es5",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "jquery-ui": [
+        "node_modules/@types/jqueryui/index"
+      ],
+      "moment": [
+        "node_modules/moment/moment"
+      ]
+    }
   },
   "exclude": [
     "node_modules",
-    "wwwroot/dist"
+    "wwwroot"
   ]
 }

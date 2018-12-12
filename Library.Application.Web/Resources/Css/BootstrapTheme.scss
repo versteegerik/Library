@@ -126,8 +126,9 @@ a {
     }
 
     .breadcrumb-item.active {
-        font-weight:600;
+        font-weight: 600;
     }
+
     .breadcrumb-item.active::before {
         font-weight: normal;
     }
@@ -155,33 +156,33 @@ a {
         }
     }
 
-        .btn-white:not(:last-of-type) {
-            padding-right: 30px;
+    .btn-white:not(:last-of-type) {
+        padding-right: 30px;
 
-            &:before {
-                content: "";
-                position: absolute;
-                right: 8px;
-                top: -7px;
-                width: 3px;
-                height: 31px;
-                transform: rotate(135deg);
-                background-color: $walaa-light;
-                z-index: 1;
-            }
-
-            &:after {
-                content: "";
-                position: absolute;
-                right: 8px;
-                top: 13px;
-                width: 3px;
-                height: 31px;
-                transform: rotate(45deg);
-                background-color: $walaa-light;
-                z-index: 1;
-            }
+        &:before {
+            content: "";
+            position: absolute;
+            right: 8px;
+            top: -7px;
+            width: 3px;
+            height: 31px;
+            transform: rotate(135deg);
+            background-color: $walaa-light;
+            z-index: 1;
         }
+
+        &:after {
+            content: "";
+            position: absolute;
+            right: 8px;
+            top: 13px;
+            width: 3px;
+            height: 31px;
+            transform: rotate(45deg);
+            background-color: $walaa-light;
+            z-index: 1;
+        }
+    }
 }
 
 // Fix the height of inputs and buttons inside a form.
@@ -330,7 +331,7 @@ a {
     .btn {
         border: 1px solid $input-border-color !important;
     }
-    
+
     .dropdown-toggle:focus {
         @extend .form-control:focus;
         outline: 0 !important;

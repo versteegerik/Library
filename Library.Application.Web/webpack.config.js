@@ -1,7 +1,7 @@
 ﻿const webpack = require("webpack");
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 var config = {
@@ -9,7 +9,7 @@ var config = {
         bundle: "./Resources/App.ts"
     },
     output: {
-        path: path.resolve(__dirname, "./wwwroot/dist"),
+        path: path.resolve(__dirname, "wwwroot/dist"),
         filename: "[name].js"
     },
     resolve: {
@@ -26,8 +26,8 @@ var config = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     { loader: "css-loader", options: { sourceMap: true } },
-                    { loader: "postcss-loader" },
-                    { loader: "sass-loader", options: { sourceMap: true } }
+                    { loader: 'postcss-loader' },
+                    { loader: 'sass-loader', options: { sourceMap: true } }
                 ]
             }, {
                 test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, //output font files in font folder

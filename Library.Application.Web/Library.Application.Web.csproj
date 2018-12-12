@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-Library.Application.Web-B30A2DF7-65B2-4482-9FFA-B3EAB14FDB34</UserSecretsId>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\App.ts" />
     <None Remove="Resources\lib.d.ts.ts" />
-    <None Remove="Resources\Script\lib.d.ts" />
     <None Remove="Views\Shared\_Layout.js" />
     <None Remove="Views\Shared\_Layout.ts" />
   </ItemGroup>
@@ -68,12 +69,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="Resources\Script\lib.d.ts">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </TypeScriptCompile>
+    <TypeScriptCompile Include="Resources\App.ts" />
     <TypeScriptCompile Include="Views\Shared\_Layout.ts">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </TypeScriptCompile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Script\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
