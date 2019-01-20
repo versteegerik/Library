@@ -1,5 +1,5 @@
-﻿using Library.Application.Data;
-using Library.Domain.Model;
+﻿using Library.Domain.Model;
+using Library.Domain.Repositories;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

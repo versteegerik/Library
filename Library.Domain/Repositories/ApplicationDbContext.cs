@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Library.Application.Data
+namespace Library.Domain.Repositories
 {
     public class ApplicationDbContext : IdentityDbContext
     {

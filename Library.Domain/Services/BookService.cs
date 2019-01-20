@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Library.Domain.Model;
+using Library.Domain.Repositories;
 using Library.Domain.Requests;
 using Library.Domain.Validators;
 
@@ -8,6 +9,13 @@ namespace Library.Domain.Services
 {
     public class BookService
     {
+        public BookRepository BookRepository { get; }
+
+        public BookService(BookRepository bookRepository)
+        {
+            BookRepository = bookRepository;
+        }
+
         public Book GetBookById(Guid id)
         {
             return new Book(new CreateBookRequest
@@ -17,31 +25,9 @@ namespace Library.Domain.Services
             });
         }
 
-        public IList<Book> GetMyBooks()
+        public IEnumerable<Book> GetMyBooks(ApplicationUser applicationUser)
         {
-            return new List<Book>
-            {
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test2",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test3",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test4",
-                    Title = "Test"
-                })
-            };
+            return BookRepository.GetBooksByUser(applicationUser);
         }
 
         public void CreateBook(CreateBookRequest request)
