@@ -1,41 +1,35 @@
 ﻿@using Library.Application.Web.Properties
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Resources.Home_Index_PageHeader;
 }
 
-<h2>Index</h2>
+<h2>@Resources.Home_Index_PageHeader</h2>
 
 <div class="row">
     <div class="col-md-4">
-        <a href="@Url.Action("Index", "Books")" role="button">
-            <div class="card bg-primary text-white text-center configuration-card">
+        <a href="@Url.Action("MyBooks", "Books")" role="button" class="card bg-primary text-white text-center configuration-card">
                 <div class="card-body">
-                    <i class="fa fa-book configuration-card__icon"></i>
+                    <i class="fa fa-book configuration-card__icon fa-5x"></i>
                     <h4>@Resources.Home_Index_MyBooks</h4>
                 </div>
-            </div>
         </a>
     </div>
     <div class="col-md-4">
-        <a href="@Url.Action("Index", "Books")" role="button">
-            <div class="card bg-primary text-white text-center configuration-card">
-                <div class="card-body">
-                    <i class="fa fa-shopping-cart configuration-card__icon"></i>
-                    <h4>@Resources.Home_Index_MyWishlist</h4>
-                </div>
+        <a href="@Url.Action("MyWishlist", "Books")" role="button" class="card bg-primary text-white text-center configuration-card">
+            <div class="card-body">
+                <i class="fa fa-shopping-cart configuration-card__icon fa-5x"></i>
+                <h4>@Resources.Home_Index_MyWishlist</h4>
             </div>
         </a>
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <a href="@Url.Action("Index", "Books")" role="button">
-            <div class="card bg-primary text-white text-center configuration-card">
+        <a href="@Url.Action("Index", "Books")" role="button" class="card bg-primary text-white text-center configuration-card">
                 <div class="card-body">
-                    <i class="fa fa-cogs configuration-card__icon"></i>
+                    <i class="fa fa-cogs configuration-card__icon fa-5x"></i>
                     <h4>@Resources.Home_Index_Settings</h4>
                 </div>
-            </div>
         </a>
     </div>
 </div>

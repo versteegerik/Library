@@ -5,16 +5,14 @@ using System.Linq;
 
 namespace Library.Application.Web.Views.Books
 {
-    public class BooksModel
+    public class BookListViewModel
     {
-        public BooksModel(IEnumerable<Book> myBooks, IEnumerable<Book> myWishList)
+        public BookListViewModel(IEnumerable<Book> books)
         {
-            MyBooks = myBooks.Select(book => new BookViewModel(book));
-            MyWishList = myWishList.Select(book => new BookViewModel(book));
+            Books = books.Select(book => new BookViewModel(book));
         }
 
-        public IEnumerable<BookViewModel> MyBooks { get; set; }
-        public IEnumerable<BookViewModel> MyWishList { get; set; }
+        public IEnumerable<BookViewModel> Books { get; set; }
     }
 
     public class BookViewModel
@@ -25,6 +23,20 @@ namespace Library.Application.Web.Views.Books
             Title = book.Title;
             Author = book.Author;
         }
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+    }
+
+    public class BookDetailsModel
+    {
+        public BookDetailsModel(Book book)
+        {
+            Id = book.Id;
+            Title = book.Title;
+            Author = book.Author;
+        }
+
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

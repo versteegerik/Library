@@ -21,12 +21,12 @@
     </environment>
     @RenderSection("Scripts", required: false)
 </head>
-<body>
+<body class="body-content">
     <partial name="_NavigationPartial" />
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>

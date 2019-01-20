@@ -106,6 +106,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home_Index_PageHeader {
+            get {
+                return ResourceManager.GetString("Home_Index_PageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Instellingen.
         /// </summary>
         public static string Home_Index_Settings {

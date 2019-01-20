@@ -53,7 +53,10 @@
     <Content Update="Views\Books\Details.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Books\Index.cshtml">
+    <Content Update="Views\Books\MyWishList.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Books\MyBooks.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Books\BookListPartial.cshtml">
