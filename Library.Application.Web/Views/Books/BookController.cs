@@ -16,7 +16,7 @@ namespace Library.Application.Web.Views.Books
 
         public IActionResult MyBooks()
         {
-            var myBooks = _bookService.GetMyBooks();
+            var myBooks = _bookService.GetMyBooks(new Domain.Model.ApplicationUser());
             var booksModel = new BookListViewModel(myBooks);
             return View(booksModel);
         }

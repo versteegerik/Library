@@ -6,14 +6,13 @@ namespace Library.Domain.Repositories
 {
     public class BookRepository : IRepository
     {
-        public BookRepository(ApplicationDbContext dbContext) : base(dbContext)
-        {
-
-        }
+        public BookRepository(ApplicationDbContext dbContext) : base(dbContext) { }
 
         public IEnumerable<Book> GetBooksByUser(ApplicationUser applicationUser)
         {
-            return DbContext.Query<Book>().Where(b => b.Owner == applicationUser).ToList();
+            return DbContext.Books
+                .Where(b => b.Owner == applicationUser)
+                .ToArray();
         }
     }
 }

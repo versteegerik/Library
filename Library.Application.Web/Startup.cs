@@ -32,7 +32,8 @@ namespace Library.Application.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<BookService>();
+            AddServices(services);
+            AddRepositories(services);
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -47,6 +48,17 @@ namespace Library.Application.Web
 
             services.AddSingleton<IEmailSender, EmailSender>();
         }
+
+        private void AddServices(IServiceCollection services)
+        {
+            services.AddScoped<BookService>();
+
+        }
+        private void AddRepositories(IServiceCollection services)
+        {
+            services.AddScoped<BookRepository>();
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -9,7 +9,7 @@ namespace Library.Domain.Model
         public string Message { get; set; }
         public bool IsShown { get; set; }
 
-        private NewsMessage() { }
+        public NewsMessage() { }
 
         public NewsMessage(CreateNewsMessageRequest request) : this()
         {
