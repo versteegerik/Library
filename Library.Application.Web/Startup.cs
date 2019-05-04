@@ -1,6 +1,8 @@
-﻿using Library.Domain.Model;
+﻿using FluentValidation.AspNetCore;
+using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Services;
+using Library.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -35,10 +37,13 @@ namespace Library.Application.Web
             AddServices(services);
             AddRepositories(services);
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .AddFluentValidation(fv => {
+                    fv.RegisterValidatorsFromAssemblyContaining<CreateBookRequestValidator>();
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()

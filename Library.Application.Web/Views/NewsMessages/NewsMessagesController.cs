@@ -28,5 +28,18 @@ namespace Library.Application.Web.Views.Books
             var viewwModel = new CreateNewsMessageRequest();
             return View(viewwModel);
         }
+
+        [HttpPost]
+        public IActionResult Create(CreateNewsMessageRequest viewwModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewwModel);
+            }
+
+            _newsMessageService.CreateNewsMessage(viewwModel);
+
+            return RedirectToAction("Index");
+        }
     }
 }
