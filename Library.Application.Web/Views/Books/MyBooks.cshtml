@@ -1,8 +1,10 @@
-﻿@using Library.Application.Web.Properties
-@model Library.Application.Web.Views.Books.BookListViewModel
+﻿@model Library.Application.Web.Views.Books.BookListViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<h2>@Resources.Home_Index_MyBooks</h2>
+<div>
+    <h2>@Resources.Home_Index_MyBooks</h2>
+</div>
+
 <partial name="BookListPartial" for="Books" />

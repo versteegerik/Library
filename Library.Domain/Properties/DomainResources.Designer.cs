@@ -19,7 +19,7 @@ namespace Library.Domain.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class DomainResources {
@@ -61,6 +61,15 @@ namespace Library.Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boek.
+        /// </summary>
+        public static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auteur.
         /// </summary>
         public static string Book_Author {
@@ -75,6 +84,51 @@ namespace Library.Domain.Properties {
         public static string Book_Title {
             get {
                 return ResourceManager.GetString("Book_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuwsbericht.
+        /// </summary>
+        public static string NewsMessage {
+            get {
+                return ResourceManager.GetString("NewsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tonen in overzicht.
+        /// </summary>
+        public static string NewsMessage_IsShown {
+            get {
+                return ResourceManager.GetString("NewsMessage_IsShown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bericht.
+        /// </summary>
+        public static string NewsMessage_Message {
+            get {
+                return ResourceManager.GetString("NewsMessage_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titel.
+        /// </summary>
+        public static string NewsMessage_Title {
+            get {
+                return ResourceManager.GetString("NewsMessage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuwsberichten.
+        /// </summary>
+        public static string NewsMessages {
+            get {
+                return ResourceManager.GetString("NewsMessages", resourceCulture);
             }
         }
     }

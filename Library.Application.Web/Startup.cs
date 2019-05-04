@@ -52,11 +52,13 @@ namespace Library.Application.Web
         private void AddServices(IServiceCollection services)
         {
             services.AddScoped<BookService>();
+            services.AddScoped<NewsMessageService>();
 
         }
         private void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<BookRepository>();
+            services.AddScoped<NewsMessageRepository>();
         }
 
 

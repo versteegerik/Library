@@ -19,7 +19,7 @@ namespace Library.Application.Web.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,6 +57,15 @@ namespace Library.Application.Web.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acties.
+        /// </summary>
+        public static string Actions {
+            get {
+                return ResourceManager.GetString("Actions", resourceCulture);
             }
         }
         
@@ -115,24 +124,6 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instellingen.
-        /// </summary>
-        public static string Home_Index_Settings {
-            get {
-                return ResourceManager.GetString("Home_Index_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Acties.
-        /// </summary>
-        public static string MyBooksPartial_Actions {
-            get {
-                return ResourceManager.GetString("MyBooksPartial_Actions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Auteur.
         /// </summary>
         public static string MyBooksPartial_Author {
@@ -156,6 +147,24 @@ namespace Library.Application.Web.Properties {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instellingen.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuwsberichten.
+        /// </summary>
+        public static string Settings_NewsMessages {
+            get {
+                return ResourceManager.GetString("Settings_NewsMessages", resourceCulture);
             }
         }
         

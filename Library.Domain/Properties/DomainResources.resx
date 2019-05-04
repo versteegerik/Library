@@ -117,10 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Book" xml:space="preserve">
+    <value>Boek</value>
+  </data>
   <data name="Book_Author" xml:space="preserve">
     <value>Auteur</value>
   </data>
   <data name="Book_Title" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="NewsMessage" xml:space="preserve">
+    <value>Nieuwsbericht</value>
+  </data>
+  <data name="NewsMessages" xml:space="preserve">
+    <value>Nieuwsberichten</value>
+  </data>
+  <data name="NewsMessage_Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="NewsMessage_Message" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="NewsMessage_IsShown" xml:space="preserve">
+    <value>Tonen in overzicht</value>
   </data>
 </root>

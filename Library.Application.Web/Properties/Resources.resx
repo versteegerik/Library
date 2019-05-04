@@ -135,10 +135,7 @@
   <data name="Home_Index_PageHeader" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="Home_Index_Settings" xml:space="preserve">
-    <value>Instellingen</value>
-  </data>
-  <data name="MyBooksPartial_Actions" xml:space="preserve">
+  <data name="Actions" xml:space="preserve">
     <value>Acties</value>
   </data>
   <data name="MyBooksPartial_Author" xml:space="preserve">
@@ -152,5 +149,11 @@
   </data>
   <data name="View_Person_Overview" xml:space="preserve">
     <value>Overzicht</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="Settings_NewsMessages" xml:space="preserve">
+    <value>Nieuwsberichten</value>
   </data>
 </root>
