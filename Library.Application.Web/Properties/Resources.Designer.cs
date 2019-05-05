@@ -97,6 +97,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bewerken.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mijn boeken.
         /// </summary>
         public static string Home_Index_MyBooks {

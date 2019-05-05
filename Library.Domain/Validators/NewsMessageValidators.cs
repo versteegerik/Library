@@ -9,7 +9,6 @@ namespace Library.Domain.Validators
         {
             RuleFor(r => r.Title).NotEmpty();
             RuleFor(r => r.Message).NotEmpty();
-            RuleFor(r => r.IsShown).NotEmpty();
         }
     }
 
@@ -20,7 +19,6 @@ namespace Library.Domain.Validators
             RuleFor(r => r.Id).NotEmpty();
             RuleFor(r => r.Title).NotEmpty();
             RuleFor(r => r.Message).NotEmpty();
-            RuleFor(r => r.IsShown).NotEmpty();
         }
     }
 }

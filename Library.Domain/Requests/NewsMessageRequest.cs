@@ -1,4 +1,5 @@
-﻿using Library.Domain.Properties;
+﻿using Library.Domain.Model;
+using Library.Domain.Properties;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -22,5 +23,14 @@ namespace Library.Domain.Requests
     public class EditNewsMessageRequest : NewsMessageRequest
     {
         public Guid Id { get; set; }
+
+        public EditNewsMessageRequest() { }
+        public EditNewsMessageRequest(NewsMessage newsMessage) : this()
+        {
+            Id = newsMessage.Id;
+            Title = newsMessage.Title;
+            Message = newsMessage.Message;
+            IsShown = newsMessage.IsShown;
+        }
     }
 }

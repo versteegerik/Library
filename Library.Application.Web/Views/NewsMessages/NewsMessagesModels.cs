@@ -5,18 +5,6 @@ using System.Linq;
 
 namespace Library.Application.Web.Views.NewsMessages
 {
-    public class NewsMessagesOverviewModel
-    {
-        public string Title { get; set; }
-        public string Message { get; set; }
-
-        public NewsMessagesOverviewModel(NewsMessage newsMessage)
-        {
-            Title = newsMessage.Title;
-            Message = newsMessage.Message;
-        }
-    }
-
     public class ListModel
     {
         public IEnumerable<NewsMessageModel> NewsMessages { get; set; }

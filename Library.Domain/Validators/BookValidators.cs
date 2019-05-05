@@ -13,7 +13,7 @@ namespace Library.Domain.Validators
         }
     }
 
-    public class EditBookRequestValidator : AbstractValidator<CreateBookRequest>
+    public class EditBookRequestValidator : AbstractValidator<EditBookRequest>
     {
         public EditBookRequestValidator()
         {

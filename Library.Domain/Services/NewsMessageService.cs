@@ -1,6 +1,7 @@
 ﻿using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Requests;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,6 +38,11 @@ namespace Library.Domain.Services
             var newsMessage = Repository.Get<NewsMessage>(request.Id);
             Repository.Update(newsMessage);
             Repository.SaveChanges();
+        }
+
+        public NewsMessage GetById(Guid id)
+        {
+            return Repository.Get<NewsMessage>(id);
         }
     }
 }

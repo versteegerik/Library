@@ -141,4 +141,19 @@
   <data name="NewsMessage_IsShown" xml:space="preserve">
     <value>Tonen in overzicht</value>
   </data>
+  <data name="ApplicationUser" xml:space="preserve">
+    <value>Gebruiker</value>
+  </data>
+  <data name="ApplicationUser_UserName" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="ApplicationUser_Email" xml:space="preserve">
+    <value>Emailadres</value>
+  </data>
+  <data name="ApplicationUser_PhoneNumber" xml:space="preserve">
+    <value>Telefoonnummer</value>
+  </data>
+  <data name="ApplicationUsers" xml:space="preserve">
+    <value>Gebruikers</value>
+  </data>
 </root>

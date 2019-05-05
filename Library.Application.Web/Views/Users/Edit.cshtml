@@ -1,0 +1,41 @@
+﻿@using Library.Application.Web.Views.Users;
+@model EditApplicationUserModel
+@{
+    ViewData["Title"] = DomainResources.ApplicationUser;
+}
+
+<h2>@DomainResources.ApplicationUser</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="Users">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(_ => _.Request.Id)
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" readonly="readonly" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.Email" class="control-label"></label>
+                <input asp-for="Request.Email" class="form-control" />
+                <span asp-validation-for="Request.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.PhoneNumber" class="control-label"></label>
+                <input asp-for="Request.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Request.PhoneNumber" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <a class="btn btn-warning" asp-action="Index" asp-controller="Users">@Resources.Cancel <i class="fa fa-times"></i></a>
+                <button class="btn btn-primary" type="submit">@Resources.Create <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -6,6 +6,14 @@
 
 <div class="row">
     <div class="col-md-4">
+        <a href="@Url.Action("Index", "Users")" role="button" class="card bg-primary text-white text-center configuration-card">
+            <div class="card-body">
+                <i class="fa fa-user-edit configuration-card__icon fa-5x"></i>
+                <h4>@DomainResources.ApplicationUsers</h4>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
         <a href="@Url.Action("Index", "NewsMessages")" role="button" class="card bg-primary text-white text-center configuration-card">
             <div class="card-body">
                 <i class="fa fa-book configuration-card__icon fa-5x"></i>

@@ -61,6 +61,51 @@ namespace Library.Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gebruiker.
+        /// </summary>
+        public static string ApplicationUser {
+            get {
+                return ResourceManager.GetString("ApplicationUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emailadres.
+        /// </summary>
+        public static string ApplicationUser_Email {
+            get {
+                return ResourceManager.GetString("ApplicationUser_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefoonnummer.
+        /// </summary>
+        public static string ApplicationUser_PhoneNumber {
+            get {
+                return ResourceManager.GetString("ApplicationUser_PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikersnaam.
+        /// </summary>
+        public static string ApplicationUser_UserName {
+            get {
+                return ResourceManager.GetString("ApplicationUser_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikers.
+        /// </summary>
+        public static string ApplicationUsers {
+            get {
+                return ResourceManager.GetString("ApplicationUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boek.
         /// </summary>
         public static string Book {

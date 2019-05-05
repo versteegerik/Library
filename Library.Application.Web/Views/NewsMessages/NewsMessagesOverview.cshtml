@@ -1,7 +1,7 @@
 ﻿@using Library.Application.Web.Views.NewsMessages
-@model IEnumerable<NewsMessagesOverviewModel>
+@model ListModel
 <section>
-    @foreach (var newsMessage in Model)
+    @foreach (var newsMessage in Model.NewsMessages)
     {
         <div>
             <h4>@newsMessage.Title</h4>

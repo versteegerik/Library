@@ -41,5 +41,26 @@ namespace Library.Application.Web.Views.Books
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            var newsMessage = _newsMessageService.GetById(id);
+            var viewwModel = new EditNewsMessageRequest(newsMessage);
+            return View(viewwModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditNewsMessageRequest viewwModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewwModel);
+            }
+
+            _newsMessageService.EditNewsMessage(viewwModel);
+
+            return RedirectToAction("Index");
+        }
     }
 }
