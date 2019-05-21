@@ -5,19 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Library.Application.Web</title>
 
-    <environment names="Development">
-        <link rel="stylesheet" type="text/css" href="~/dist/bundle.css">
-    </environment>
-    <environment names="Staging,Production">
+    <environment>
         <link rel="stylesheet" type="text/css" href="~/dist/bundle.css">
     </environment>
     @RenderSection("Styles", required: false)
 
-    <environment names="Development">
+    <environment>
         <script src="~/dist/bundle.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/dist/bundle.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("Scripts", required: false)
 </head>
