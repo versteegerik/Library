@@ -1,4 +1,5 @@
 ﻿using FluentValidation.AspNetCore;
+using Library.Application.Services.MailService;
 using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Services;
@@ -52,6 +53,7 @@ namespace Library.Application.Web
                 .AddDefaultTokenProviders();
 
             services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
         }
 
         private void AddServices(IServiceCollection services)

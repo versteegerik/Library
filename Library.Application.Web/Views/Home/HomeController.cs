@@ -1,43 +1,28 @@
 ﻿using System.Diagnostics;
 using Library.Application.Web.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Application.Web.Views.Home
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IEmailSender _emailSender;
+
+        public HomeController(IEmailSender emailSender)
         {
+            _emailSender = emailSender;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
+        public IActionResult About() => View();
 
-            return View();
-        }
+        public IActionResult Contact() => View();
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+        public IActionResult Privacy() => View();
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Settings()
-        {
-            return View();
-        }
+        public IActionResult Settings() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
