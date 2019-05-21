@@ -79,6 +79,24 @@ namespace Library.Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wachtwoord.
+        /// </summary>
+        public static string ApplicationUser_Password {
+            get {
+                return ResourceManager.GetString("ApplicationUser_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig wachtwoord.
+        /// </summary>
+        public static string ApplicationUser_PasswordConfirmation {
+            get {
+                return ResourceManager.GetString("ApplicationUser_PasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telefoonnummer.
         /// </summary>
         public static string ApplicationUser_PhoneNumber {
@@ -129,6 +147,24 @@ namespace Library.Domain.Properties {
         public static string Book_Title {
             get {
                 return ResourceManager.GetString("Book_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig uw account door &lt;a href=&apos;{0}&apos;&gt;hier te klikken&lt;/a&gt;..
+        /// </summary>
+        public static string MailService_Mail_ApplicationUserConfirmEmail {
+            get {
+                return ResourceManager.GetString("MailService_Mail_ApplicationUserConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig uw emailadres.
+        /// </summary>
+        public static string MailService_Subject_ApplicationUserConfirmEmail {
+            get {
+                return ResourceManager.GetString("MailService_Subject_ApplicationUserConfirmEmail", resourceCulture);
             }
         }
         

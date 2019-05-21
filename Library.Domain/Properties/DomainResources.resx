@@ -156,4 +156,16 @@
   <data name="ApplicationUsers" xml:space="preserve">
     <value>Gebruikers</value>
   </data>
+  <data name="MailService_Mail_ApplicationUserConfirmEmail" xml:space="preserve">
+    <value>Bevestig uw account door &lt;a href='{0}'&gt;hier te klikken&lt;/a&gt;.</value>
+  </data>
+  <data name="MailService_Subject_ApplicationUserConfirmEmail" xml:space="preserve">
+    <value>Bevestig uw emailadres</value>
+  </data>
+  <data name="ApplicationUser_Password" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="ApplicationUser_PasswordConfirmation" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
 </root>

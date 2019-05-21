@@ -1,10 +1,20 @@
-﻿@{
+﻿@model bool
+@{
     ViewData["Title"] = "Confirm Email";
 }
 
-<h1>@ViewData["Title"].</h1>
+<h2>Confirm Email</h2>
 <div>
-    <p>
-        Thank you for confirming your email. Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
-    </p>
+    @if (Model)
+    {
+        <p>
+            Thank you for confirming your email. Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
+        </p>
+    }
+    else
+    {
+        <p>
+            Something went wrong. Please contact the admin.
+        </p>
+    }
 </div>

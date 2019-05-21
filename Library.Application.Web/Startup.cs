@@ -4,6 +4,7 @@ using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Services;
 using Library.Domain.Validators;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Library.Application.Web
 {
@@ -40,20 +42,28 @@ namespace Library.Application.Web
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services
+                .AddAuthentication(IdentityConstants.ApplicationScheme)
+                .AddCookie(IdentityConstants.ApplicationScheme);
+
+            services.AddIdentityCore<ApplicationUser>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddSignInManager<SignInManager<ApplicationUser>>()
+            .AddDefaultTokenProviders();
+
+            services.AddSingleton<IEmailSender, MailService>();
+            services.AddSingleton<IMailService, MailService>(x => (MailService) x.GetService<IEmailSender>());
+            services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
+                       
             services.AddMvc()
                 .AddFluentValidation(fv => {
                     fv.RegisterValidatorsFromAssemblyContaining<CreateBookRequestValidator>();
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddIdentityCore<ApplicationUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddSignInManager()
-                .AddDefaultTokenProviders();
-
-            services.AddSingleton<IEmailSender, EmailSender>();
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
         }
 
         private void AddServices(IServiceCollection services)
@@ -86,7 +96,6 @@ namespace Library.Application.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>

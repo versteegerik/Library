@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Services.MailService
 {
-    public class EmailSettings
+    public class MailServiceSettings
     {
         public string PrimaryDomain { get; set; }
 
@@ -9,6 +9,8 @@
         //public string SecondayDomain { get; set; }
 
         //public int SecondaryPort { get; set; }
+
+        public string DisplayName { get; set; }
 
         public string UsernameEmail { get; set; }
 

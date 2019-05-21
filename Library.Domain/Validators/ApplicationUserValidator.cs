@@ -9,6 +9,7 @@ namespace Library.Domain.Validators
         {
             RuleFor(r => r.UserName).NotEmpty();
             RuleFor(r => r.Email).NotEmpty();
+            RuleFor(r => r.Password).NotEmpty();
         }
     }
 

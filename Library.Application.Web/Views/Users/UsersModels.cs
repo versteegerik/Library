@@ -43,4 +43,21 @@ namespace Library.Application.Web.Views.Users
             Request = new EditApplicationUserRequest(applicationUser);
         }
     }
+
+    public class DeleteApplicationUserModel
+    {
+        public string Id { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public DeleteApplicationUserModel() { }
+        public DeleteApplicationUserModel(ApplicationUser applicationUser) : this()
+        {
+            Id = applicationUser.Id;
+            UserName = applicationUser.UserName;
+            Email = applicationUser.Email;
+            PhoneNumber = applicationUser.PhoneNumber;
+        }
+    }
 }

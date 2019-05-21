@@ -12,6 +12,13 @@ namespace Library.Domain.Requests
         public string Email { get; set; }
         [Display(Name = "ApplicationUser_PhoneNumber", ResourceType = typeof(DomainResources))]
         public string PhoneNumber { get; set; }
+        [Display(Name = "ApplicationUser_Password", ResourceType = typeof(DomainResources))]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+        [Display(Name = "ApplicationUser_PasswordConfirmation", ResourceType = typeof(DomainResources))]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
+        public string PasswordConfirmation { get; set; }
     }
 
     public class EditApplicationUserRequest
