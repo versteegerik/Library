@@ -1,10 +1,7 @@
 ﻿@using Library.Application.Web.Views.Account
 @model UseRecoveryCodeViewModel
-@{
-    ViewData["Title"] = "Use recovery code";
-}
 
-<h1>@ViewData["Title"].</h1>
+<h1>Use recovery code</h1>
 
 <form asp-controller="Account" asp-action="UseRecoveryCode" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <div asp-validation-summary="All" class="text-danger"></div>

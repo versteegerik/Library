@@ -6,20 +6,21 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+    <form asp-action="Logout" asp-controller="Account" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Resources.Actions</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-header">@Resources._LoginPartial_LoginAs @UserManager.GetUserName(User)</div>
+                    <a class="dropdown-item" asp-action="Logout" asp-controller="Account" asp-area="">@Resources.Logout</a>
+                </div>
             </li>
         </ul>
     </form>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-page="/Account/Login">Login</a></li>
+    <ul class="navbar-nav mr-auto">
+        <li><a class="nav-link" asp-action="Login" asp-controller="Account">@Resources.Login</a></li>
     </ul>
 }

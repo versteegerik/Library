@@ -1,10 +1,7 @@
 ﻿@using Library.Application.Web.Views.Account
 @model VerifyCodeViewModel
-@{
-    ViewData["Title"] = "Verify";
-}
 
-<h1>@ViewData["Title"].</h1>
+<h1>Verify</h1>
 
 <form asp-controller="Account" asp-action="VerifyCode" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <div asp-validation-summary="All" class="text-danger"></div>

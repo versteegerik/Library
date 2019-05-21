@@ -61,6 +61,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ingelogd als.
+        /// </summary>
+        public static string _LoginPartial_LoginAs {
+            get {
+                return ResourceManager.GetString("_LoginPartial_LoginAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acties.
         /// </summary>
         public static string Actions {
@@ -75,6 +84,15 @@ namespace Library.Application.Web.Properties {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig Emailadres.
+        /// </summary>
+        public static string ConfirmEmail_ConfirmEmail {
+            get {
+                return ResourceManager.GetString("ConfirmEmail_ConfirmEmail", resourceCulture);
             }
         }
         
@@ -129,6 +147,24 @@ namespace Library.Application.Web.Properties {
         public static string Home_Index_PageHeader {
             get {
                 return ResourceManager.GetString("Home_Index_PageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uitloggen.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         

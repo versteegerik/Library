@@ -97,7 +97,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var expose_loader_$_jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed");
+/* harmony import */ var expose_loader_$_jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var expose_loader_$_jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(expose_loader_$_jquery__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var jquery_ajax_unobtrusive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery-ajax-unobtrusive */ "./node_modules/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js");
 /* harmony import */ var jquery_ajax_unobtrusive__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery_ajax_unobtrusive__WEBPACK_IMPORTED_MODULE_2__);
@@ -9129,10 +9129,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js-exposed ***!
-  \***********************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

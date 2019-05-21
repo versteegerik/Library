@@ -81,9 +81,9 @@ namespace Library.Application.Web.Views.Account
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOff()
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
