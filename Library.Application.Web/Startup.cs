@@ -70,6 +70,7 @@ namespace Library.Application.Web
 
             services.AddSingleton<IEmailSender, MailService>();
             services.AddSingleton<IMailService, MailService>(x => (MailService) x.GetService<IEmailSender>());
+            services.AddHttpContextAccessor();
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
                        
             services.AddMvc()

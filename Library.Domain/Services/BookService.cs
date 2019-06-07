@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Requests;
@@ -16,13 +18,9 @@ namespace Library.Domain.Services
             BookRepository = bookRepository;
         }
 
-        public Book GetBookById(Guid id)
+        public async Task<Book> GetBookById(Guid id)
         {
-            return new Book(new CreateBookRequest
-            {
-                Author = "Test",
-                Title = "Test"
-            });
+            return await BookRepository.FindAsync<Book>(id);
         }
 
         public IEnumerable<Book> GetMyBooks(ApplicationUser applicationUser)
@@ -30,41 +28,15 @@ namespace Library.Domain.Services
             return BookRepository.GetBooksByUser(applicationUser);
         }
 
-        public void CreateBook(CreateBookRequest request)
+        public async Task CreateBookAsync(CreateBookRequest request, ClaimsPrincipal currentPrincipal)
         {
             if (!new CreateBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("CreateBook validation error");
             }
 
-            var book = new Book(request);
-        }
-
-        public IEnumerable<Book> GetMyWishList()
-        {
-            return new List<Book>
-            {
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test2",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test3",
-                    Title = "Test"
-                }),
-                new Book(new CreateBookRequest
-                {
-                    Author = "Test4",
-                    Title = "Test"
-                })
-            };
+            var owner = await BookRepository.FindUserByClaimsPrincipalAsync(currentPrincipal);
+            var book = new Book(request, owner);
         }
 
         public void EditBook(EditBookRequest request)

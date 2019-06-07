@@ -13,5 +13,6 @@ namespace Library.Domain.Repositories
 
         public DbSet<NewsMessage> NewsMessages { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

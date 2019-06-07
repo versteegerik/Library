@@ -9,7 +9,6 @@ namespace Library.Domain.Validators
         {
             RuleFor(r => r.Title).NotEmpty();
             RuleFor(r => r.Author).NotEmpty();
-            RuleFor(r => r.Owner).NotEmpty();
         }
     }
 

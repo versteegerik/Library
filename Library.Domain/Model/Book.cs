@@ -11,11 +11,11 @@ namespace Library.Domain.Model
 
         private Book() { }
 
-        public Book(CreateBookRequest request)
+        public Book(CreateBookRequest request, ApplicationUser owner)
         {
             Title = request.Title;
             Author = request.Author;
-            Owner = request.Owner;
+            Owner = owner;
         }
     }
 }

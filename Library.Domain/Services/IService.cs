@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Library.Domain.Services
 {
-    public class IService<T> where T : IRepository
+    public class IService<T> where T : Repository
     {
         public T Repository { get; }
 

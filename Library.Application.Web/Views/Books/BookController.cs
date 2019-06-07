@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Library.Application.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Library.Domain.Requests;
@@ -29,14 +30,14 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpPost]
-        public IActionResult Create(CreateBookRequest request)
+        public async Task<IActionResult> Create(CreateBookRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
 
-            _bookService.CreateBook(request);
+            await _bookService.CreateBookAsync(request, User);
 
             return RedirectToAction("Index", "Home");
         }
@@ -61,17 +62,17 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
-        public ViewResult Details(Guid id)
+        public async Task<ViewResult> Details(Guid id)
         {
-            var book = _bookService.GetBookById(id);
+            var book = await _bookService.GetBookById(id);
             var bookDetailsModel = new BookDetailsModel(book);
             return View(bookDetailsModel);
         }
 
         [HttpGet]
-        public ViewResult Delete(Guid id)
+        public async Task<ViewResult> Delete(Guid id)
         {
-            var book = _bookService.GetBookById(id);
+            var book = await _bookService.GetBookById(id);
             var bookDetailsModel = new BookDetailsModel(book);
             return View(bookDetailsModel);
         }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Library.Domain.Repositories
 {
-    public class BookRepository : IRepository
+    public class BookRepository : Repository
     {
         public BookRepository(ApplicationDbContext dbContext) : base(dbContext) { }
 

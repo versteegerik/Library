@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Library.Domain.Repositories
 {
-    public class NewsMessageRepository : IRepository
+    public class NewsMessageRepository : Repository
     {
         public NewsMessageRepository(ApplicationDbContext dbContext) : base(dbContext) { }
 

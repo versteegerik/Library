@@ -4,6 +4,7 @@ using Library.Domain.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.Domain.Services
 {
@@ -33,16 +34,16 @@ namespace Library.Domain.Services
             Repository.SaveChanges();
         }
 
-        public void EditNewsMessage(EditNewsMessageRequest request)
+        public async Task EditNewsMessage(EditNewsMessageRequest request)
         {
-            var newsMessage = Repository.Get<NewsMessage>(request.Id);
+            var newsMessage = await Repository.FindAsync<NewsMessage>(request.Id);
             Repository.Update(newsMessage);
             Repository.SaveChanges();
         }
 
-        public NewsMessage GetById(Guid id)
+        public async Task<NewsMessage> GetById(Guid id)
         {
-            return Repository.Get<NewsMessage>(id);
+            return await Repository.FindAsync<NewsMessage>(id);
         }
     }
 }

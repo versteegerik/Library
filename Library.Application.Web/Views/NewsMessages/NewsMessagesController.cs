@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Library.Application.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Library.Domain.Requests;
@@ -44,22 +45,22 @@ namespace Library.Application.Web.Views.NewsMessages
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var newsMessage = _newsMessageService.GetById(id);
-            var viewwModel = new EditNewsMessageRequest(newsMessage);
-            return View(viewwModel);
+            var newsMessage = await _newsMessageService.GetById(id);
+            var viewModel = new EditNewsMessageRequest(newsMessage);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(EditNewsMessageRequest viewwModel)
+        public async Task<IActionResult> Edit(EditNewsMessageRequest viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(viewwModel);
+                return View(viewModel);
             }
 
-            _newsMessageService.EditNewsMessage(viewwModel);
+            await _newsMessageService.EditNewsMessage(viewModel);
 
             return RedirectToAction("Index");
         }
