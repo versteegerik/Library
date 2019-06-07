@@ -34,9 +34,12 @@ namespace Library.Domain.Services
             Repository.SaveChanges();
         }
 
-        public async Task EditNewsMessage(EditNewsMessageRequest request)
+        public async Task UpdateNewsMessage(UpdateNewsMessageRequest request)
         {
             var newsMessage = await Repository.FindAsync<NewsMessage>(request.Id);
+
+            newsMessage.Update(request);
+
             Repository.Update(newsMessage);
             Repository.SaveChanges();
         }

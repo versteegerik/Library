@@ -43,15 +43,15 @@ namespace Library.Domain.Services
             BookRepository.SaveChanges();
         }
 
-        public async Task EditBook(EditBookRequest request)
+        public async Task UpdateBook(UpdateBookRequest request)
         {
-            if (!new EditBookRequestValidator().Validate(request).IsValid)
+            if (!new UpdateBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("EditBook validation error");
             }
 
             var book = await GetBookById(request.Id);
-            book.Edit(request);
+            book.Update(request);
 
             BookRepository.SaveChanges();
         }

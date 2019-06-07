@@ -57,7 +57,7 @@
     <Content Update="Views\Home\Settings.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\NewsMessages\Edit.cshtml">
+    <Content Update="Views\NewsMessages\Update.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\NewsMessages\Create.cshtml">

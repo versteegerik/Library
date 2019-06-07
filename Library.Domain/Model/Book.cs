@@ -18,7 +18,7 @@ namespace Library.Domain.Model
             Owner = owner;
         }
 
-        public void Edit(EditBookRequest request)
+        public void Update(UpdateBookRequest request)
         {
             Title = request.Title;
             Author = request.Author;

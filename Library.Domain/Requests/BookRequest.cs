@@ -17,12 +17,12 @@ namespace Library.Domain.Requests
     {
     }
 
-    public class EditBookRequest : BookRequest
+    public class UpdateBookRequest : BookRequest
     {
         public Guid Id { get; set; }
 
-        public EditBookRequest() { }
-        public EditBookRequest(Book book) : this()
+        public UpdateBookRequest() { }
+        public UpdateBookRequest(Book book) : this()
         {
             Id = book.Id;
             Title = book.Title;

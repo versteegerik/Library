@@ -18,7 +18,7 @@ namespace Library.Domain.Model
             IsShown = request.IsShown;
         }
 
-        public void Edit(EditNewsMessageRequest request)
+        public void Update(UpdateNewsMessageRequest request)
         {
             Title = request.Title;
             Message = request.Message;

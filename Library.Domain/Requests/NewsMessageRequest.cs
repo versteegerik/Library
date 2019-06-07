@@ -20,12 +20,12 @@ namespace Library.Domain.Requests
 
     }
 
-    public class EditNewsMessageRequest : NewsMessageRequest
+    public class UpdateNewsMessageRequest : NewsMessageRequest
     {
         public Guid Id { get; set; }
 
-        public EditNewsMessageRequest() { }
-        public EditNewsMessageRequest(NewsMessage newsMessage) : this()
+        public UpdateNewsMessageRequest() { }
+        public UpdateNewsMessageRequest(NewsMessage newsMessage) : this()
         {
             Id = newsMessage.Id;
             Title = newsMessage.Title;

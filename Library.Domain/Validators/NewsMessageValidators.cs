@@ -12,9 +12,9 @@ namespace Library.Domain.Validators
         }
     }
 
-    public class EditNewsMessageRequestValidator : AbstractValidator<EditNewsMessageRequest>
+    public class UpdateNewsMessageRequestValidator : AbstractValidator<UpdateNewsMessageRequest>
     {
-        public EditNewsMessageRequestValidator()
+        public UpdateNewsMessageRequestValidator()
         {
             RuleFor(r => r.Id).NotEmpty();
             RuleFor(r => r.Title).NotEmpty();

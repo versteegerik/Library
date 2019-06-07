@@ -1,11 +1,11 @@
-﻿@model Library.Domain.Requests.EditNewsMessageRequest
+﻿@model Library.Domain.Requests.UpdateNewsMessageRequest
 
 <h2>@DomainResources.NewsMessage</h2>
 <hr />
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="NewsMessages">
+        <form asp-action="Update" asp-controller="NewsMessages">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.HiddenFor(_ => _.Id)
             <div class="form-group">

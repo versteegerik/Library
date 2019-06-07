@@ -12,9 +12,9 @@ namespace Library.Domain.Validators
         }
     }
 
-    public class EditBookRequestValidator : AbstractValidator<EditBookRequest>
+    public class UpdateBookRequestValidator : AbstractValidator<UpdateBookRequest>
     {
-        public EditBookRequestValidator()
+        public UpdateBookRequestValidator()
         {
             RuleFor(r => r.Id).NotEmpty();
             RuleFor(r => r.Title).NotEmpty();

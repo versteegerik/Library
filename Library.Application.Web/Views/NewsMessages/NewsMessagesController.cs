@@ -45,22 +45,22 @@ namespace Library.Application.Web.Views.NewsMessages
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Guid id)
+        public async Task<IActionResult> Update(Guid id)
         {
             var newsMessage = await _newsMessageService.GetById(id);
-            var viewModel = new EditNewsMessageRequest(newsMessage);
+            var viewModel = new UpdateNewsMessageRequest(newsMessage);
             return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditNewsMessageRequest viewModel)
+        public async Task<IActionResult> Update(UpdateNewsMessageRequest viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
-            await _newsMessageService.EditNewsMessage(viewModel);
+            await _newsMessageService.UpdateNewsMessage(viewModel);
 
             return RedirectToAction("Index");
         }

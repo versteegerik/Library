@@ -1,11 +1,11 @@
-﻿@model Library.Domain.Requests.EditBookRequest
+﻿@model Library.Domain.Requests.UpdateBookRequest
 
 <h2>@WebResources.Books_Edit</h2>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="Books">
+        <form asp-action="Update" asp-controller="Books">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.HiddenFor(_ => _.Id)
             <div class="form-group">

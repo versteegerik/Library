@@ -43,21 +43,21 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
-        public async Task<ViewResult> Edit(Guid id)
+        public async Task<ViewResult> Update(Guid id)
         {
             var book = await _bookService.GetBookById(id);
-            return View(new EditBookRequest(book));
+            return View(new UpdateBookRequest(book));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(EditBookRequest request)
+        public async Task<IActionResult> Update(UpdateBookRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
 
-            await _bookService.EditBook(request);
+            await _bookService.UpdateBook(request);
 
             return RedirectToAction("Index", "Books");
         }
