@@ -24,6 +24,6 @@ namespace Library.Domain.Repositories
 
         public void SaveChanges() => DbContext.SaveChanges();
 
-        public async Task<ApplicationUser> FindUserByClaimsPrincipalAsync(ClaimsPrincipal claimsPrincipal) => await DbContext.ApplicationUsers.FindAsync(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
+        public async Task<ApplicationUser> FindUserByClaimsPrincipal(ClaimsPrincipal claimsPrincipal) => await DbContext.ApplicationUsers.FindAsync(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);
     }
 }
