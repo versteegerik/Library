@@ -18,7 +18,7 @@ namespace Library.Domain.Services
             BookRepository = bookRepository;
         }
 
-        public async Task<Book> GetBookById(Guid id)
+        public async Task<Book> GetBookByIdAsync(Guid id)
         {
             return await BookRepository.FindAsync<Book>(id);
         }
@@ -43,12 +43,20 @@ namespace Library.Domain.Services
             BookRepository.SaveChanges();
         }
 
-        public void EditBook(EditBookRequest request)
+        public async Task EditBook(EditBookRequest request)
         {
-            throw new NotImplementedException();
+            if (!new EditBookRequestValidator().Validate(request).IsValid)
+            {
+                throw new Exception("EditBook validation error");
+            }
+
+            var book = await GetBookByIdAsync(request.Id);
+            book.Edit(request);
+
+            BookRepository.SaveChanges();
         }
 
-        public void Delete(DeleteRequest request)
+        public async Task Delete(DeleteRequest request)
         {
             throw new NotImplementedException();
         }

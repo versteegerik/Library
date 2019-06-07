@@ -16,6 +16,7 @@ namespace Library.Domain.Validators
     {
         public EditBookRequestValidator()
         {
+            RuleFor(r => r.Id).NotEmpty();
             RuleFor(r => r.Title).NotEmpty();
             RuleFor(r => r.Author).NotEmpty();
         }

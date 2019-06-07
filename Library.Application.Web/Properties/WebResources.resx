@@ -195,4 +195,7 @@
   <data name="Books_Create" xml:space="preserve">
     <value>Boek toevoegen</value>
   </data>
+  <data name="Books_Edit" xml:space="preserve">
+    <value>Boek bewerken</value>
+  </data>
 </root>

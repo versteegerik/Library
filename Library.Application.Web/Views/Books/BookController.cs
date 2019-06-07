@@ -43,20 +43,21 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
-        public ViewResult Edit()
+        public async Task<ViewResult> Edit(Guid id)
         {
-            return View(new EditBookRequest());
+            var book = await _bookService.GetBookByIdAsync(id);
+            return View(new EditBookRequest(book));
         }
 
         [HttpPost]
-        public IActionResult Edit(EditBookRequest request)
+        public async Task<IActionResult> Edit(EditBookRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
 
-            _bookService.EditBook(request);
+            await _bookService.EditBook(request);
 
             return RedirectToAction("Index", "Books");
         }
@@ -64,7 +65,7 @@ namespace Library.Application.Web.Views.Books
         [HttpGet]
         public async Task<ViewResult> Details(Guid id)
         {
-            var book = await _bookService.GetBookById(id);
+            var book = await _bookService.GetBookByIdAsync(id);
             var bookDetailsModel = new BookDetailsModel(book);
             return View(bookDetailsModel);
         }
@@ -72,15 +73,15 @@ namespace Library.Application.Web.Views.Books
         [HttpGet]
         public async Task<ViewResult> Delete(Guid id)
         {
-            var book = await _bookService.GetBookById(id);
+            var book = await _bookService.GetBookByIdAsync(id);
             var bookDetailsModel = new BookDetailsModel(book);
             return View(bookDetailsModel);
         }
 
         [HttpDelete]
-        public IActionResult Delete(DeleteRequest request)
+        public async Task<IActionResult> Delete(DeleteRequest request)
         {
-            _bookService.Delete(request);
+            await _bookService.Delete(request);
 
             return RedirectToAction("Index", "Books");
         }

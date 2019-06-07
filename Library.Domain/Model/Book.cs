@@ -11,11 +11,17 @@ namespace Library.Domain.Model
 
         private Book() { }
 
-        public Book(CreateBookRequest request, ApplicationUser owner)
+        public Book(CreateBookRequest request, ApplicationUser owner) : this()
         {
             Title = request.Title;
             Author = request.Author;
             Owner = owner;
+        }
+
+        public void Edit(EditBookRequest request)
+        {
+            Title = request.Title;
+            Author = request.Author;
         }
     }
 }

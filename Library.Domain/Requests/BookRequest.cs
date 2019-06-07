@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Library.Domain.Model;
 using Library.Domain.Properties;
 
 namespace Library.Domain.Requests
@@ -17,5 +19,14 @@ namespace Library.Domain.Requests
 
     public class EditBookRequest : BookRequest
     {
+        public Guid Id { get; set; }
+
+        public EditBookRequest() { }
+        public EditBookRequest(Book book) : this()
+        {
+            Id = book.Id;
+            Title = book.Title;
+            Author = book.Author;
+        }
     }
 }
