@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Library.Application.Web.Common;
 using Library.Application.Web.Views.Home;
 using Library.Domain.Model;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -11,8 +14,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Library.Application.Web.Views.Account
 {
-    [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -53,10 +55,18 @@ namespace Library.Application.Web.Views.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var applicationUser = await _signInManager.UserManager.FindByNameAsync(model.UserName);
+                if (applicationUser == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    _logger.LogInformation(1, $"User {model.UserName} was not found!");
+                    return View(model);
+                }
+                var result = await _signInManager.CheckPasswordSignInAsync(applicationUser, model.Password, false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation(1, "User logged in.");
+                    await _signInManager.SignInAsync(applicationUser, model.RememberMe);
+                    _logger.LogInformation(1, $"User {model.UserName} logged in.");
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -65,12 +75,12 @@ namespace Library.Application.Web.Views.Account
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning(2, "User account locked out.");
+                    _logger.LogWarning(2, $"User {model.UserName} account locked out.");
                     return View("Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, $"User {model.UserName} invalid login attempt.");
                     return View(model);
                 }
             }
@@ -85,7 +95,7 @@ namespace Library.Application.Web.Views.Account
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOut()
         {
-            await _signInManager.SignOutAsync();
+            await _signInManager.Context.SignOutAsync(IdentityConstants.ApplicationScheme);
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }

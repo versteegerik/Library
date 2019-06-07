@@ -1,18 +1,16 @@
 ﻿using Library.Application.Web.Common;
-using Library.Application.Web.Views.Users;
 using Library.Domain.Model;
 using Library.Domain.Requests;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Library.Application.Web.Views.Account
+namespace Library.Application.Web.Views.Users
 {
     //[Authorize]
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationUserService _applicationUserService;

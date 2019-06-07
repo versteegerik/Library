@@ -1,11 +1,12 @@
 ﻿using System.Diagnostics;
+using Library.Application.Web.Common;
 using Library.Application.Web.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Application.Web.Views.Home
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IEmailSender _emailSender;
 

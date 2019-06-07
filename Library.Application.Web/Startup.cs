@@ -42,18 +42,31 @@ namespace Library.Application.Web
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services
-                .AddAuthentication(IdentityConstants.ApplicationScheme)
-                .AddCookie(IdentityConstants.ApplicationScheme);
+            services.AddAuthentication(config =>
+            {
+                config.DefaultScheme = IdentityConstants.ApplicationScheme;
+                config.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+                config.DefaultSignInScheme = IdentityConstants.ApplicationScheme;
+                config.DefaultSignOutScheme = IdentityConstants.ApplicationScheme;
+            })
+            .AddCookie(IdentityConstants.ApplicationScheme, config =>
+            {
+                config.Cookie.Expiration = TimeSpan.FromMinutes(15);
+            });
+
+            services.Configure<SecurityStampValidatorOptions>(config =>
+            {
+                config.ValidationInterval = TimeSpan.FromMinutes(1);
+            });
 
             services.AddIdentityCore<ApplicationUser>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
-            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddSignInManager<SignInManager<ApplicationUser>>()
-            .AddDefaultTokenProviders();
+            .AddRoles<IdentityRole>()
+            .AddDefaultTokenProviders()
+            .AddSignInManager<SignInManager<ApplicationUser>>();
 
             services.AddSingleton<IEmailSender, MailService>();
             services.AddSingleton<IMailService, MailService>(x => (MailService) x.GetService<IEmailSender>());

@@ -1,11 +1,12 @@
 ﻿using System;
+using Library.Application.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Library.Domain.Requests;
 using Library.Domain.Services;
 
 namespace Library.Application.Web.Views.Books
 {
-    public class BooksController : Controller
+    public class BooksController : BaseController
     {
         private readonly BookService _bookService;
 

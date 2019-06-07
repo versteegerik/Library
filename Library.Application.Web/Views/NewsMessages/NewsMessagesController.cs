@@ -1,11 +1,12 @@
 ﻿using System;
+using Library.Application.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Library.Domain.Requests;
 using Library.Domain.Services;
 
-namespace Library.Application.Web.Views.Books
+namespace Library.Application.Web.Views.NewsMessages
 {
-    public class NewsMessagesController : Controller
+    public class NewsMessagesController : BaseController
     {
         private readonly NewsMessageService _newsMessageService;
 
@@ -18,7 +19,7 @@ namespace Library.Application.Web.Views.Books
         public IActionResult Index()
         {
             var newsMessages = _newsMessageService.GetAll();
-            var viewModel = new NewsMessages.ListModel(newsMessages);
+            var viewModel = new ListModel(newsMessages);
             return View(viewModel);
         }
 
@@ -30,14 +31,14 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpPost]
-        public IActionResult Create(CreateNewsMessageRequest viewwModel)
+        public IActionResult Create(CreateNewsMessageRequest viewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(viewwModel);
+                return View(viewModel);
             }
 
-            _newsMessageService.CreateNewsMessage(viewwModel);
+            _newsMessageService.CreateNewsMessage(viewModel);
 
             return RedirectToAction("Index");
         }
