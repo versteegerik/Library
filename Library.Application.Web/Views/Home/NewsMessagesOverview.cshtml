@@ -1,0 +1,17 @@
+﻿@using Library.Application.Web.Views.NewsMessages
+@model ListModel
+
+@foreach (var item in Model.NewsMessages)
+{
+    <div class="card">
+        <div class="card-header">
+            <h3>@item.Title
+                <a class="btn btn-info float-right" >
+                    <i class="fa fa-book-reader"></i>
+                </a>
+            </h3>
+        </div>
+        <div class="card-body" style="max-height: 200px; overflow:auto">@item.Message</div>
+    </div>
+    <br/>
+}

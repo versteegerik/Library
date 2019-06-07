@@ -1,21 +1,26 @@
 ﻿using System.Diagnostics;
 using Library.Application.Web.Common;
 using Library.Application.Web.Models;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using Library.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Application.Web.Views.Home
 {
     public class HomeController : BaseController
     {
-        private readonly IEmailSender _emailSender;
+        private readonly NewsMessageService _newsMessageService;
 
-        public HomeController(IEmailSender emailSender)
+        public HomeController(NewsMessageService newsMessageService)
         {
-            _emailSender = emailSender;
+            _newsMessageService = newsMessageService;
         }
 
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            var news = _newsMessageService.GetListForOverview();
+            var viewModel = new HomeIndexModel(news);
+            return View(viewModel);
+        }
 
         public IActionResult About() => View();
 

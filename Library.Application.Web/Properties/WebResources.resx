@@ -198,4 +198,7 @@
   <data name="Books_Edit" xml:space="preserve">
     <value>Boek bewerken</value>
   </data>
+  <data name="Books_Delete" xml:space="preserve">
+    <value>Boek verwijderen</value>
+  </data>
 </root>

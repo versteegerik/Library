@@ -151,6 +151,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boek verwijderen.
+        /// </summary>
+        public static string Books_Delete {
+            get {
+                return ResourceManager.GetString("Books_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boek bewerken.
         /// </summary>
         public static string Books_Edit {
