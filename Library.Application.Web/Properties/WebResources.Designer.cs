@@ -142,6 +142,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boek toevoegen.
+        /// </summary>
+        public static string Books_Create {
+            get {
+                return ResourceManager.GetString("Books_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annuleren.
         /// </summary>
         public static string Cancel {

@@ -23,9 +23,10 @@ namespace Library.Domain.Services
             return await BookRepository.FindAsync<Book>(id);
         }
 
-        public IEnumerable<Book> GetMyBooks(ApplicationUser applicationUser)
+        public async Task<IEnumerable<Book>> GetBooksForUserAsync(ClaimsPrincipal currentPrincipal)
         {
-            return BookRepository.GetBooksByUser(applicationUser);
+            var user = await BookRepository.FindUserByClaimsPrincipalAsync(currentPrincipal);
+            return BookRepository.GetBooksByUser(user);
         }
 
         public async Task CreateBookAsync(CreateBookRequest request, ClaimsPrincipal currentPrincipal)
@@ -37,6 +38,9 @@ namespace Library.Domain.Services
 
             var owner = await BookRepository.FindUserByClaimsPrincipalAsync(currentPrincipal);
             var book = new Book(request, owner);
+
+            BookRepository.Add(book);
+            BookRepository.SaveChanges();
         }
 
         public void EditBook(EditBookRequest request)

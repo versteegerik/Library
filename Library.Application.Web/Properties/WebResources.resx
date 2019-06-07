@@ -192,4 +192,7 @@
   <data name="Account_ForgotPassword" xml:space="preserve">
     <value>Wachtwoord vergeten</value>
   </data>
+  <data name="Books_Create" xml:space="preserve">
+    <value>Boek toevoegen</value>
+  </data>
 </root>

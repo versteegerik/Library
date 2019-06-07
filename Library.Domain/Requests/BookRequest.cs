@@ -1,14 +1,21 @@
-﻿namespace Library.Domain.Requests
+﻿using System.ComponentModel.DataAnnotations;
+using Library.Domain.Properties;
+
+namespace Library.Domain.Requests
 {
-    public class CreateBookRequest
+    public  abstract class BookRequest
     {
+        [Display(Name = "Book_Title", ResourceType = typeof(DomainResources))]
         public string Title { get; set; }
+        [Display(Name = "Book_Author", ResourceType = typeof(DomainResources))]
         public string Author { get; set; }
     }
 
-    public class EditBookRequest
+    public class CreateBookRequest : BookRequest
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
+    }
+
+    public class EditBookRequest : BookRequest
+    {
     }
 }

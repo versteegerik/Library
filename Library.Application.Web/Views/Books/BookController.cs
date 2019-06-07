@@ -16,9 +16,9 @@ namespace Library.Application.Web.Views.Books
             _bookService = bookService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var myBooks = _bookService.GetMyBooks(new Domain.Model.ApplicationUser());
+            var myBooks = await _bookService.GetBooksForUserAsync(User);
             var booksModel = new BookListViewModel(myBooks);
             return View(booksModel);
         }
@@ -39,7 +39,7 @@ namespace Library.Application.Web.Views.Books
 
             await _bookService.CreateBookAsync(request, User);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Books");
         }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace Library.Application.Web.Views.Books
 
             _bookService.EditBook(request);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Books");
         }
 
         [HttpGet]
@@ -82,7 +82,7 @@ namespace Library.Application.Web.Views.Books
         {
             _bookService.Delete(request);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Books");
         }
     }
 }
