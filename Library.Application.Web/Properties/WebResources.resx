@@ -171,4 +171,25 @@
   <data name="ConfirmEmail_ConfirmEmail" xml:space="preserve">
     <value>Bevestig Emailadres</value>
   </data>
+  <data name="Account_Password" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="Account_RememberMe" xml:space="preserve">
+    <value>Onthoud inloggegevens</value>
+  </data>
+  <data name="Account_UserName" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="Account_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Account_ConfirmPassword" xml:space="preserve">
+    <value>Bevestig wachtwoord</value>
+  </data>
+  <data name="Account_Email" xml:space="preserve">
+    <value>Emailadres</value>
+  </data>
+  <data name="Account_ForgotPassword" xml:space="preserve">
+    <value>Wachtwoord vergeten</value>
+  </data>
 </root>

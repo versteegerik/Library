@@ -22,14 +22,14 @@ namespace Library.Application.Web.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class WebResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal WebResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Library.Application.Web.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Library.Application.Web.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Library.Application.Web.Properties.WebResources", typeof(WebResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,69 @@ namespace Library.Application.Web.Properties {
         public static string _LoginPartial_LoginAs {
             get {
                 return ResourceManager.GetString("_LoginPartial_LoginAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string Account_Code {
+            get {
+                return ResourceManager.GetString("Account_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bevestig wachtwoord.
+        /// </summary>
+        public static string Account_ConfirmPassword {
+            get {
+                return ResourceManager.GetString("Account_ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emailadres.
+        /// </summary>
+        public static string Account_Email {
+            get {
+                return ResourceManager.GetString("Account_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wachtwoord vergeten.
+        /// </summary>
+        public static string Account_ForgotPassword {
+            get {
+                return ResourceManager.GetString("Account_ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wachtwoord.
+        /// </summary>
+        public static string Account_Password {
+            get {
+                return ResourceManager.GetString("Account_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Onthoud inloggegevens.
+        /// </summary>
+        public static string Account_RememberMe {
+            get {
+                return ResourceManager.GetString("Account_RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebruikersnaam.
+        /// </summary>
+        public static string Account_UserName {
+            get {
+                return ResourceManager.GetString("Account_UserName", resourceCulture);
             }
         }
         

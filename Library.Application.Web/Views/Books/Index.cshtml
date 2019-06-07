@@ -1,0 +1,29 @@
+﻿@model Library.Application.Web.Views.Books.BookListViewModel
+
+<h2>
+    @WebResources.Home_Index_MyBooks
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Books"><i class="fa fa-plus"></i></a>
+</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">@WebResources.MyBooksPartial_Title</th>
+        <th scope="col">@WebResources.MyBooksPartial_Author</th>
+        <th scope="col">@WebResources.Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var book in Model.Books)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-controller="Books" asp-route-id="@book.Id"><i class="fa fa-pen"></i></a>
+                <a class="btn btn-danger" asp-action="Delete" asp-controller="Books" asp-route-id="@book.Id"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -4,7 +4,6 @@ using Library.Application.Web.Common;
 using Library.Application.Web.Views.Home;
 using Library.Domain.Model;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -71,7 +70,7 @@ namespace Library.Application.Web.Views.Account
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, model.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
@@ -258,7 +257,7 @@ namespace Library.Application.Web.Views.Account
             var message = $"Your security code is: {code}";
             await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
 
-            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
