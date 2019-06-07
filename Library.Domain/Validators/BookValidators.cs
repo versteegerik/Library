@@ -21,4 +21,11 @@ namespace Library.Domain.Validators
             RuleFor(r => r.Author).NotEmpty();
         }
     }
+    public class DeleteBookRequestValidator : AbstractValidator<DeleteBookRequest>
+    {
+        public DeleteBookRequestValidator()
+        {
+            RuleFor(r => r.Id).NotEmpty();
+        }
+    }
 }

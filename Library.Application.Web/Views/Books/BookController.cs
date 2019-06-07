@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Library.Application.Web.Common;
-using Microsoft.AspNetCore.Mvc;
+﻿using Library.Application.Web.Common;
 using Library.Domain.Requests;
 using Library.Domain.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace Library.Application.Web.Views.Books
 {
@@ -63,25 +63,17 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpGet]
-        public async Task<ViewResult> Details(Guid id)
-        {
-            var book = await _bookService.GetBookById(id);
-            var bookDetailsModel = new BookDetailsModel(book);
-            return View(bookDetailsModel);
-        }
-
-        [HttpGet]
         public async Task<ViewResult> Delete(Guid id)
         {
             var book = await _bookService.GetBookById(id);
-            var bookDetailsModel = new BookDetailsModel(book);
+            var bookDetailsModel = new DeleteBookRequest(book);
             return View(bookDetailsModel);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(DeleteRequest request)
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteBookRequest request)
         {
-            await _bookService.Delete(request);
+            await _bookService.DeleteBook(request);
 
             return RedirectToAction("Index", "Books");
         }

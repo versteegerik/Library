@@ -29,4 +29,17 @@ namespace Library.Domain.Requests
             Author = book.Author;
         }
     }
+
+    public class DeleteBookRequest : BookRequest
+    {
+        public Guid Id { get; set; }
+
+        public DeleteBookRequest() { }
+        public DeleteBookRequest(Book book) : this()
+        {
+            Id = book.Id;
+            Title = book.Title;
+            Author = book.Author;
+        }
+    }
 }

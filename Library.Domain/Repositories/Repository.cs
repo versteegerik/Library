@@ -22,6 +22,8 @@ namespace Library.Domain.Repositories
 
         public void Update<T>(T entity) where T : BaseEntity => DbContext.Update(entity);
 
+        public void Delete<T>(T entity) where T : BaseEntity => DbContext.Remove(entity);
+
         public void SaveChanges() => DbContext.SaveChanges();
 
         public async Task<ApplicationUser> FindUserByClaimsPrincipal(ClaimsPrincipal claimsPrincipal) => await DbContext.ApplicationUsers.FindAsync(claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value);

@@ -56,9 +56,17 @@ namespace Library.Domain.Services
             BookRepository.SaveChanges();
         }
 
-        public async Task Delete(DeleteRequest request)
+        public async Task DeleteBook(DeleteBookRequest request)
         {
-            throw new NotImplementedException();
+            if (!new DeleteBookRequestValidator().Validate(request).IsValid)
+            {
+                throw new Exception("DeleteBook validation error");
+            }
+
+            var book = await GetBookById(request.Id);
+            BookRepository.Delete(book);
+
+            BookRepository.SaveChanges();
         }
     }
 }
