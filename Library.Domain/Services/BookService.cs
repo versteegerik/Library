@@ -39,7 +39,7 @@ namespace Library.Domain.Services
             var owner = await BookRepository.FindUserByClaimsPrincipal(currentPrincipal);
             var book = new Book(request, owner);
 
-            BookRepository.Add(book);
+            BookRepository.Create(book);
             BookRepository.SaveChanges();
         }
 

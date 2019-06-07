@@ -30,7 +30,7 @@ namespace Library.Domain.Services
         public void CreateNewsMessage(CreateNewsMessageRequest request)
         {
             var newsMessage = new NewsMessage(request);
-            Repository.Add(newsMessage);
+            Repository.Create(newsMessage);
             Repository.SaveChanges();
         }
 

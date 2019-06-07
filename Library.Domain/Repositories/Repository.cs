@@ -18,7 +18,7 @@ namespace Library.Domain.Repositories
 
         public async Task<T> FindAsync<T>(Guid id) where T : BaseEntity => await DbContext.FindAsync<T>(id);
 
-        public void Add<T>(T entity) where T : BaseEntity => DbContext.Add(entity);
+        public void Create<T>(T entity) where T : BaseEntity => DbContext.Add(entity);
 
         public void Update<T>(T entity) where T : BaseEntity => DbContext.Update(entity);
 
