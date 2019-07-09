@@ -168,4 +168,7 @@
   <data name="ApplicationUser_PasswordConfirmation" xml:space="preserve">
     <value>Bevestig wachtwoord</value>
   </data>
+  <data name="Book_Isbn" xml:space="preserve">
+    <value>ISBN</value>
+  </data>
 </root>

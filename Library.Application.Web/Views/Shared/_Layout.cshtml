@@ -15,10 +15,10 @@
     </environment>
     @RenderSection("Scripts", required: false)
 </head>
-<body class="body-content">
+<body>
     <partial name="_NavigationPartial" />
 
-    <partial name="_CookieConsentPartial" />
+    @*<partial name="_CookieConsentPartial"/>*@
 
     <div class="container">
         @RenderBody()

@@ -142,6 +142,15 @@ namespace Library.Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ISBN.
+        /// </summary>
+        public static string Book_Isbn {
+            get {
+                return ResourceManager.GetString("Book_Isbn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Titel.
         /// </summary>
         public static string Book_Title {

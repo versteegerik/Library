@@ -7,6 +7,7 @@ namespace Library.Domain.Model
     {
         public string Title { get; set; }
         public string Author { get; set; }
+        public string Isbn { get; set; }
         public ApplicationUser Owner { get; set; }
 
         private Book() { }
@@ -15,6 +16,7 @@ namespace Library.Domain.Model
         {
             Title = request.Title;
             Author = request.Author;
+            Isbn = request.Isbn;
             Owner = owner;
         }
 
@@ -22,6 +24,7 @@ namespace Library.Domain.Model
         {
             Title = request.Title;
             Author = request.Author;
+            Isbn = request.Isbn;
         }
     }
 }
