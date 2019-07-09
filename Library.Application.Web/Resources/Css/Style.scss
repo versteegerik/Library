@@ -12,3 +12,9 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 .row{
     margin-bottom: 1.5em;
 }
+
+.header {
+    background-color: $library-primary;
+    color: $library-white;
+    padding: 5px 20px;
+}

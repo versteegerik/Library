@@ -1,9 +1,9 @@
 ﻿//*** VARIABLES ***//
-$primary: $walaa-primary;
-$secondary: $walaa-secondary;
-$info: $walaa-info;
-$light: $walaa-light;
-$theme-colors: ( "eHerkenning": $eHerkenning, "medium": $walaa-medium, "white": $walaa-white);
+$primary: $library-primary;
+$secondary: $library-secondary;
+$info: $library-info;
+$light: $library-light;
+$theme-colors: ( "eHerkenning": $eHerkenning, "medium": $library-medium, "white": $library-white);
 $grid-gutter-width: 1.5rem;
 
 //Remove radius
@@ -12,8 +12,8 @@ $border-radius-lg: 0rem;
 $border-radius-sm: 0rem;
 
 //Chage forms
-$input-border-color: $walaa-medium-dark;
-$input-focus-border-color: $walaa-white;
+$input-border-color: $library-medium-dark;
+$input-focus-border-color: $library-white;
 
 //Change alert
 $alert-padding-y: $size-md;
@@ -21,8 +21,8 @@ $alert-padding-x: $size-md;
 
 //Change breadcrump for usage in header
 $breadcrumb-bg: $primary;
-$breadcrumb-divider-color: $walaa-white;
-$breadcrumb-active-color: $walaa-white;
+$breadcrumb-divider-color: $library-white;
+$breadcrumb-active-color: $library-white;
 $breadcrumb-divider: "\f105";
 
 //Change badge
@@ -35,37 +35,37 @@ $badge-padding-x: $size-sm;
 $modal-md: 550px;
 
 //Change tooltip
-$tooltip-bg: $walaa-info;
+$tooltip-bg: $library-info;
 $tooltip-opacity: 1;
-$tooltip-color: $walaa-text-default;
+$tooltip-color: $library-text-default;
 $tooltip-max-width: 550px;
 $tooltip-padding-y: $size-md;
 $tooltip-padding-x: $size-md;
-$tooltip-arrow-color: $walaa-primary;
+$tooltip-arrow-color: $library-primary;
 $tooltip-font-size: 16px;
 
 //Change dropdown
-$dropdown-border-color: $walaa-medium-dark;
-$dropdown-link-hover-bg: $walaa-medium;
+$dropdown-border-color: $library-medium-dark;
+$dropdown-link-hover-bg: $library-medium;
 
 //Change popover
 $popover-max-width: 550px;
 $popover-padding-y: $size-md;
 $popover-padding-x: $size-md;
-$popover-arrow-color: $walaa-primary;
-$popover-border-color: $walaa-primary;
+$popover-arrow-color: $library-primary;
+$popover-border-color: $library-primary;
 $popover-border-width: 2px;
 
 //Change custom form elements
-$custom-control-indicator-checked-color: $walaa-primary;
-$custom-control-indicator-bg: $walaa-white;
-$custom-control-indicator-checked-bg: $walaa-white;
+$custom-control-indicator-checked-color: $library-primary;
+$custom-control-indicator-bg: $library-white;
+$custom-control-indicator-checked-bg: $library-white;
 $custom-control-indicator-bg-size: 90% 90%;
 $custom-control-gutter: $size-lg;
 
 //overrides for bootstrap-select
 $width-default: 100%;
-$input-color-placeholder: $walaa-text-gray;
+$input-color-placeholder: $library-text-gray;
 
 //*** IMPORT ***//
 @import "~bootstrap/scss/bootstrap";
@@ -111,18 +111,18 @@ a {
     padding-left: 0px;
 
     a {
-        color: $walaa-white;
+        color: $library-white;
     }
 
     a:hover {
-        color: darken($walaa-white, 15%);
+        color: darken($library-white, 15%);
     }
 
     .breadcrumb-item::before {
         font-family: 'Font Awesome 5 Free';
         font-size: 22px;
         width: 19px; //Fix width change when loading font
-        color: darken($walaa-white, 25%);
+        color: darken($library-white, 25%);
     }
 
     .breadcrumb-item.active {
@@ -136,23 +136,23 @@ a {
 
 ///Custom style badge info
 .badge-info {
-    color: $walaa-primary;
+    color: $library-primary;
 }
 
 //Change button group toggle for usage in sub header
 .btn-group-toggle {
     .btn-white {
         font-weight: bold;
-        color: $walaa-text-gray;
+        color: $library-text-gray;
 
         &:hover, &:active, &.active {
-            background-color: $walaa-white !important;
-            border-color: $walaa-white !important;
-            color: $walaa-text-default !important;
+            background-color: $library-white !important;
+            border-color: $library-white !important;
+            color: $library-text-default !important;
         }
 
         &.active {
-            color: $walaa-primary !important;
+            color: $library-primary !important;
         }
     }
 
@@ -167,7 +167,7 @@ a {
             width: 3px;
             height: 31px;
             transform: rotate(135deg);
-            background-color: $walaa-light;
+            background-color: $library-light;
             z-index: 1;
         }
 
@@ -179,7 +179,7 @@ a {
             width: 3px;
             height: 31px;
             transform: rotate(45deg);
-            background-color: $walaa-light;
+            background-color: $library-light;
             z-index: 1;
         }
     }
@@ -229,7 +229,7 @@ a {
 
 //Change tooltip
 .tooltip-inner {
-    border: 1px solid $walaa-primary;
+    border: 1px solid $library-primary;
     text-align: left;
 }
 
@@ -256,7 +256,7 @@ a {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: $walaa-primary;
+            background-color: $library-primary;
             color: white;
         }
 
@@ -266,24 +266,24 @@ a {
 
         &:checked:hover ~ .custom-control-label::before {
             //Warning: has ipad and edge specific style
-            background: $walaa-medium-dark;
+            background: $library-medium-dark;
         }
 
         &:not(:checked) ~ .custom-control-label::before {
             border: 1px solid $input-border-color;
-            background: $walaa-white;
+            background: $library-white;
         }
 
         &:not(:checked):hover ~ .custom-control-label::before {
             //Warning: has ipad and edge specific style
-            background: $walaa-medium-dark;
+            background: $library-medium-dark;
             border-width: 0px;
         }
 
         &:disabled {
             ~ .custom-control-label {
                 &::before {
-                    background: $walaa-light;
+                    background: $library-light;
                 }
             }
         }
@@ -304,7 +304,7 @@ a {
 
     .custom-control-input:checked ~ .custom-control-label {
         &::before {
-            border: 1px solid $walaa-primary;
+            border: 1px solid $library-primary;
         }
     }
 
@@ -316,14 +316,14 @@ a {
 
     .custom-control-label:hover {
         &::before {
-            background: $walaa-medium;
+            background: $library-medium;
         }
     }
 }
 
 .modal-header {
-    background-color: $walaa-primary;
-    color: $walaa-white;
+    background-color: $library-primary;
+    color: $library-white;
 }
 
 //*** overrides for bootstrap-select ***//
@@ -356,7 +356,7 @@ a {
     table tr td {
         &.day:hover,
         &.day.focused {
-            background: $walaa-medium;
+            background: $library-medium;
         }
     }
 
@@ -365,7 +365,7 @@ a {
     .next,
     tfoot tr th {
         &:hover {
-            background: $walaa-medium;
+            background: $library-medium;
         }
     }
 }
