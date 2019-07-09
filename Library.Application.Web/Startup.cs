@@ -4,7 +4,6 @@ using Library.Domain.Model;
 using Library.Domain.Repositories;
 using Library.Domain.Services;
 using Library.Domain.Validators;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -42,42 +41,28 @@ namespace Library.Application.Web
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAuthentication(config =>
-            {
-                config.DefaultScheme = IdentityConstants.ApplicationScheme;
-                config.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
-                config.DefaultSignInScheme = IdentityConstants.ApplicationScheme;
-                config.DefaultSignOutScheme = IdentityConstants.ApplicationScheme;
-            })
-            .AddCookie(IdentityConstants.ApplicationScheme, config =>
-            {
-                config.Cookie.Expiration = TimeSpan.FromMinutes(15);
-            });
-
             services.Configure<SecurityStampValidatorOptions>(config =>
             {
                 config.ValidationInterval = TimeSpan.FromMinutes(1);
             });
 
-            services.AddIdentityCore<ApplicationUser>(config =>
-            {
-                config.SignIn.RequireConfirmedEmail = true;
-            })
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddRoles<IdentityRole>()
-            .AddDefaultTokenProviders()
-            .AddSignInManager<SignInManager<ApplicationUser>>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+                {
+                    config.SignIn.RequireConfirmedEmail = true;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddSingleton<IEmailSender, MailService>();
-            services.AddSingleton<IMailService, MailService>(x => (MailService) x.GetService<IEmailSender>());
+            services.AddSingleton<IMailService, MailService>(x => (MailService)x.GetService<IEmailSender>());
             services.AddHttpContextAccessor();
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
-                       
+
             services.AddMvc()
-                .AddFluentValidation(fv => {
+                .AddFluentValidation(fv =>
+                {
                     fv.RegisterValidatorsFromAssemblyContaining<CreateBookRequestValidator>();
                 })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         private void AddServices(IServiceCollection services)
