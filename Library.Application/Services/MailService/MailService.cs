@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Library.Domain.Model;
+using Library.Domain.Properties;
+using Microsoft.Extensions.Options;
+using System;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using Library.Domain.Model;
-using Library.Domain.Services;
-using Library.Domain.Properties;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.Options;
 
 namespace Library.Application.Services.MailService
 {
-    public class MailService : IMailService, IEmailSender
+    public class MailService : IMailService
     {
         private readonly MailServiceSettings _mailServiceSettings;
 

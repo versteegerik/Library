@@ -12,7 +12,7 @@ namespace Library.Application.Data
     /// The order of execution doen't depend on the number, but i could be. Each database manager should take care of the order of execution.
     /// Most important thing is that the versions (script numbers) are unique.
     /// </summary>
-    public static class CommonScriptVersions
+    public static class LibraryScriptVersions
     {
         public const string V00000000001 = "00000000001";
         public const string V00000000002 = "00000000002";
@@ -108,7 +108,7 @@ namespace Library.Application.Data
                     CONSTRAINT [UC_Version] UNIQUE ([Version])
                 )
                 INSERT INTO [_Application_DatabaseVersionHistory]([CreatedOn], [Version] ,[Comment])
-                VALUES (GETDATE(), '" + CommonScriptVersions.V00000000001 + @"', 'Created table _Application_DatabaseVersionHistory')
+                VALUES (GETDATE(), '" + LibraryScriptVersions.V00000000001 + @"', 'Created table _Application_DatabaseVersionHistory')
             END
             ";
             #endregion

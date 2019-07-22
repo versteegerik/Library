@@ -1,9 +1,8 @@
-﻿using Library.Domain.Repositories;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Library.Domain.Services
+namespace Library.Domain.Common
 {
     public class IService<T> where T : Repository
     {
@@ -34,6 +33,20 @@ namespace Library.Domain.Services
                     Errors.Add(error.Description);
                 }
             }
+        }
+    }
+
+    public class ServiceResult<T> : ServiceResult
+    {
+        public T Result { get; }
+
+        public ServiceResult(string error, T result): base(error)
+        {
+            Result = result;
+        }
+        public ServiceResult(IdentityResult identityResult, T result) : base(identityResult)
+        {
+            Result = result;
         }
     }
 }

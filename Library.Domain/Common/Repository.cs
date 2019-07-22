@@ -1,10 +1,9 @@
-﻿using Library.Domain.Common;
+﻿using Library.Domain.Model;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Library.Domain.Model;
 
-namespace Library.Domain.Repositories
+namespace Library.Domain.Common
 {
     public abstract class Repository
     {
@@ -14,7 +13,6 @@ namespace Library.Domain.Repositories
         {
             DbContext = dbContext;
         }
-
 
         public async Task<T> FindAsync<T>(Guid id) where T : BaseEntity => await DbContext.FindAsync<T>(id);
 

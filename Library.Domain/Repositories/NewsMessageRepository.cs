@@ -1,4 +1,5 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Common;
+using Library.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
 

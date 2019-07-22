@@ -1,4 +1,6 @@
-﻿using Library.Application.Web.Common;
+﻿using Library.Application.Services.MailService;
+using Library.Application.Web.Common;
+using Library.Application.Web.Common.Extensions;
 using Library.Domain.Model;
 using Library.Domain.Requests;
 using Library.Domain.Services;
@@ -18,7 +20,7 @@ namespace Library.Application.Web.Views.Users
         public UsersController(UserManager<ApplicationUser> userManager, IMailService mailService)
         {
             _userManager = userManager;
-            _applicationUserService = new ApplicationUserService(userManager, mailService);
+            _applicationUserService = new ApplicationUserService(userManager);
         }
 
         [HttpGet]

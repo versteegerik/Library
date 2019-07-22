@@ -1,19 +1,17 @@
 ﻿using FluentValidation.AspNetCore;
 using Library.Application.Services.MailService;
+using Library.Application.Web.Common.Extensions;
+using Library.Domain.Common;
 using Library.Domain.Model;
-using Library.Domain.Repositories;
 using Library.Domain.Services;
 using Library.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Library.Application.Web
 {
@@ -29,22 +27,11 @@ namespace Library.Application.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            AddServices(services);
-            AddRepositories(services);
+            var currentAssembley = typeof(BookService).Assembly;
+            services.AddRepositories(currentAssembley);
+            services.AddServices(currentAssembley);
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.Configure<SecurityStampValidatorOptions>(config =>
-            {
-                config.ValidationInterval = TimeSpan.FromMinutes(1);
-            });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
                 {
@@ -52,10 +39,9 @@ namespace Library.Application.Web
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddSingleton<IEmailSender, MailService>();
-            services.AddSingleton<IMailService, MailService>(x => (MailService)x.GetService<IEmailSender>());
-            services.AddHttpContextAccessor();
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
+            services.AddScoped<IMailService, MailService>();
+            services.AddHttpContextAccessor();
 
             services.AddMvc()
                 .AddFluentValidation(fv =>
@@ -64,19 +50,6 @@ namespace Library.Application.Web
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
-
-        private void AddServices(IServiceCollection services)
-        {
-            services.AddScoped<BookService>();
-            services.AddScoped<NewsMessageService>();
-
-        }
-        private void AddRepositories(IServiceCollection services)
-        {
-            services.AddScoped<BookRepository>();
-            services.AddScoped<NewsMessageRepository>();
-        }
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -94,7 +67,6 @@ namespace Library.Application.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseAuthentication();
 
             app.UseMvc(routes =>

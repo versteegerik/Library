@@ -1,15 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using Library.Application.Services.MailService;
 using Library.Application.Web.Common;
 using Library.Application.Web.Views.Home;
 using Library.Domain.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.Application.Web.Views.Account
 {
@@ -17,18 +17,18 @@ namespace Library.Application.Web.Views.Account
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IEmailSender _emailSender;
+        private readonly IMailService _mailService;
         private readonly ILogger _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IEmailSender emailSender,
+            IMailService mailService,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _emailSender = emailSender;
+            _mailService = mailService;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
@@ -255,7 +255,7 @@ namespace Library.Application.Web.Views.Account
             }
 
             var message = $"Your security code is: {code}";
-            await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
+            await _mailService.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
 
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
