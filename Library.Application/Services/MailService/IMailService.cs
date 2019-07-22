@@ -1,4 +1,4 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Models;
 using System.Threading.Tasks;
 
 namespace Library.Application.Services.MailService

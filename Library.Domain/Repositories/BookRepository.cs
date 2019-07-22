@@ -1,5 +1,5 @@
 ﻿using Library.Domain.Common;
-using Library.Domain.Model;
+using Library.Domain.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +7,7 @@ namespace Library.Domain.Repositories
 {
     public class BookRepository : Repository
     {
-        public BookRepository(ApplicationDbContext dbContext) : base(dbContext) { }
+        public BookRepository(DomainDbContext dbContext) : base(dbContext) { }
 
         public IEnumerable<Book> GetBooksByUser(ApplicationUser applicationUser)
         {

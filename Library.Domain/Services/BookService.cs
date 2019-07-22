@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Library.Domain.Model;
+using Library.Domain.Models;
 using Library.Domain.Repositories;
 using Library.Domain.Requests;
 using Library.Domain.Validators;

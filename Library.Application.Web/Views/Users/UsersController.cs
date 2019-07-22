@@ -1,7 +1,7 @@
 ﻿using Library.Application.Services.MailService;
 using Library.Application.Web.Common;
 using Library.Application.Web.Common.Extensions;
-using Library.Domain.Model;
+using Library.Domain.Models;
 using Library.Domain.Requests;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Identity;

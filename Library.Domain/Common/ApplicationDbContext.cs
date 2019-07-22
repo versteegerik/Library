@@ -1,12 +1,12 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain.Common
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class DomainDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public DomainDbContext(DbContextOptions<DomainDbContext> options)
             : base(options)
         {
         }

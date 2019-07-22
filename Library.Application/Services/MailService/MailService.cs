@@ -1,4 +1,4 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Models;
 using Library.Domain.Properties;
 using Microsoft.Extensions.Options;
 using System;

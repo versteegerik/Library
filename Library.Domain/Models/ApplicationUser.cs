@@ -1,7 +1,7 @@
 ﻿using Library.Domain.Requests;
 using Microsoft.AspNetCore.Identity;
 
-namespace Library.Domain.Model
+namespace Library.Domain.Models
 {
     public sealed class ApplicationUser : IdentityUser
     {

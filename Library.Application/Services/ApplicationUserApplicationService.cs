@@ -1,10 +1,11 @@
 ﻿using Library.Application.Services.MailService;
 using Library.Domain.Common;
 using Library.Domain.Requests;
+using Library.Domain.Services;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Library.Domain.Services
+namespace Library.Application.Services
 {
     public class ApplicationUserApplicationService
     {

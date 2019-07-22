@@ -1,4 +1,4 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Models;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -7,9 +7,9 @@ namespace Library.Domain.Common
 {
     public abstract class Repository
     {
-        protected ApplicationDbContext DbContext { get; }
+        protected DomainDbContext DbContext { get; }
 
-        protected Repository(ApplicationDbContext dbContext)
+        protected Repository(DomainDbContext dbContext)
         {
             DbContext = dbContext;
         }

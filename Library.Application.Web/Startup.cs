@@ -2,7 +2,7 @@
 using Library.Application.Services.MailService;
 using Library.Application.Web.Common.Extensions;
 using Library.Domain.Common;
-using Library.Domain.Model;
+using Library.Domain.Models;
 using Library.Domain.Services;
 using Library.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
@@ -31,13 +31,13 @@ namespace Library.Application.Web
             services.AddRepositories(currentAssembley);
             services.AddServices(currentAssembley);
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DomainDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
                 {
                     config.SignIn.RequireConfirmedEmail = true;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<DomainDbContext>();
 
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
             services.AddScoped<IMailService, MailService>();

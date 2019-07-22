@@ -1,7 +1,7 @@
 ﻿using Library.Domain.Common;
 using Library.Domain.Requests;
 
-namespace Library.Domain.Model
+namespace Library.Domain.Models
 {
     public class NewsMessage : BaseEntity
     {

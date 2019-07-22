@@ -1,4 +1,4 @@
-﻿using Library.Domain.Model;
+﻿using Library.Domain.Models;
 using System.Collections.Generic;
 
 namespace Library.Application.Web.Views.Home
