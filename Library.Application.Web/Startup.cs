@@ -9,6 +9,7 @@ using Library.Domain.Common;
 using Library.Domain.Models.Requests.Validators;
 using Library.Domain.Services;
 using Library.Infrastructure.Persistence;
+using Library.Infrastructure.Persistence.Persistence;
 using Library.Infrastructure.Security.Models;
 using Library.Infrastructure.Security.Models.Requests.Validators;
 using Library.Infrastructure.Security.Persistence;
@@ -40,6 +41,7 @@ namespace Library.Application.Web
             services.AddScopedByNamespace(typeof(ApplicationUserService).Assembly, "Library.Infrastructure.Security.Services");
 
             services.AddDbContext<IApplicationPersistence, ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<IAuditPersistence, AuditDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<IDomainPersistence, DomainDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ISecurityPersistence, SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             ConfigureSecurity(services);
@@ -105,7 +107,7 @@ namespace Library.Application.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=Login}");
+                    template: "{controller=Home}/{action=Index}");
             });
         }
     }

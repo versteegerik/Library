@@ -17,19 +17,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\Updatescripts\Updatescript_v20181125_01_Identity.sql">
+    <None Update="Data\Updatescripts\Audit\Updatescript_v20190724_01_AddAudit.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Updatescripts\Updatescript_v20190503_01_Book.sql">
+    <None Update="Data\Updatescripts\Security\Updatescript_v20181125_01_Identity.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Updatescripts\Updatescript_v20190503_02_NewsMessages.sql">
+    <None Update="Data\Updatescripts\Domain\Updatescript_v20190503_01_Book.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Updatescripts\Updatescript_v20190503_03_AddDiscriminator.sql">
+    <None Update="Data\Updatescripts\Application\Updatescript_v20190503_02_NewsMessages.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Updatescripts\Updatescript_v20190503_04_Add_ISBN_To_Book.sql">
+    <None Update="Data\Updatescripts\Security\Updatescript_v20190503_03_AddDiscriminator.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Updatescripts\Domain\Updatescript_v20190503_04_Add_ISBN_To_Book.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

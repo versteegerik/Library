@@ -1,9 +1,10 @@
 ﻿using Library.Common;
+using Library.Infrastructure.Audit.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Infrastructure.Audit.Models
 {
-    [Table(nameof(LoginAttempt))]
+    [Table(Constants.Audit + nameof(LoginAttempt))]
     public class LoginAttempt : BaseEntity
     {
         public string Username { get; set; }
