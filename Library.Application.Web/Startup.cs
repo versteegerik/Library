@@ -1,10 +1,18 @@
 ﻿using FluentValidation.AspNetCore;
+using Library.Application.Common;
+using Library.Application.Models.Requests.Validators;
+using Library.Application.Persistence;
+using Library.Application.Services;
 using Library.Application.Services.MailService;
 using Library.Application.Web.Common.Extensions;
 using Library.Domain.Common;
-using Library.Domain.Models;
+using Library.Domain.Models.Requests.Validators;
 using Library.Domain.Services;
-using Library.Domain.Validators;
+using Library.Infrastructure.Persistence;
+using Library.Infrastructure.Security.Models;
+using Library.Infrastructure.Security.Models.Requests.Validators;
+using Library.Infrastructure.Security.Persistence;
+using Library.Infrastructure.Security.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -27,17 +35,20 @@ namespace Library.Application.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var currentAssembley = typeof(BookService).Assembly;
-            services.AddRepositories(currentAssembley);
-            services.AddServices(currentAssembley);
+            services.AddScopedByNamespace(typeof(NewsMessageService).Assembly, "Library.Application.Services");
+            services.AddScopedByNamespace(typeof(BookService).Assembly, "Library.Domain.Services");
+            services.AddScopedByNamespace(typeof(ApplicationUserService).Assembly, "Library.Infrastructure.Security.Services");
 
-            services.AddDbContext<DomainDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<IApplicationPersistence, ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<IDomainPersistence, DomainDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ISecurityPersistence, SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
                 {
                     config.SignIn.RequireConfirmedEmail = true;
                 })
-                .AddEntityFrameworkStores<DomainDbContext>();
+                .AddEntityFrameworkStores<SecurityDbContext>();
 
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
             services.AddScoped<IMailService, MailService>();
@@ -46,7 +57,9 @@ namespace Library.Application.Web
             services.AddMvc()
                 .AddFluentValidation(fv =>
                 {
+                    fv.RegisterValidatorsFromAssemblyContaining<CreateNewsMessageRequestValidator>();
                     fv.RegisterValidatorsFromAssemblyContaining<CreateBookRequestValidator>();
+                    fv.RegisterValidatorsFromAssemblyContaining<CreateApplicationUserRequestValidator>();
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

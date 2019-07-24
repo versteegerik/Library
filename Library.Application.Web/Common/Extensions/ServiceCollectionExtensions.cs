@@ -5,19 +5,12 @@ namespace Library.Application.Web.Common.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddRepositories(this IServiceCollection services, Assembly assembly)
+        public static void AddScopedByNamespace(this IServiceCollection services, Assembly assembly, string @namespace)
         {
-            foreach (var type in assembly.GetTypesInNamespace("Library.Domain.Repositories"))
+            foreach (var type in assembly.GetTypesInNamespace(@namespace))
             {
                 services.AddScoped(type);
             }
-        }
-        public static void AddServices(this IServiceCollection services, Assembly assembly)
-        {
-            foreach (var type in assembly.GetTypesInNamespace("Library.Domain.Services"))
-            {
-                services.AddScoped(type);
-            }
-        }
+        }           
     }
 }

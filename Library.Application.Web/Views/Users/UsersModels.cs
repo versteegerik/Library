@@ -1,5 +1,6 @@
-﻿using Library.Domain.Models;
-using Library.Domain.Requests;
+﻿using Library.Infrastructure.Security.Models;
+using Library.Infrastructure.Security.Models.Requests;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

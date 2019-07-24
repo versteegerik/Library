@@ -1,8 +1,10 @@
 ﻿using Library.Application.Web.Common;
-using Library.Domain.Requests;
+using Library.Domain.Models;
+using Library.Domain.Models.Requests;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Library.Application.Web.Views.Books
@@ -16,10 +18,11 @@ namespace Library.Application.Web.Views.Books
             _bookService = bookService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var myBooks = await _bookService.GetBooksForUser(User);
-            var booksModel = new BookListViewModel(myBooks);
+            //TODO
+            //var myBooks = await _bookService.GetBooksForUser(User);
+            var booksModel = new BookListViewModel(new List<Book>()); //new BookListViewModel(myBooks);
             return View(booksModel);
         }
 
@@ -30,50 +33,51 @@ namespace Library.Application.Web.Views.Books
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateBookRequest request)
+        public IActionResult Create(CreateBookRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
 
-            await _bookService.CreateBook(request, User);
+            //TODO
+            //_bookService.CreateBook(request, User);
 
             return RedirectToAction("Index", "Books");
         }
 
         [HttpGet]
-        public async Task<ViewResult> Update(Guid id)
+        public ViewResult Update(Guid id)
         {
-            var book = await _bookService.GetBookById(id);
+            var book = _bookService.GetBookById(id);
             return View(new UpdateBookRequest(book));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateBookRequest request)
+        public IActionResult Update(UpdateBookRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
 
-            await _bookService.UpdateBook(request);
+            _bookService.UpdateBook(request);
 
             return RedirectToAction("Index", "Books");
         }
 
         [HttpGet]
-        public async Task<ViewResult> Delete(Guid id)
+        public ViewResult Delete(Guid id)
         {
-            var book = await _bookService.GetBookById(id);
+            var book = _bookService.GetBookById(id);
             var bookDetailsModel = new DeleteBookRequest(book);
             return View(bookDetailsModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(DeleteBookRequest request)
+        public IActionResult Delete(DeleteBookRequest request)
         {
-            await _bookService.DeleteBook(request);
+            _bookService.DeleteBook(request);
 
             return RedirectToAction("Index", "Books");
         }

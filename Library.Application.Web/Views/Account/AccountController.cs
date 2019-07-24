@@ -1,7 +1,7 @@
 ﻿using Library.Application.Services.MailService;
 using Library.Application.Web.Common;
 using Library.Application.Web.Views.Home;
-using Library.Domain.Models;
+using Library.Infrastructure.Security.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

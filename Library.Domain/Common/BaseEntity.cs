@@ -2,7 +2,12 @@
 
 namespace Library.Domain.Common
 {
-    public abstract class BaseEntity
+    public interface IBaseEntity
+    {
+        Guid Id { get; set; }
+    }
+
+    public abstract class BaseEntity : IBaseEntity
     {
         public Guid Id { get; set; }
     }

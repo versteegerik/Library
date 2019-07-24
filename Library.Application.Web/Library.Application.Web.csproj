@@ -37,6 +37,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Library.Application\Library.Application.csproj" />
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj" />
+    <ProjectReference Include="..\Library.Infrastructure.Persistence\Library.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\Library.Infrastructure.Security\Library.Infrastructure.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

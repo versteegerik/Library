@@ -1,72 +1,64 @@
-﻿using System;
+﻿using Library.Domain.Common;
+using Library.Domain.Models;
+using Library.Domain.Models.Requests;
+using Library.Domain.Models.Requests.Validators;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Library.Domain.Models;
-using Library.Domain.Repositories;
-using Library.Domain.Requests;
-using Library.Domain.Validators;
 
 namespace Library.Domain.Services
 {
     public class BookService
     {
-        public BookRepository BookRepository { get; }
+        private readonly IDomainPersistence Persistence;
 
-        public BookService(BookRepository bookRepository)
+        public BookService(IDomainPersistence persistence)
         {
-            BookRepository = bookRepository;
+            Persistence = persistence;
         }
 
-        public async Task<Book> GetBookById(Guid id)
+        public Book GetBookById(Guid id)
         {
-            return await BookRepository.FindAsync<Book>(id);
+            return Persistence.Books.Single(_ => _.Id == id);
         }
 
-        public async Task<IEnumerable<Book>> GetBooksForUser(ClaimsPrincipal currentPrincipal)
-        {
-            var user = await BookRepository.FindUserByClaimsPrincipal(currentPrincipal);
-            return BookRepository.GetBooksByUser(user);
-        }
-
-        public async Task CreateBook(CreateBookRequest request, ClaimsPrincipal currentPrincipal)
+        public void CreateBook(CreateBookRequest request, DomainUser owner)
         {
             if (!new CreateBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("CreateBook validation error");
             }
 
-            var owner = await BookRepository.FindUserByClaimsPrincipal(currentPrincipal);
             var book = new Book(request, owner);
 
-            BookRepository.Create(book);
-            BookRepository.SaveChanges();
+            Persistence.Create(book);
         }
 
-        public async Task UpdateBook(UpdateBookRequest request)
+        public void UpdateBook(UpdateBookRequest request)
         {
             if (!new UpdateBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("EditBook validation error");
             }
 
-            var book = await GetBookById(request.Id);
+            var book = GetBookById(request.Id);
             book.Update(request);
 
-            BookRepository.SaveChanges();
+            Persistence.Update(book);
         }
 
-        public async Task DeleteBook(DeleteBookRequest request)
+        public void DeleteBook(DeleteBookRequest request)
         {
             if (!new DeleteBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("DeleteBook validation error");
             }
 
-            var book = await GetBookById(request.Id);
-            BookRepository.Delete(book);
+            var book = GetBookById(request.Id);
 
-            BookRepository.SaveChanges();
+            Persistence.Delete(book);
         }
     }
 }
