@@ -5,13 +5,18 @@ using System.Linq;
 
 namespace Library.Domain.Repositories
 {
-    public class BookRepository : Repository
+    public class BookRepository
     {
-        public BookRepository(DomainDbContext dbContext) : base(dbContext) { }
+        private readonly IDomainPersistence persistence;
+
+        public BookRepository(IDomainPersistence persistence)
+        {
+            this.persistence = persistence;
+        }
 
         public IEnumerable<Book> GetBooksByUser(ApplicationUser applicationUser)
         {
-            return DbContext.Books
+            return persistence.Books
                 .Where(b => b.Owner == applicationUser)
                 .ToArray();
         }
