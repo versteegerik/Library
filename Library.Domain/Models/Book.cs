@@ -1,4 +1,4 @@
-﻿using Library.Domain.Common;
+﻿using Library.Common;
 using Library.Domain.Models.Requests;
 using System.ComponentModel.DataAnnotations.Schema;
 

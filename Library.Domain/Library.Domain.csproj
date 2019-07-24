@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Library.Common\Library.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\DomainResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

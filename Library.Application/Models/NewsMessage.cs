@@ -1,5 +1,5 @@
 ﻿using Library.Application.Models.Requests;
-using Library.Domain.Common;
+using Library.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Application.Models

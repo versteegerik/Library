@@ -1,9 +1,9 @@
-﻿using Library.Infrastructure.Security.Models;
-using System.Linq;
+﻿using Library.Infrastructure.Audit.Models;
 
 namespace Library.Infrastructure.Security.Persistence
 {
     public interface IAuditPersistence
     {
+        void Create(LoginAttempt loginAttempt);
     }
 }
