@@ -42,18 +42,17 @@ namespace Library.Application.Web
             services.AddDbContext<IApplicationPersistence, ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<IDomainPersistence, DomainDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ISecurityPersistence, SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
-                {
-                    config.SignIn.RequireConfirmedEmail = true;
-                })
-                .AddEntityFrameworkStores<SecurityDbContext>();
+            ConfigureSecurity(services);
 
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
             services.AddScoped<IMailService, MailService>();
             services.AddHttpContextAccessor();
 
+            AddMvc(services);
+        }
+
+        private static void AddMvc(IServiceCollection services)
+        {
             services.AddMvc()
                 .AddFluentValidation(fv =>
                 {
@@ -64,8 +63,29 @@ namespace Library.Application.Web
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
+        private void ConfigureSecurity(IServiceCollection services)
+        {
+            services.AddDbContext<SecurityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<SecurityDbContext>();
+        }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            UseErrorHandling(app, env);
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthentication();
+
+            UseMvc(app);
+        }
+
+        private static void UseErrorHandling(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment() || env.IsEnvironment("Release"))
             {
@@ -77,11 +97,10 @@ namespace Library.Application.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+        }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseAuthentication();
-
+        private static void UseMvc(IApplicationBuilder app)
+        {
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
