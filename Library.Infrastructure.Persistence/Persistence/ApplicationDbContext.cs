@@ -2,6 +2,7 @@
 using Library.Application.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.Application.Persistence
 {
@@ -18,5 +19,7 @@ namespace Library.Application.Persistence
         public void Create(NewsMessage newsMessage) => NewsMessagesDbSet.Add(newsMessage);
 
         public void Update(NewsMessage newsMessage) => NewsMessagesDbSet.Update(newsMessage);
+
+        public async Task SaveChangesAsync() => await base.SaveChangesAsync();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Library.Application.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.Application.Common
 {
@@ -8,5 +9,6 @@ namespace Library.Application.Common
         IQueryable<NewsMessage> NewsMessages { get; }
         void Create(NewsMessage newsMessage);
         void Update(NewsMessage newsMessage);
+        Task SaveChangesAsync();
     }
 }

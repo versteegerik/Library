@@ -4,10 +4,12 @@ using Library.Application.Models.Requests.Validators;
 using Library.Application.Persistence;
 using Library.Application.Services;
 using Library.Application.Services.MailService;
+using Library.Application.Web.Common;
 using Library.Application.Web.Common.Extensions;
 using Library.Domain.Common;
 using Library.Domain.Models.Requests.Validators;
 using Library.Domain.Services;
+using Library.Infrastructure.Audit.Common;
 using Library.Infrastructure.Persistence;
 using Library.Infrastructure.Persistence.Persistence;
 using Library.Infrastructure.Security.Models;
@@ -83,7 +85,7 @@ namespace Library.Application.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
-
+            app.UseMiddleware<RequestMiddleware>();
             UseMvc(app);
         }
 

@@ -1,5 +1,6 @@
-﻿using Library.Infrastructure.Audit.Models;
-using Library.Infrastructure.Security.Persistence;
+﻿using System.Threading.Tasks;
+using Library.Infrastructure.Audit.Common;
+using Library.Infrastructure.Audit.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Infrastructure.Persistence.Persistence
@@ -13,5 +14,6 @@ namespace Library.Infrastructure.Persistence.Persistence
         private DbSet<LoginAttempt> LoginAttempt { get; set; }
 
         public void Create(LoginAttempt loginAttempt) => LoginAttempt.Add(loginAttempt);
+        public async Task SaveChangesAsync() => await base.SaveChangesAsync();
     }
 }

@@ -48,7 +48,7 @@ namespace Library.Application.Services.MailService
         }
 
         //TODO for now mail domain user security stuff ??
-        public async Task SendApplicationUserConfirmEmail(DomainUser domainUser, string callbackUrl)
+        public async Task SendApplicationUserConfirmEmail(IDomainUser domainUser, string callbackUrl)
         {
             await SendEmailAsync(
                 domainUser.Email,
