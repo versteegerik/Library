@@ -100,7 +100,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Resources\App.ts" />
-    <TypeScriptCompile Include="Views\Shared\_Layout.ts">
+    <TypeScriptCompile Include="Views\Shared\Layout\_Layout.ts">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Views\Users\Users.ts" />

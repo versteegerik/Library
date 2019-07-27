@@ -23,7 +23,7 @@ import "bootstrap-datepicker/dist/css/bootstrap-datepicker3.css";
 
 
 //Application scripts
-import "expose-loader?Layout!./../Views/Shared/_Layout.ts";
+import "expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts";
 import "expose-loader?Users!./../Views/Users/Users.ts";
 
 

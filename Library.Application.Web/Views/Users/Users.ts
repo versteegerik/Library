@@ -1,4 +1,4 @@
-﻿import { Layout } from "../Shared/_Layout";
+﻿import { Layout } from "../Shared/Layout/_Layout";
 
 var test = 1;
 console.log(test);

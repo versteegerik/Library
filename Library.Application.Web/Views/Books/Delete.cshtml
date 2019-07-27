@@ -14,7 +14,7 @@
         <form asp-action="Delete" asp-controller="Books">
             @Html.HiddenFor(_ => _.Id)
             <div class="form-group">
-                <a class="btn btn-warning" asp-action="Index" asp-controller="Books">@WebResources.Cancel <i class="fa fa-times"></i></a>
+                <a class="btn btn-info" asp-action="Index" asp-controller="Books">@WebResources.Cancel <i class="fa fa-times"></i></a>
                 <button class="btn btn-danger" type="submit">@WebResources.Delete <i class="fa fa-trash"></i></button>
             </div>
         </form>
