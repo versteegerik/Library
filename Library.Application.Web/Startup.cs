@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using FeedbackApp.Web.Views.Shared.DataTables;
+using FluentValidation.AspNetCore;
 using Library.Application.Common;
 using Library.Application.Models.Requests.Validators;
 using Library.Application.Persistence;
@@ -65,6 +66,7 @@ namespace Library.Application.Web
                     fv.RegisterValidatorsFromAssemblyContaining<CreateNewsMessageRequestValidator>();
                     fv.RegisterValidatorsFromAssemblyContaining<CreateBookRequestValidator>();
                     fv.RegisterValidatorsFromAssemblyContaining<CreateApplicationUserRequestValidator>();
+                    fv.RegisterValidatorsFromAssemblyContaining<DataTablesViewModelValidator>();
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

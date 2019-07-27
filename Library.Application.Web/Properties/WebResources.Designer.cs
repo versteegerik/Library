@@ -304,6 +304,24 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Datatables Invalid.
+        /// </summary>
+        public static string Validation_DataTables_Column_Invalid {
+            get {
+                return ResourceManager.GetString("Validation_DataTables_Column_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datatables Invalid.
+        /// </summary>
+        public static string Validation_DataTables_Dir_Invalid {
+            get {
+                return ResourceManager.GetString("Validation_DataTables_Dir_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overzicht.
         /// </summary>
         public static string View_Person_Overview {

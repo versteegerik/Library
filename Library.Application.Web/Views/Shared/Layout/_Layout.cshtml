@@ -14,6 +14,9 @@
         <script src="~/dist/bundle.js"></script>
     </environment>
     @RenderSection("Scripts", required: false)
+    <script>
+        window.Layout.Layout.init();
+    </script>
 </head>
 <body>
     <partial name="Layout/_NavigationPartial" />

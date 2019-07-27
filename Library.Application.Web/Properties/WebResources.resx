@@ -201,4 +201,12 @@
   <data name="Books_Delete" xml:space="preserve">
     <value>Boek verwijderen</value>
   </data>
+  <data name="Validation_DataTables_Column_Invalid" xml:space="preserve">
+    <value>Datatables Invalid</value>
+    <comment>Todo</comment>
+  </data>
+  <data name="Validation_DataTables_Dir_Invalid" xml:space="preserve">
+    <value>Datatables Invalid</value>
+    <comment>Todo</comment>
+  </data>
 </root>

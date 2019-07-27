@@ -9,6 +9,10 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
 
+//Application style
+@import "../../Views/Shared/DataTables/DataTables.scss";
+
+
 .row{
     margin-bottom: 1.5em;
 }
@@ -17,4 +21,14 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
     background-color: $library-primary;
     color: $library-white;
     padding: 5px 20px;
+}
+
+.dataTables_length:nth-child(1) {
+    float: left;
+    margin-top: $size-sm;
+}
+
+.dataTables_length:nth-child(4) {
+    float: left;
+    margin-top: $size-md;
 }

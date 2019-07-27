@@ -1,9 +1,13 @@
-﻿using Library.Application.Web.Common;
+﻿using FeedbackApp.Web.Views.Shared.DataTables;
+using Library.Application.Web.Common;
 using Library.Domain.Common;
+using Library.Domain.Models;
 using Library.Domain.Models.Requests;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Library.Application.Web.Views.Books
 {
@@ -18,12 +22,52 @@ namespace Library.Application.Web.Views.Books
             _bookService = bookService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() => View();
+
+        [HttpPost]
+        public JsonResult BuildList(DataTablesViewModel dataTable)
         {
-            var domainUser = _domainPersistence.GetDomainUser(User);
-            var myBooks = _bookService.GetBooksForUser(domainUser);
-            var booksModel = new BookListViewModel(myBooks);
-            return View(booksModel);
+            Expression<Func<Book, dynamic>> GetOrdering()
+            {
+                switch (dataTable.SingleOrderColumn)
+                {
+                    //case 1: (see default)
+                    case 2: return _ => _.Title;
+                    case 3: return _ => _.Author;
+                    default: return _ => _.Id;
+                }
+            }
+
+            BookViewModel[] GetViewModels()
+            {
+                var books = ApplyFilters(_domainPersistence.Books, dataTable);
+                var ordering = GetOrdering();
+                books = dataTable.SingleOrder.IsAscending ? books.OrderBy(ordering) : books.OrderByDescending(ordering);
+                books = books.Skip(dataTable.start).Take(dataTable.length);
+
+                var bookViewModels = books.Select(b => new BookViewModel(b));
+                return bookViewModels.ToArray();
+            }
+
+            var viewModels = GetViewModels();
+
+            return Json(new
+            {
+                dataTable.draw,
+                recordsTotal = viewModels.Length,
+                recordsFiltered = viewModels.Length,
+                data = viewModels
+            });
+        }
+
+        private IQueryable<Book> ApplyFilters(IQueryable<Book> books, DataTablesViewModel dataTable)
+        {
+            if (!string.IsNullOrWhiteSpace(dataTable.search?.value))
+            {
+                var searchTerm = dataTable.search.value.ToLower();
+
+            }
+            return books;
         }
 
         [HttpGet]

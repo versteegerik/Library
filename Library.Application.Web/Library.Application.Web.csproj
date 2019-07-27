@@ -21,6 +21,7 @@
   <ItemGroup>
     <None Remove="Resources\App.ts" />
     <None Remove="Resources\lib.d.ts.ts" />
+    <None Remove="Views\Books\Books.ts" />
     <None Remove="Views\Shared\_Layout.js" />
     <None Remove="Views\Shared\_Layout.ts" />
     <None Remove="Views\Users\Users.ts" />
@@ -100,6 +101,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Resources\App.ts" />
+    <TypeScriptCompile Include="Views\Books\Books.ts" />
     <TypeScriptCompile Include="Views\Shared\Layout\_Layout.ts">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </TypeScriptCompile>
