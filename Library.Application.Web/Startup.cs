@@ -6,6 +6,7 @@ using Library.Application.Services;
 using Library.Application.Services.MailService;
 using Library.Application.Web.Common;
 using Library.Application.Web.Common.Extensions;
+using Library.Application.Web.Services;
 using Library.Domain.Common;
 using Library.Domain.Models.Requests.Validators;
 using Library.Domain.Services;
@@ -38,9 +39,10 @@ namespace Library.Application.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScopedByNamespace(typeof(NewsMessageService).Assembly, "Library.Application.Services");
-            services.AddScopedByNamespace(typeof(BookService).Assembly, "Library.Domain.Services");
-            services.AddScopedByNamespace(typeof(ApplicationUserService).Assembly, "Library.Infrastructure.Security.Services");
+            services.AddScopedByNamespace(typeof(NewsMessageService).Assembly, "Library.Application.Services", "Service");
+            services.AddScopedByNamespace(typeof(BookService).Assembly, "Library.Domain.Services", "Service");
+            services.AddScopedByNamespace(typeof(ApplicationUserService).Assembly, "Library.Infrastructure.Security.Services", "Service");
+            services.AddScopedByNamespace(typeof(ApplicationUserApplicationService).Assembly, "Library.Application.Web.Services", "ApplicationService");
 
             services.AddDbContext<IApplicationPersistence, ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<IAuditPersistence, AuditDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -50,7 +52,7 @@ namespace Library.Application.Web
 
             services.Configure<MailServiceSettings>(Configuration.GetSection("MailServiceSettings"));
             services.AddScoped<IMailService, MailService>();
-            services.AddHttpContextAccessor();
+            //services.AddHttpContextAccessor();
 
             AddMvc(services);
         }

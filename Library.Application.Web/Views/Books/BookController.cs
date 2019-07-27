@@ -1,28 +1,28 @@
 ﻿using Library.Application.Web.Common;
-using Library.Domain.Models;
+using Library.Domain.Common;
 using Library.Domain.Models.Requests;
 using Library.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Library.Application.Web.Views.Books
 {
     public class BooksController : BaseController
     {
+        private readonly IDomainPersistence _domainPersistence;
         private readonly BookService _bookService;
 
-        public BooksController(BookService bookService)
+        public BooksController(IDomainPersistence domainPersistence, BookService bookService)
         {
+            _domainPersistence = domainPersistence;
             _bookService = bookService;
         }
 
         public IActionResult Index()
         {
-            //TODO
-            //var myBooks = await _bookService.GetBooksForUser(User);
-            var booksModel = new BookListViewModel(new List<Book>()); //new BookListViewModel(myBooks);
+            var domainUser = _domainPersistence.GetDomainUser(User);
+            var myBooks = _bookService.GetBooksForUser(domainUser);
+            var booksModel = new BookListViewModel(myBooks);
             return View(booksModel);
         }
 
@@ -40,8 +40,8 @@ namespace Library.Application.Web.Views.Books
                 return View(request);
             }
 
-            //TODO
-            //_bookService.CreateBook(request, User);
+            var domainUser = _domainPersistence.GetDomainUser(User);
+            _bookService.CreateBook(request, domainUser);
 
             return RedirectToAction("Index", "Books");
         }

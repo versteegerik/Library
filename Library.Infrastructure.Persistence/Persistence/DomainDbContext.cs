@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Library.Domain.Common;
 using Library.Domain.Models;
@@ -13,8 +15,11 @@ namespace Library.Infrastructure.Persistence
         }
 
         private DbSet<Book> BooksDbSet { get; set; }
+        private DbSet<DomainUser> DomainUsersDbSet { get; set; }
 
         public IQueryable<Book> Books => BooksDbSet.AsQueryable();
+
+        public DomainUser GetDomainUser(ClaimsPrincipal user) => DomainUsersDbSet.Single(_ => _.UserName.Equals(user.Identity.Name, StringComparison.OrdinalIgnoreCase));
 
         public void Create(Book book) => BooksDbSet.Add(book);
 
