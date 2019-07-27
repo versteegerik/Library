@@ -8,6 +8,6 @@ namespace Library.Application.Services.MailService
         //TODO replace with prdefined mails
         Task SendEmailAsync(string email, string subject, string htmlMessage);
 
-        Task SendApplicationUserConfirmEmail(DomainUser domainUser, string callbackUrl);
+        Task SendApplicationUserConfirmEmail(IDomainUser domainUser, string callbackUrl);
     }
 }

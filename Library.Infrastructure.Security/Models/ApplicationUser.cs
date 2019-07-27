@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Library.Infrastructure.Security.Models
 {
     [Table("AspNetUsers")]
-    public sealed class ApplicationUser : IdentityUser , DomainUser
+    public sealed class ApplicationUser : IdentityUser , IDomainUser
     {
         public ApplicationUser() { }
 
