@@ -17,7 +17,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.9.0",
     "@types/bootstrap-select": "^1.11.1",
-    "@versteey/common-utils": "1.2.0",
+    "@versteey/common-utils": "1.2.1-alpha2",
     "bootstrap": "4.3.1",
     "bootstrap-datepicker": "1.9.0",
     "bootstrap-select": "1.13.10",

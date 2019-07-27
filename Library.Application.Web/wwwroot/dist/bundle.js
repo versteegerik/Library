@@ -98,7 +98,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //NPM packages
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed");
+__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js");
 __webpack_require__(/*! jquery-ajax-unobtrusive */ "./node_modules/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js");
 __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
 __webpack_require__(/*! jquery-validation-unobtrusive */ "./node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js");
@@ -117,8 +117,8 @@ __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 //NPM packages style
 __webpack_require__(/*! bootstrap-datepicker/dist/css/bootstrap-datepicker3.css */ "./node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css");
 //Application scripts
-__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/_Layout.ts-exposed");
-__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed");
+__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/_Layout.ts");
+__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts");
 //Application style
 __webpack_require__(/*! ./Css/style.scss */ "./Resources/Css/style.scss");
 
@@ -136,39 +136,9 @@ __webpack_require__(/*! ./Css/style.scss */ "./Resources/Css/style.scss");
 
 /***/ }),
 
-/***/ "./node_modules/@versteey/common-utils/dist/UtilSettings.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@versteey/common-utils/dist/UtilSettings.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var UtilSettings = (function () {
-    function UtilSettings(baseUrl, errorDialogSettings) {
-        this.baseUrl = "";
-        this.initForms = function () { return new Error("not implemented"); };
-        this.handleUnauthorizedAjaxRequests = function () { return new Error("not implemented"); };
-        this.baseUrl = baseUrl;
-        this.errorDialogSettings = errorDialogSettings;
-    }
-    UtilSettings.prototype.isValid = function () {
-        var validBaseUrl = this.baseUrl !== null && this.baseUrl.trim() !== "";
-        var validErrorDialogSettings = this.errorDialogSettings !== null;
-        return validBaseUrl && validErrorDialogSettings;
-    };
-    return UtilSettings;
-}());
-exports.UtilSettings = UtilSettings;
-
-
-/***/ }),
-
-/***/ "./node_modules/@versteey/common-utils/dist/index.js":
+/***/ "./node_modules/@versteey/common-utils/dist/Index.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/@versteey/common-utils/dist/index.js ***!
+  !*** ./node_modules/@versteey/common-utils/dist/Index.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -176,6 +146,8 @@ exports.UtilSettings = UtilSettings;
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 Object.defineProperty(exports, "__esModule", { value: true });
+var UtilSettings_1 = __webpack_require__(/*! ./UtilSettings */ "./node_modules/@versteey/common-utils/dist/UtilSettings.js");
+exports.UtilSettings = UtilSettings_1.UtilSettings;
 var Utils;
 (function (Utils) {
     var PagedList;
@@ -500,6 +472,36 @@ var Utils;
 })(Utils = exports.Utils || (exports.Utils = {}));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./node_modules/@versteey/common-utils/dist/UtilSettings.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@versteey/common-utils/dist/UtilSettings.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var UtilSettings = (function () {
+    function UtilSettings(baseUrl, errorDialogSettings) {
+        this.baseUrl = "";
+        this.initForms = function () { return new Error("not implemented"); };
+        this.handleUnauthorizedAjaxRequests = function () { return new Error("not implemented"); };
+        this.baseUrl = baseUrl;
+        this.errorDialogSettings = errorDialogSettings;
+    }
+    UtilSettings.prototype.isValid = function () {
+        var validBaseUrl = this.baseUrl !== null && this.baseUrl.trim() !== "";
+        var validErrorDialogSettings = this.errorDialogSettings !== null;
+        return validBaseUrl && validErrorDialogSettings;
+    };
+    return UtilSettings;
+}());
+exports.UtilSettings = UtilSettings;
+
 
 /***/ }),
 
@@ -10206,10 +10208,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js-exposed ***!
-  \***********************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10218,10 +10220,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/_Layout.ts-exposed":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/expose-loader?Layout!./Views/Shared/_Layout.ts-exposed ***!
-  \*****************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/_Layout.ts":
+/*!*********************************************************************!*\
+  !*** ./node_modules/expose-loader?Layout!./Views/Shared/_Layout.ts ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10230,10 +10232,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed":
-/*!*************************************************************************!*\
-  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts-exposed ***!
-  \*************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43402,8 +43404,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */(function(jQuery, $) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-var common_utils_1 = __webpack_require__(/*! @versteey/common-utils */ "./node_modules/@versteey/common-utils/dist/index.js");
-var UtilSettings_1 = __webpack_require__(/*! @versteey/common-utils/dist/UtilSettings */ "./node_modules/@versteey/common-utils/dist/UtilSettings.js");
+var common_utils_1 = __webpack_require__(/*! @versteey/common-utils */ "./node_modules/@versteey/common-utils/dist/Index.js");
 var Layout;
 (function (Layout) {
     /* Custom validators, declare once and add before the onload. Only then jquery validation can use these methods. */
@@ -43433,7 +43434,7 @@ var Layout;
     jQuery.validator.unobtrusive.adapters.addBool("bsn");
     /* Functions */
     function init(document, baseUrl) {
-        var settings = new UtilSettings_1.UtilSettings(baseUrl, errorDialogSettings);
+        var settings = new common_utils_1.UtilSettings(baseUrl, errorDialogSettings);
         settings.initForms = initForms;
         settings.handleUnauthorizedAjaxRequests = handleUnauthorizedAjaxRequests;
         common_utils_1.Utils.initialize(settings);
