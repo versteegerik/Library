@@ -65,6 +65,10 @@ namespace Library.Application.Web.Views.Books
             if (!string.IsNullOrWhiteSpace(dataTable.search?.value))
             {
                 var searchTerm = dataTable.search.value.ToLower();
+                books = books.Where(b => 
+                    b.Author.ToLower().Contains(searchTerm)
+                    || b.Title.ToLower().Contains(searchTerm)
+                );
 
             }
             return books;

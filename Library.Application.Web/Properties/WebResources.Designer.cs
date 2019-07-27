@@ -133,6 +133,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zoeken.
+        /// </summary>
+        public static string Action_Search {
+            get {
+                return ResourceManager.GetString("Action_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acties.
         /// </summary>
         public static string Actions {

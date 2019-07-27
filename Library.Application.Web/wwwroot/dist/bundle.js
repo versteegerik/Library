@@ -63279,10 +63279,13 @@ function initList() {
                         //TODO
                         //const url = Utils.getBaseUrl() + "Book/Update?id=" + row["id"];
                         var url = "https://localhost:5001/Books/Update?id=" + row["id"];
-                        return "<a href=\"" + url + "\"})\"><div style=\"width:100%;\"><strong\">" + row["title"] + "</strong></div></a>";
+                        return "<a href=\"" + url + "\"})\"><div style=\"width:70%;\"><strong\">" + row["title"] + "</strong></div></a>";
                     }
                     return null;
                 }
+            },
+            {
+                targets: 2,
             }
         ]
     });

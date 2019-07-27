@@ -209,4 +209,7 @@
     <value>Datatables Invalid</value>
     <comment>Todo</comment>
   </data>
+  <data name="Action_Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
 </root>
