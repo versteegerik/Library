@@ -9,6 +9,7 @@ namespace Library.Domain.Common
     {
         IQueryable<Book> Books { get; }
 
+        DomainUser CurrentDomainUser { get; }
         DomainUser GetDomainUser(ClaimsPrincipal user);
 
         void Create(Book book);

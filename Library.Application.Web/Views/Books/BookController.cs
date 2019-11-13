@@ -40,12 +40,13 @@ namespace Library.Application.Web.Views.Books
 
             BookViewModel[] GetViewModels()
             {
-                var books = ApplyFilters(_domainPersistence.Books, dataTable);
+                var books = _bookService.GetBooksForUser(_domainPersistence.CurrentDomainUser);
+                var filteredBooks = ApplyFilters(books, dataTable);
                 var ordering = GetOrdering();
-                books = dataTable.SingleOrder.IsAscending ? books.OrderBy(ordering) : books.OrderByDescending(ordering);
-                books = books.Skip(dataTable.start).Take(dataTable.length);
+                filteredBooks = dataTable.SingleOrder.IsAscending ? filteredBooks.OrderBy(ordering) : filteredBooks.OrderByDescending(ordering);
+                filteredBooks = filteredBooks.Skip(dataTable.start).Take(dataTable.length);
 
-                var bookViewModels = books.Select(b => new BookViewModel(b));
+                var bookViewModels = filteredBooks.Select(b => new BookViewModel(b));
                 return bookViewModels.ToArray();
             }
 

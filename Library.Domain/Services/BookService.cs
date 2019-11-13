@@ -22,11 +22,10 @@ namespace Library.Domain.Services
             return Persistence.Books.Single(_ => _.Id == id);
         }
 
-        public IEnumerable<Book> GetBooksForUser(DomainUser domainUser)
-        {           
+        public IQueryable<Book> GetBooksForUser(DomainUser domainUser)
+        {
             return Persistence.Books.Where(_ => _.Owner.Id == domainUser.Id)
-                .OrderBy(_ => _.Title)
-                .ToArray();
+                .OrderBy(_ => _.Title);
         }
 
         public void CreateBook(CreateBookRequest request, DomainUser owner)
