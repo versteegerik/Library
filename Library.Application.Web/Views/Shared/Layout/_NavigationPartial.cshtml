@@ -14,31 +14,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Home
+                            Contact
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="About">About</a>
                             <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Settings">@WebResources.Settings</a>
-                    </li>
                 </ul>
-                <form asp-action="Logout" asp-controller="Account" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@WebResources.Actions</a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <div class="dropdown-header">@WebResources._LoginPartial_LoginAs @SignInManager.UserManager.GetUserName(User)</div>
-                                <a class="dropdown-item" asp-action="Logout" asp-controller="Account" asp-area="">@WebResources.Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </form>
+                <div class="navbar-right">
+                    <form asp-action="Logout" asp-controller="Account" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@WebResources.Actions</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-header">@WebResources._LoginPartial_LoginAs @SignInManager.UserManager.GetUserName(User)</div>
+                                    <a class="dropdown-item" asp-area="" asp-action="Logout" asp-controller="Account">@WebResources.Logout</a>
+                                    <hr />
+                                    <a class="dropdown-item" asp-area="" asp-action="Settings" asp-controller="Home" >@WebResources.Settings</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
             </div>
         }
     </div>

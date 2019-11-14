@@ -22,6 +22,7 @@
     <None Remove="Resources\App.ts" />
     <None Remove="Resources\lib.d.ts.ts" />
     <None Remove="Views\Books\Books.ts" />
+    <None Remove="Views\MyBooks\MyBooks.ts" />
     <None Remove="Views\Shared\_Layout.js" />
     <None Remove="Views\Shared\_Layout.ts" />
     <None Remove="Views\Users\Users.ts" />
@@ -56,6 +57,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\MyBooks\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\MyBooks\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Books\Delete.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -101,6 +108,9 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Resources\App.ts" />
+    <TypeScriptCompile Include="Views\MyBooks\MyBooks.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Views\Books\Books.ts" />
     <TypeScriptCompile Include="Views\Shared\Layout\_Layout.ts">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

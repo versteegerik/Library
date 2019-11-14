@@ -29,6 +29,7 @@ import "datatables.net-responsive-bs4/css/responsive.bootstrap4.css";
 import "expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts";
 import "expose-loader?Users!./../Views/Users/Users.ts";
 import "expose-loader?Books!./../Views/Books/Books.ts";
+import "expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts";
 
 //Application style
 require("./Css/style.scss");

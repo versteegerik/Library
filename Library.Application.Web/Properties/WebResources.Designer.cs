@@ -223,6 +223,15 @@ namespace Library.Application.Web.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alle Boeken.
+        /// </summary>
+        public static string Home_Index_Books {
+            get {
+                return ResourceManager.GetString("Home_Index_Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mijn boeken.
         /// </summary>
         public static string Home_Index_MyBooks {

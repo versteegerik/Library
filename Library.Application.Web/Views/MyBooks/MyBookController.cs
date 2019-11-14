@@ -11,12 +11,12 @@ using System.Linq.Expressions;
 
 namespace Library.Application.Web.Views.Books
 {
-    public class BooksController : BaseController
+    public class MyBooksController : BaseController
     {
         private readonly IDomainPersistence _domainPersistence;
         private readonly BookService _bookService;
 
-        public BooksController(IDomainPersistence domainPersistence, BookService bookService)
+        public MyBooksController(IDomainPersistence domainPersistence, BookService bookService)
         {
             _domainPersistence = domainPersistence;
             _bookService = bookService;
@@ -40,7 +40,7 @@ namespace Library.Application.Web.Views.Books
 
             BookViewModel[] GetViewModels()
             {
-                var books = _domainPersistence.Books;
+                var books = _bookService.GetBooksForUser(_domainPersistence.CurrentDomainUser);
                 var filteredBooks = ApplyFilters(books, dataTable);
                 var ordering = GetOrdering();
                 filteredBooks = dataTable.SingleOrder.IsAscending ? filteredBooks.OrderBy(ordering) : filteredBooks.OrderByDescending(ordering);

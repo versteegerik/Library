@@ -98,7 +98,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //NPM packages
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed");
+__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js");
 __webpack_require__(/*! jquery-ajax-unobtrusive */ "./node_modules/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js");
 __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
 __webpack_require__(/*! jquery-validation-unobtrusive */ "./node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js");
@@ -121,9 +121,10 @@ __webpack_require__(/*! datatables.net-buttons-bs4/css/buttons.bootstrap4.css */
 __webpack_require__(/*! datatables.net-select-bs4/css/select.bootstrap4.css */ "./node_modules/datatables.net-select-bs4/css/select.bootstrap4.css");
 __webpack_require__(/*! datatables.net-responsive-bs4/css/responsive.bootstrap4.css */ "./node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.css");
 //Application scripts
-__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts-exposed");
-__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed");
-__webpack_require__(/*! expose-loader?Books!./../Views/Books/Books.ts */ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts-exposed");
+__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts");
+__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts");
+__webpack_require__(/*! expose-loader?Books!./../Views/Books/Books.ts */ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts");
+__webpack_require__(/*! expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts */ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed");
 //Application style
 __webpack_require__(/*! ./Css/style.scss */ "./Resources/Css/style.scss");
 
@@ -30037,10 +30038,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js-exposed ***!
-  \***********************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30049,10 +30050,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts-exposed":
-/*!*************************************************************************!*\
-  !*** ./node_modules/expose-loader?Books!./Views/Books/Books.ts-exposed ***!
-  \*************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/expose-loader?Books!./Views/Books/Books.ts ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30061,10 +30062,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts-exposed":
-/*!************************************************************************************!*\
-  !*** ./node_modules/expose-loader?Layout!./Views/Shared/Layout/_Layout.ts-exposed ***!
-  \************************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts":
+/*!****************************************************************************!*\
+  !*** ./node_modules/expose-loader?Layout!./Views/Shared/Layout/_Layout.ts ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30073,10 +30074,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed":
-/*!*************************************************************************!*\
-  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts-exposed ***!
-  \*************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/expose-loader?MyBooks!./Views/MyBooks/MyBooks.ts-exposed ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["MyBooks"] = __webpack_require__(/*! -!./node_modules/ts-loader!./MyBooks.ts */ "./node_modules/ts-loader/index.js!./Views/MyBooks/MyBooks.ts");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -63279,6 +63292,93 @@ function initList() {
                         //TODO
                         //const url = Utils.getBaseUrl() + "Book/Update?id=" + row["id"];
                         var url = "https://localhost:5001/Books/Update?id=" + row["id"];
+                        return "<a href=\"" + url + "\"})\"><div style=\"width:70%;\"><strong\">" + row["title"] + "</strong></div></a>";
+                    }
+                    return null;
+                }
+            },
+            {
+                targets: 2,
+            }
+        ]
+    });
+    $("#SearchTerm").keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which).toString();
+        if (keycode === "13") {
+            search();
+        }
+    });
+}
+exports.initList = initList;
+function search() {
+    var searchTerm = $("#SearchTerm").val().toString();
+    table.search(searchTerm).draw();
+}
+exports.search = search;
+//export function initFilters() {
+//    filters = {
+//        filterHasAgreedToUseDataForResearch: null,
+//        filterLastMeasureMoment: null
+//    };
+//    $("#filterHasAgreedToUseDataForResearch").change(() => {
+//        filters.filterHasAgreedToUseDataForResearch = $("#filterHasAgreedToUseDataForResearch").val();
+//        table.draw();
+//    });
+//    $("#filterLastMeasureMoment").on("change", () => {
+//        filters.filterLastMeasureMoment = $("#filterLastMeasureMoment").val();
+//        table.draw();
+//    });
+//}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js!./Views/MyBooks/MyBooks.ts":
+/*!***********************************************************!*\
+  !*** ./node_modules/ts-loader!./Views/MyBooks/MyBooks.ts ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var table;
+var filters;
+function initList() {
+    //initFilters();
+    table = $("#book-table").DataTable({
+        order: [[1, "asc"]],
+        ajax: {
+            url: "https://localhost:5001/MyBooks/BuildList",
+            type: "POST",
+            data: function (data) {
+                data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
+                //data.filters = filters;
+            }
+        },
+        rowId: "id",
+        columns: [
+            {
+                className: "control",
+                render: function () { return null; }
+            },
+            { "data": "title" },
+            { "data": "author" }
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                orderable: false
+            },
+            {
+                targets: 1,
+                render: function (data, type, row) {
+                    if (data) {
+                        //TODO
+                        //const url = Utils.getBaseUrl() + "MyBook/Update?id=" + row["id"];
+                        var url = "https://localhost:5001/MyBooks/Update?id=" + row["id"];
                         return "<a href=\"" + url + "\"})\"><div style=\"width:70%;\"><strong\">" + row["title"] + "</strong></div></a>";
                     }
                     return null;

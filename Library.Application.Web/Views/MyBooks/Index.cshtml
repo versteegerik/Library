@@ -1,13 +1,13 @@
 ﻿@Html.AntiForgeryToken()
 <script>
     $(document).ready(function () {
-        window.Books.initList();
+        window.MyBooks.initList();
     });
 </script>
 
 <h2>
-    @WebResources.Home_Index_Books
-    <a class="btn btn-primary" asp-action="Create" asp-controller="Books"><i class="fa fa-plus"></i></a>
+    @WebResources.Home_Index_MyBooks
+    <a class="btn btn-primary" asp-action="Create" asp-controller="MyBooks"><i class="fa fa-plus"></i></a>
 </h2>
 <div class="row">
     <div class="col-8"></div>
@@ -15,7 +15,7 @@
         <div class="input-group">
             <input type="text" id="SearchTerm" class="form-control" placeholder="@WebResources.Action_Search" aria-label="@WebResources.Action_Search">
             <div class="input-group-prepend">
-                <button class="btn btn-primary" type="button" id="button-addon2" onclick="Books.search()"><i class="fas fa-search" aria-hidden="true"></i></button>
+                <button class="btn btn-primary" type="button" id="button-addon2" onclick="MyBooks.search()"><i class="fas fa-search" aria-hidden="true"></i></button>
             </div>
         </div>
     </div>

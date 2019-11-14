@@ -212,4 +212,7 @@
   <data name="Action_Search" xml:space="preserve">
     <value>Zoeken</value>
   </data>
+  <data name="Home_Index_Books" xml:space="preserve">
+    <value>Alle Boeken</value>
+  </data>
 </root>
