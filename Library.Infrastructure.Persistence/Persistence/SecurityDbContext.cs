@@ -12,6 +12,11 @@ namespace Library.Infrastructure.Persistence
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
         private DbSet<ApplicationUser> ApplicationUsersDbSet { get; set; }
 
         public IQueryable<ApplicationUser> ApplicationUsers => ApplicationUsersDbSet.AsQueryable();

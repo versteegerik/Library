@@ -30,6 +30,7 @@ import "expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts";
 import "expose-loader?Users!./../Views/Users/Users.ts";
 import "expose-loader?Books!./../Views/Books/Books.ts";
 import "expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts";
+import "expose-loader?Wishlist!./../Views/Wishlist/Wishlist.ts";
 
 //Application style
 require("./Css/style.scss");

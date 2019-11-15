@@ -1,19 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Library.Common;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Domain.Models
 {
-    public interface IDomainUser
+    [Table("DomainUsers")]
+    public class DomainUser : BaseEntity
     {
-        string Id { get; set; }
-        string UserName { get; set; }
-        string Email { get; set; }
-    }
-
-    [Table("AspNetUsers")]
-    public class DomainUser : IDomainUser
-    {
-        public string Id { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
+        public virtual IList<UserBookInformation> UserBookInformations { get; set; }
     }
 }

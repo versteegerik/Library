@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj" />
+    <ProjectReference Include="..\Library.Infrastructure.Security\Library.Infrastructure.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

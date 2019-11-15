@@ -3,10 +3,10 @@ var filters: any;
 
 export function initList() {
     //initFilters();
-    table = $("#mybook-table").DataTable({
+    table = $("#wishlist-table").DataTable({
         order: [[1, "asc"]],
         ajax: {
-            url: "https://localhost:5001/MyBooks/BuildList", //Utils.getBaseUrl() + "MyBooks/BuildList",
+            url: "https://localhost:5001/Wishlists/BuildList", //Utils.getBaseUrl() + "Wishlists/BuildList",
             type: "POST",
             data(data: any) {
                 data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
@@ -32,8 +32,8 @@ export function initList() {
                 render(data: any, type: any, row: any) {
                     if (data) {
                         //TODO
-                        //const url = Utils.getBaseUrl() + "MyBook/Update?id=" + row["id"];
-                        const url = "https://localhost:5001/MyBooks/Update?id=" + row["id"];
+                        //const url = Utils.getBaseUrl() + "Wishlist/Update?id=" + row["id"];
+                        const url = "https://localhost:5001/Wishlists/Update?id=" + row["id"];
                         return `<a href=\"${url}\"})"><div style="width:70%;"><strong">${row["title"]}</strong></div></a>`;
                     }
                     return null;

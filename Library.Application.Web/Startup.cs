@@ -77,8 +77,7 @@ namespace Library.Application.Web
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
-            })
-                .AddEntityFrameworkStores<SecurityDbContext>();
+            }).AddEntityFrameworkStores<SecurityDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

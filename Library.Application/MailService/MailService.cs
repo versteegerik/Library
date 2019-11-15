@@ -1,5 +1,6 @@
 ﻿using Library.Domain.Models;
 using Library.Domain.Properties;
+using Library.Infrastructure.Security.Models;
 using Microsoft.Extensions.Options;
 using System;
 using System.Net;
@@ -48,10 +49,10 @@ namespace Library.Application.Services.MailService
         }
 
         //TODO for now mail domain user security stuff ??
-        public async Task SendApplicationUserConfirmEmail(IDomainUser domainUser, string callbackUrl)
+        public async Task SendApplicationUserConfirmEmail(ApplicationUser applicationUser, string callbackUrl)
         {
             await SendEmailAsync(
-                domainUser.Email,
+                applicationUser.Email,
                 DomainResources.MailService_Subject_ApplicationUserConfirmEmail,
                 string.Format(DomainResources.MailService_Mail_ApplicationUserConfirmEmail, callbackUrl));
         }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Library.Domain.Common;
 using Library.Domain.Models;
@@ -18,19 +16,27 @@ namespace Library.Infrastructure.Persistence
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public DomainUser CurrentDomainUser => GetDomainUser(_httpContextAccessor.HttpContext.User);
-        public DomainUser GetDomainUser(ClaimsPrincipal user) => DomainUsersDbSet.Single(_ => _.UserName.Equals(user.Identity.Name, StringComparison.OrdinalIgnoreCase));
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
 
         private DbSet<Book> BooksDbSet { get; set; }
         private DbSet<DomainUser> DomainUsersDbSet { get; set; }
+        private DbSet<UserBookInformation> UserBookInformationDbSet { get; set; }
 
         public IQueryable<Book> Books => BooksDbSet.AsQueryable();
+
+        public IQueryable<DomainUser> DomainUsers => DomainUsersDbSet.AsQueryable();
+
+        public IQueryable<UserBookInformation> UserBookInformations => UserBookInformationDbSet.AsQueryable();
 
         public void Create(Book book) => BooksDbSet.Add(book);
 
         public void Update(Book book) => BooksDbSet.Update(book);
 
         public void Delete(Book book) => BooksDbSet.Remove(book);
+
         public async Task SaveChangesAsync() => await base.SaveChangesAsync();
     }
 }

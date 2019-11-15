@@ -1,17 +1,17 @@
 ﻿using Library.Application.Models.Requests;
 using Library.Application.Services;
 using Library.Application.Web.Common;
+using Library.Infrastructure.Security.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
 
 namespace Library.Application.Web.Views.NewsMessages
 {
-    public class NewsMessagesController : BaseController
+    public class NewsMessagesController : LoggedInController
     {
         private readonly NewsMessageService _newsMessageService;
 
-        public NewsMessagesController(NewsMessageService newsMessageService)
+        public NewsMessagesController(NewsMessageService newsMessageService, CurrentUserService cus) : base(cus)
         {
             _newsMessageService = newsMessageService;
         }

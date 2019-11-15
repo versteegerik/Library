@@ -124,7 +124,8 @@ __webpack_require__(/*! datatables.net-responsive-bs4/css/responsive.bootstrap4.
 __webpack_require__(/*! expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts");
 __webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts");
 __webpack_require__(/*! expose-loader?Books!./../Views/Books/Books.ts */ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts");
-__webpack_require__(/*! expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts */ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed");
+__webpack_require__(/*! expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts */ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts");
+__webpack_require__(/*! expose-loader?Wishlist!./../Views/Wishlist/Wishlist.ts */ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts");
 //Application style
 __webpack_require__(/*! ./Css/style.scss */ "./Resources/Css/style.scss");
 
@@ -30074,10 +30075,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/expose-loader?MyBooks!./Views/MyBooks/MyBooks.ts-exposed ***!
-  \*******************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts":
+/*!***********************************************************************!*\
+  !*** ./node_modules/expose-loader?MyBooks!./Views/MyBooks/MyBooks.ts ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30094,6 +30095,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Users"] = __webpack_require__(/*! -!./node_modules/ts-loader!./Users.ts */ "./node_modules/ts-loader/index.js!./Views/Users/Users.ts");
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts":
+/*!**************************************************************************!*\
+  !*** ./node_modules/expose-loader?Wishlist!./Views/Wishlist/Wishlist.ts ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["Wishlist"] = __webpack_require__(/*! -!./node_modules/ts-loader!./Wishlist.ts */ "./node_modules/ts-loader/index.js!./Views/Wishlist/Wishlist.ts");
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
@@ -63348,7 +63361,7 @@ var table;
 var filters;
 function initList() {
     //initFilters();
-    table = $("#book-table").DataTable({
+    table = $("#mybook-table").DataTable({
         order: [[1, "asc"]],
         ajax: {
             url: "https://localhost:5001/MyBooks/BuildList",
@@ -63509,6 +63522,93 @@ var test = 1;
 console.log(test);
 console.log(_Layout_1.Layout.init.toString());
 
+
+/***/ }),
+
+/***/ "./node_modules/ts-loader/index.js!./Views/Wishlist/Wishlist.ts":
+/*!*************************************************************!*\
+  !*** ./node_modules/ts-loader!./Views/Wishlist/Wishlist.ts ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+Object.defineProperty(exports, "__esModule", { value: true });
+var table;
+var filters;
+function initList() {
+    //initFilters();
+    table = $("#wishlist-table").DataTable({
+        order: [[1, "asc"]],
+        ajax: {
+            url: "https://localhost:5001/Wishlists/BuildList",
+            type: "POST",
+            data: function (data) {
+                data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
+                //data.filters = filters;
+            }
+        },
+        rowId: "id",
+        columns: [
+            {
+                className: "control",
+                render: function () { return null; }
+            },
+            { "data": "title" },
+            { "data": "author" }
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                orderable: false
+            },
+            {
+                targets: 1,
+                render: function (data, type, row) {
+                    if (data) {
+                        //TODO
+                        //const url = Utils.getBaseUrl() + "Wishlist/Update?id=" + row["id"];
+                        var url = "https://localhost:5001/Wishlists/Update?id=" + row["id"];
+                        return "<a href=\"" + url + "\"})\"><div style=\"width:70%;\"><strong\">" + row["title"] + "</strong></div></a>";
+                    }
+                    return null;
+                }
+            },
+            {
+                targets: 2,
+            }
+        ]
+    });
+    $("#SearchTerm").keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which).toString();
+        if (keycode === "13") {
+            search();
+        }
+    });
+}
+exports.initList = initList;
+function search() {
+    var searchTerm = $("#SearchTerm").val().toString();
+    table.search(searchTerm).draw();
+}
+exports.search = search;
+//export function initFilters() {
+//    filters = {
+//        filterHasAgreedToUseDataForResearch: null,
+//        filterLastMeasureMoment: null
+//    };
+//    $("#filterHasAgreedToUseDataForResearch").change(() => {
+//        filters.filterHasAgreedToUseDataForResearch = $("#filterHasAgreedToUseDataForResearch").val();
+//        table.draw();
+//    });
+//    $("#filterLastMeasureMoment").on("change", () => {
+//        filters.filterLastMeasureMoment = $("#filterLastMeasureMoment").val();
+//        table.draw();
+//    });
+//}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 

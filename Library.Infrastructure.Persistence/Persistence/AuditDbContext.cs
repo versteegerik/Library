@@ -11,6 +11,11 @@ namespace Library.Infrastructure.Persistence.Persistence
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
         private DbSet<LoginAttempt> LoginAttempt { get; set; }
 
         public void Create(LoginAttempt loginAttempt) => LoginAttempt.Add(loginAttempt);

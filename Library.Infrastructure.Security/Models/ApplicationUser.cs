@@ -6,9 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Library.Infrastructure.Security.Models
 {
     [Table("AspNetUsers")]
-    public sealed class ApplicationUser : IdentityUser , IDomainUser
+    public class ApplicationUser : IdentityUser
     {
         public ApplicationUser() { }
+
+        public virtual DomainUser DomainUser { get; set; }
 
         public ApplicationUser(CreateApplicationUserRequest createApplicationUserRequest) : this()
         {

@@ -3,7 +3,6 @@ using Library.Domain.Models;
 using Library.Domain.Models.Requests;
 using Library.Domain.Models.Requests.Validators;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Library.Domain.Services
@@ -22,10 +21,15 @@ namespace Library.Domain.Services
             return Persistence.Books.Single(_ => _.Id == id);
         }
 
+        public IQueryable<Book> GetAllBooks()
+        {
+            return Persistence.Books
+                .OrderBy(_ => _.Title);
+        }
+
         public IQueryable<Book> GetBooksForUser(DomainUser domainUser)
         {
-            return Persistence.Books.Where(_ => _.Owner.Id == domainUser.Id)
-                .OrderBy(_ => _.Title);
+            return Persistence.UserBookInformations.Where(ubi => ubi.DomainUser == domainUser).Select(ubi => ubi.Book);
         }
 
         public void CreateBook(CreateBookRequest request, DomainUser owner)

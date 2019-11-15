@@ -347,5 +347,14 @@ namespace Library.Application.Web.Properties {
                 return ResourceManager.GetString("View_Person_Overview", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wensenlijst.
+        /// </summary>
+        public static string Wishlist {
+            get {
+                return ResourceManager.GetString("Wishlist", resourceCulture);
+            }
+        }
     }
 }

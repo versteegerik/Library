@@ -215,4 +215,7 @@
   <data name="Home_Index_Books" xml:space="preserve">
     <value>Alle Boeken</value>
   </data>
+  <data name="Wishlist" xml:space="preserve">
+    <value>Wensenlijst</value>
+  </data>
 </root>

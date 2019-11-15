@@ -12,6 +12,11 @@ namespace Library.Application.Persistence
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
         private DbSet<NewsMessage> NewsMessagesDbSet { get; set; }
 
         public IQueryable<NewsMessage> NewsMessages => NewsMessagesDbSet.AsQueryable();

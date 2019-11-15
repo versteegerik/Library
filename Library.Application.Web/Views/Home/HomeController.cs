@@ -1,16 +1,17 @@
 ﻿using Library.Application.Services;
 using Library.Application.Web.Common;
 using Library.Application.Web.Models;
+using Library.Infrastructure.Security.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace Library.Application.Web.Views.Home
 {
-    public class HomeController : BaseController
+    public class HomeController : LoggedInController
     {
         private readonly NewsMessageService _newsMessageService;
 
-        public HomeController(NewsMessageService newsMessageService)
+        public HomeController(NewsMessageService newsMessageService, CurrentUserService cus) : base(cus)
         {
             _newsMessageService = newsMessageService;
         }

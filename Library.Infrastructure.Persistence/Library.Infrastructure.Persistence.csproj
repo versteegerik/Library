@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
   </ItemGroup>
 
@@ -20,6 +21,12 @@
     <None Update="Data\Updatescripts\Audit\Updatescript_v20190724_01_AddAudit.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Data\Updatescripts\Domain\Updatescript_v20191114_01_Add_DomainUser.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Updatescripts\Domain\Updatescript_v20191114_02_Add_UserBookInformation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Updatescripts\Security\Updatescript_v20181125_01_Identity.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -27,6 +34,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Updatescripts\Application\Updatescript_v20190503_02_NewsMessages.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Updatescripts\Security\Updatescript_v20191114_03_AddDomainUserToApplicationUser.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Updatescripts\Security\Updatescript_v20190503_03_AddDiscriminator.sql">

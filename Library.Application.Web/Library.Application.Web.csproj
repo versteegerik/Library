@@ -26,6 +26,7 @@
     <None Remove="Views\Shared\_Layout.js" />
     <None Remove="Views\Shared\_Layout.ts" />
     <None Remove="Views\Users\Users.ts" />
+    <None Remove="Views\Wishlist\Wishlist.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +39,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,6 +117,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Views\Users\Users.ts" />
+    <TypeScriptCompile Include="Views\Wishlist\Wishlist.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
