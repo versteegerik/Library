@@ -40,10 +40,13 @@ namespace Library.Domain.Services
             }
 
             var book = new Book(request);
-            var ubi = new UserBookInformation {Book = book};
-            domainUser.UserBookInformations.Add(ubi);
+            if (request.AddToWishlist || request.AddToMyBooks)
+            {
+                var ubi = new UserBookInformation(book, request.AddToWishlist);
+                domainUser.UserBookInformations.Add(ubi);
+                Persistence.Update(domainUser);
+            }
 
-            Persistence.Update(domainUser);
             Persistence.Create(book);
         }
 
