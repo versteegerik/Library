@@ -16,7 +16,9 @@ namespace Library.Domain.Models.Requests
 
     public class CreateBookRequest : BookRequest
     {
+        [Display(Name = "Book_AddToWishlist", ResourceType = typeof(DomainResources))]
         public bool AddToWishlist { get; set; }
+        [Display(Name = "Book_AddToMyBooks", ResourceType = typeof(DomainResources))]
         public bool AddToMyBooks { get; set; }
     }
 

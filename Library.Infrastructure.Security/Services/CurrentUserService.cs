@@ -1,4 +1,5 @@
-﻿using Library.Domain.Common;
+﻿using System;
+using Library.Domain.Common;
 using Library.Domain.Models;
 using Library.Infrastructure.Security.Models;
 using Library.Infrastructure.Security.Persistence;
@@ -10,7 +11,7 @@ namespace Library.Infrastructure.Security.Services
     public class CurrentUserService
     {
         public ApplicationUser CurrentApplicationUser { get; }
-        public DomainUser CurrentDomainUser => CurrentApplicationUser?.DomainUser;
+        public DomainUser CurrentDomainUser => CurrentApplicationUser?.DomainUser ?? throw new Exception("DomainUser does not exists");
 
         public CurrentUserService(IHttpContextAccessor httpContextAccessor, ISecurityPersistence securityPersistence, IDomainPersistence domainPersistence)
         {

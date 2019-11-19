@@ -171,4 +171,10 @@
   <data name="Book_Isbn" xml:space="preserve">
     <value>ISBN</value>
   </data>
+  <data name="Book_AddToMyBooks" xml:space="preserve">
+    <value>Toevoegen aan mijn boeken</value>
+  </data>
+  <data name="Book_AddToWishlist" xml:space="preserve">
+    <value>Toevoegen aan wensenlijst</value>
+  </data>
 </root>

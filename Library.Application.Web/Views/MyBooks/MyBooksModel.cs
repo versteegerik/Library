@@ -1,9 +1,9 @@
-﻿using Library.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Library.Domain.Models;
 
-namespace Library.Application.Web.Views.Books
+namespace Library.Application.Web.Views.MyBooks
 {
     public class MyBookListViewModel
     {

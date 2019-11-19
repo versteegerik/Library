@@ -1,15 +1,16 @@
-﻿using FeedbackApp.Web.Views.Shared.DataTables;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using FeedbackApp.Web.Views.Shared.DataTables;
 using Library.Application.Web.Common;
+using Library.Application.Web.Views.Books;
 using Library.Domain.Models;
 using Library.Domain.Models.Requests;
 using Library.Domain.Services;
 using Library.Infrastructure.Security.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
 
-namespace Library.Application.Web.Views.Books
+namespace Library.Application.Web.Views.MyBooks
 {
     public class MyBooksController : LoggedInController
     {

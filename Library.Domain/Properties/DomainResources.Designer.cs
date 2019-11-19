@@ -133,6 +133,24 @@ namespace Library.Domain.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toevoegen aan mijn boeken.
+        /// </summary>
+        public static string Book_AddToMyBooks {
+            get {
+                return ResourceManager.GetString("Book_AddToMyBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toevoegen aan wensenlijst.
+        /// </summary>
+        public static string Book_AddToWishlist {
+            get {
+                return ResourceManager.GetString("Book_AddToWishlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auteur.
         /// </summary>
         public static string Book_Author {
