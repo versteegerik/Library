@@ -27,9 +27,26 @@ namespace Library.Domain.Services
                 .OrderBy(_ => _.Title);
         }
 
-        public IQueryable<Book> GetBooksForUser(DomainUser domainUser)
+        public IQueryable<Book> GetBooksForUser(DomainUser currentDomainUser)
         {
-            return Persistence.DomainUsers.Single(d => d.Id == domainUser.Id).UserBookInformations.Select(ubi => ubi.Book).AsQueryable();
+            return Persistence.DomainUsers
+                .Single(d => d.Id == currentDomainUser.Id)
+                .UserBookInformations
+                .Where(ubi => !ubi.OnWishlist)
+                .Select(ubi => ubi.Book)
+                .OrderBy(_ => _.Title)
+                .AsQueryable();
+        }
+
+        public IQueryable<Book> GetBookWishlistForUser(DomainUser currentDomainUser)
+        {
+            return Persistence.DomainUsers
+                .Single(d => d.Id == currentDomainUser.Id)
+                .UserBookInformations
+                .Where(ubi => ubi.OnWishlist)
+                .Select(ubi => ubi.Book)
+                .OrderBy(_ => _.Title)
+                .AsQueryable();
         }
 
         public void CreateBook(CreateBookRequest request, DomainUser domainUser)
@@ -40,14 +57,14 @@ namespace Library.Domain.Services
             }
 
             var book = new Book(request);
+            Persistence.Create(book);
+
             if (request.AddToWishlist || request.AddToMyBooks)
             {
                 var ubi = new UserBookInformation(book, request.AddToWishlist);
                 domainUser.UserBookInformations.Add(ubi);
                 Persistence.Update(domainUser);
             }
-
-            Persistence.Create(book);
         }
 
         public void UpdateBook(UpdateBookRequest request)

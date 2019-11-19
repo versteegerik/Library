@@ -98,7 +98,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //NPM packages
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed");
+__webpack_require__(/*! expose-loader?$!jquery */ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js");
 __webpack_require__(/*! jquery-ajax-unobtrusive */ "./node_modules/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js");
 __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
 __webpack_require__(/*! jquery-validation-unobtrusive */ "./node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js");
@@ -121,11 +121,11 @@ __webpack_require__(/*! datatables.net-buttons-bs4/css/buttons.bootstrap4.css */
 __webpack_require__(/*! datatables.net-select-bs4/css/select.bootstrap4.css */ "./node_modules/datatables.net-select-bs4/css/select.bootstrap4.css");
 __webpack_require__(/*! datatables.net-responsive-bs4/css/responsive.bootstrap4.css */ "./node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.css");
 //Application scripts
-__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts-exposed");
-__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed");
-__webpack_require__(/*! expose-loader?Books!./../Views/Books/Books.ts */ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts-exposed");
-__webpack_require__(/*! expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts */ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed");
-__webpack_require__(/*! expose-loader?Wishlist!./../Views/Wishlist/Wishlist.ts */ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts-exposed");
+__webpack_require__(/*! expose-loader?Layout!./../Views/Shared/Layout/_Layout.ts */ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts");
+__webpack_require__(/*! expose-loader?Users!./../Views/Users/Users.ts */ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts");
+__webpack_require__(/*! expose-loader?Books!./../Views/Books/Books.ts */ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts");
+__webpack_require__(/*! expose-loader?MyBooks!./../Views/MyBooks/MyBooks.ts */ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts");
+__webpack_require__(/*! expose-loader?Wishlist!./../Views/Wishlist/Wishlist.ts */ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts");
 //Application style
 __webpack_require__(/*! ./Css/style.scss */ "./Resources/Css/style.scss");
 
@@ -30153,10 +30153,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js-exposed":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js-exposed ***!
-  \***********************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/expose-loader?$!./node_modules/jquery/dist/jquery.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30165,10 +30165,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts-exposed":
-/*!*************************************************************************!*\
-  !*** ./node_modules/expose-loader?Books!./Views/Books/Books.ts-exposed ***!
-  \*************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Books!./Views/Books/Books.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/expose-loader?Books!./Views/Books/Books.ts ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30177,10 +30177,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts-exposed":
-/*!************************************************************************************!*\
-  !*** ./node_modules/expose-loader?Layout!./Views/Shared/Layout/_Layout.ts-exposed ***!
-  \************************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Layout!./Views/Shared/Layout/_Layout.ts":
+/*!****************************************************************************!*\
+  !*** ./node_modules/expose-loader?Layout!./Views/Shared/Layout/_Layout.ts ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30189,10 +30189,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts-exposed":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/expose-loader?MyBooks!./Views/MyBooks/MyBooks.ts-exposed ***!
-  \*******************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?MyBooks!./Views/MyBooks/MyBooks.ts":
+/*!***********************************************************************!*\
+  !*** ./node_modules/expose-loader?MyBooks!./Views/MyBooks/MyBooks.ts ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30201,10 +30201,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts-exposed":
-/*!*************************************************************************!*\
-  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts-exposed ***!
-  \*************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Users!./Views/Users/Users.ts":
+/*!*****************************************************************!*\
+  !*** ./node_modules/expose-loader?Users!./Views/Users/Users.ts ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30213,10 +30213,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 
 /***/ }),
 
-/***/ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts-exposed":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/expose-loader?Wishlist!./Views/Wishlist/Wishlist.ts-exposed ***!
-  \**********************************************************************************/
+/***/ "./node_modules/expose-loader/index.js?Wishlist!./Views/Wishlist/Wishlist.ts":
+/*!**************************************************************************!*\
+  !*** ./node_modules/expose-loader?Wishlist!./Views/Wishlist/Wishlist.ts ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -63656,7 +63656,7 @@ function initList() {
     table = $("#wishlist-table").DataTable({
         order: [[1, "asc"]],
         ajax: {
-            url: "https://localhost:5001/Wishlists/BuildList",
+            url: "https://localhost:5001/Wishlist/BuildList",
             type: "POST",
             data: function (data) {
                 data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
@@ -63683,7 +63683,7 @@ function initList() {
                     if (data) {
                         //TODO
                         //const url = Utils.getBaseUrl() + "Wishlist/Update?id=" + row["id"];
-                        var url = "https://localhost:5001/Wishlists/Update?id=" + row["id"];
+                        var url = "https://localhost:5001/Wishlist/Update?id=" + row["id"];
                         return "<a href=\"" + url + "\"})\"><div style=\"width:70%;\"><strong\">" + row["title"] + "</strong></div></a>";
                     }
                     return null;

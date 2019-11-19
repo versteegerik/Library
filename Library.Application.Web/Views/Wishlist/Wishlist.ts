@@ -6,7 +6,7 @@ export function initList() {
     table = $("#wishlist-table").DataTable({
         order: [[1, "asc"]],
         ajax: {
-            url: "https://localhost:5001/Wishlists/BuildList", //Utils.getBaseUrl() + "Wishlists/BuildList",
+            url: "https://localhost:5001/Wishlist/BuildList", //Utils.getBaseUrl() + "Wishlist/BuildList",
             type: "POST",
             data(data: any) {
                 data.__RequestVerificationToken = $("input[name=__RequestVerificationToken]").val();
@@ -33,7 +33,7 @@ export function initList() {
                     if (data) {
                         //TODO
                         //const url = Utils.getBaseUrl() + "Wishlist/Update?id=" + row["id"];
-                        const url = "https://localhost:5001/Wishlists/Update?id=" + row["id"];
+                        const url = "https://localhost:5001/Wishlist/Update?id=" + row["id"];
                         return `<a href=\"${url}\"})"><div style="width:70%;"><strong">${row["title"]}</strong></div></a>`;
                     }
                     return null;

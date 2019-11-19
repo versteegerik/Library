@@ -77,7 +77,7 @@ namespace Library.Application.Web.Views.MyBooks
         [HttpGet]
         public ViewResult Create()
         {
-            return View(new CreateBookRequest());
+            return View(new CreateBookRequest {AddToMyBooks = true});
         }
 
         [HttpPost]
