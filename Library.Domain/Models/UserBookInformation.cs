@@ -1,4 +1,5 @@
-﻿using Library.Common;
+﻿using System;
+using Library.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Domain.Models
@@ -6,8 +7,10 @@ namespace Library.Domain.Models
     [Table("UserBookInformations")]
     public class UserBookInformation : BaseEntity
     {
+        public virtual Guid BookId { get; set; }
+        [ForeignKey(nameof(BookId))]
         public virtual Book Book { get; set; }
-        public virtual DomainUser DomainUser { get; set; }
+
         public bool OnWishlist { get; set; }
     }
 }

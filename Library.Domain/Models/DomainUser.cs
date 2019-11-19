@@ -7,6 +7,7 @@ namespace Library.Domain.Models
     [Table("DomainUsers")]
     public class DomainUser : BaseEntity
     {
+        //[InverseProperty(nameof(UserBookInformation.DomainUser))]
         public virtual IList<UserBookInformation> UserBookInformations { get; set; }
     }
 }

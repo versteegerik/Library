@@ -91,7 +91,7 @@ namespace Library.Application.Web.Views.MyBooks
             var domainUser = _currentUserService.CurrentDomainUser;
             _bookService.CreateBook(request, domainUser);
 
-            return RedirectToAction("Index", "Books");
+            return RedirectToAction("Index", "MyBooks");
         }
 
         [HttpGet]
@@ -111,7 +111,7 @@ namespace Library.Application.Web.Views.MyBooks
 
             _bookService.UpdateBook(request);
 
-            return RedirectToAction("Index", "Books");
+            return RedirectToAction("Index", "MyBooks");
         }
 
         [HttpGet]
@@ -127,7 +127,7 @@ namespace Library.Application.Web.Views.MyBooks
         {
             _bookService.DeleteBook(request);
 
-            return RedirectToAction("Index", "Books");
+            return RedirectToAction("Index", "MyBooks");
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Library.Common;
 using Library.Domain.Models.Requests;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Domain.Models
@@ -11,7 +10,6 @@ namespace Library.Domain.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string Isbn { get; set; }
-        public virtual IList<UserBookInformation> UserBookInformations { get; set; }
 
         public Book() { }
 

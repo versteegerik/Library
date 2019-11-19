@@ -27,8 +27,6 @@ namespace Library.Infrastructure.Persistence
 
         public IQueryable<Book> Books => BooksDbSet.AsQueryable();
 
-        public IQueryable<DomainUser> DomainUsers => DomainUsersDbSet.AsQueryable();
-
         public IQueryable<UserBookInformation> UserBookInformations => UserBookInformationDbSet.AsQueryable();
 
         public void Create(Book book) => BooksDbSet.Add(book);
@@ -36,6 +34,13 @@ namespace Library.Infrastructure.Persistence
         public void Update(Book book) => BooksDbSet.Update(book);
 
         public void Delete(Book book) => BooksDbSet.Remove(book);
+
+
+        public IQueryable<DomainUser> DomainUsers => DomainUsersDbSet.AsQueryable();
+        public void Update(DomainUser domainUser) => DomainUsersDbSet.Update(domainUser);
+
+
+        public void Create(UserBookInformation userBookInformation) => UserBookInformationDbSet.Add(userBookInformation);
 
         public async Task SaveChangesAsync() => await base.SaveChangesAsync();
     }

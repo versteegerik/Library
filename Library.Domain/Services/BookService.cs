@@ -29,10 +29,10 @@ namespace Library.Domain.Services
 
         public IQueryable<Book> GetBooksForUser(DomainUser domainUser)
         {
-            return Persistence.UserBookInformations.Where(ubi => ubi.DomainUser == domainUser).Select(ubi => ubi.Book);
+            return Persistence.DomainUsers.Single(d => d.Id == domainUser.Id).UserBookInformations.Select(ubi => ubi.Book).AsQueryable();
         }
 
-        public void CreateBook(CreateBookRequest request, DomainUser owner)
+        public void CreateBook(CreateBookRequest request, DomainUser domainUser)
         {
             if (!new CreateBookRequestValidator().Validate(request).IsValid)
             {
@@ -40,7 +40,10 @@ namespace Library.Domain.Services
             }
 
             var book = new Book(request);
+            var ubi = new UserBookInformation {Book = book};
+            domainUser.UserBookInformations.Add(ubi);
 
+            Persistence.Update(domainUser);
             Persistence.Create(book);
         }
 
