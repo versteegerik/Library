@@ -13,9 +13,9 @@ namespace Library.Domain.Models
         public string Isbn { get; set; }
         public virtual IList<UserBookInformation> UserBookInformations { get; set; }
 
-        private Book() { }
+        public Book() { }
 
-        public Book(CreateBookRequest request, DomainUser owner) : this()
+        public Book(CreateBookRequest request) : this()
         {
             Title = request.Title;
             Author = request.Author;

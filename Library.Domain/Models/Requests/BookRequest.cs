@@ -16,6 +16,8 @@ namespace Library.Domain.Models.Requests
 
     public class CreateBookRequest : BookRequest
     {
+        public bool AddToWishlist { get; set; }
+        public bool AddToMyBooks { get; set; }
     }
 
     public class UpdateBookRequest : BookRequest

@@ -39,7 +39,7 @@ namespace Library.Domain.Services
                 throw new Exception("CreateBook validation error");
             }
 
-            var book = new Book(request, owner);
+            var book = new Book(request);
 
             Persistence.Create(book);
         }

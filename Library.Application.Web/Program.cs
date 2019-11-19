@@ -19,6 +19,7 @@ namespace Library.Application.Web
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile($"appsettings.{environment}.json")
+                .AddUserSecrets<Startup>()
                 .Build();
 
             DatabaseInitialize(configuration);
