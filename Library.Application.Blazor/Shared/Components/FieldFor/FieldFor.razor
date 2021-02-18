@@ -1,0 +1,35 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Linq.Expressions
+@using System.Reflection
+
+@typeparam TValue
+
+<div class="editor-line">
+    @if (LabelOverride != null)
+    {
+        <label class="editor-label">@LabelOverride</label>
+    }
+    else
+    {
+        <label class="editor-label">@GetDisplayName()</label>
+    }
+    <div class="editor-field">@Field</div>
+</div>
+
+@code {
+    [CascadingParameter] private EditContext CascadedEditContext { get; set; }
+
+    [Parameter] public TValue Value { get; set; }
+    [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
+    [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+
+    [Parameter] public RenderFragment LabelOverride { get; set; }
+    [Parameter] public RenderFragment Field { get; set; }
+
+    private string GetDisplayName()
+    {
+        var expression = (MemberExpression)ValueExpression.Body;
+        var value = expression.Member.GetCustomAttribute(typeof(DisplayAttribute)) as DisplayAttribute;
+        return value?.GetName() ?? expression.Member.Name;
+    }
+}

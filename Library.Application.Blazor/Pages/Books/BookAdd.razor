@@ -1,0 +1,41 @@
+﻿@page "/Books/Add"
+
+@inject BookService BookService
+@inject NavigationManager NavigationManager
+
+<h1>
+    @string.Format(Resources.Format_Add, Resources.Book)
+    <div class="btn-group float-right" role="group">
+        <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
+        <button class="btn btn-primary" type="button" @onclick="AddNewBook">@Resources.Action_Save</button>
+    </div>
+</h1>
+
+<EditForm Model="@CreateBookRequest">
+    <div style="width: 800px;">
+        <FieldFor @bind-Value="CreateBookRequest.Title">
+            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Title"></RadzenTextBox></Field>
+        </FieldFor>
+        <FieldFor @bind-Value="CreateBookRequest.Author">
+            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Author"></RadzenTextBox></Field>
+        </FieldFor>
+        <FieldFor @bind-Value="CreateBookRequest.Isbn">
+            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
+        </FieldFor>
+    </div>
+</EditForm>
+
+@code {
+    private CreateBookRequest CreateBookRequest = new CreateBookRequest();
+    void GoBack()
+    {
+        NavigationManager.NavigateTo("Books");
+    }
+
+    void AddNewBook()
+    {
+        var newBookId = BookService.CreateBook(CreateBookRequest);
+
+        NavigationManager.NavigateTo($"Books/book/{newBookId}");
+    }
+}

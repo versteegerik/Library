@@ -1,0 +1,45 @@
+﻿@page "/Books"
+
+@inject BookService BookService
+@inject NavigationManager NavigationManager
+
+<h3>
+    @Resources.Books
+    <div class="btn-group float-right" role="group">
+        <button class="btn btn-primary" type="button" @onclick="AddNewBook">@string.Format(Resources.Format_Add, Resources.Book)</button>
+    </div>
+</h3>
+<hr />
+<div class="container-fluid">
+    <DataTable @ref="BookDataTable" FetchData="@GetBooks">
+        <TableHeader>
+            <th>@Resources.Book_Title</th>
+            <th>@Resources.Book_Author</th>
+        </TableHeader>
+        <TableRow Context="book">
+            <td><NavLink class="nav-link" href="@($"Books/book/{book.Id}")">@book.Title</NavLink></td>
+            <td>@book.Author</td>
+        </TableRow>
+    </DataTable>
+</div>
+
+@code {
+    private DataTable<Book> BookDataTable { get; set; } = new DataTable<Book>();
+    private List<Book> AllBooks = new List<Book>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        AllBooks = BookService.GetAllBooks().ToList();
+        await BookDataTable.SelectPage(0);
+    }
+
+    DataTableResult<Book> GetBooks()
+    {
+        return new DataTableResult<Book>(BookDataTable.CallNumber, AllBooks.AsQueryable(), BookDataTable.CurrentPage, BookDataTable.PageSize);
+    }
+
+    void AddNewBook()
+    {
+        NavigationManager.NavigateTo("books/add");
+    }
+}

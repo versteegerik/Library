@@ -1,0 +1,112 @@
+﻿@typeparam TItem
+
+<h3>
+    @Header
+</h3>
+<div>
+    @SearchArea
+</div>
+<table class="table">
+    <thead>
+        <tr>@TableHeader</tr>
+    </thead>
+    <tbody>
+@if (IsLoading)
+{
+        <tr>@Resources.Action_Loading</tr>
+}
+else
+{
+    @foreach (var item in Items)
+    {
+        <tr>@TableRow(item)</tr>
+    }
+}
+    </tbody>
+@if (AmountOfItems > PageSize)
+{
+    <tfoot>
+        <tr>
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary" disabled="@(CurrentPage == 0)" @onclick="PreviousPage">
+                    <span class="oi oi-chevron-left" aria-hidden="true"></span>
+                    <span class="d-none d-sm-block">@Resources.Action_Previous</span>
+                </button>
+                @for (var i = 0; i < AmountOfPages; i++)
+                {
+                    var iAsString = i.ToString();
+                    <button class="btn @(CurrentPage == i ?  "btn-info" : "btn-outline-info")" @onclick="async () => await SelectPage(int.Parse(iAsString))">@(i + 1)</button>
+                }
+                <button class="btn btn-outline-secondary" disabled="@(CurrentPage == AmountOfPages - 1)" @onclick="NextPage">
+                    <span class="oi oi-chevron-right" aria-hidden="true"></span>
+                    <span class="d-none d-sm-block">@Resources.Action_Next</span>
+                </button>
+            </div>
+        </tr>
+    </tfoot>
+}
+</table>
+
+@functions {
+    [Parameter]
+    public string Header { get; set; }
+    [Parameter]
+    public RenderFragment SearchArea { get; set; }
+    [Parameter]
+    public RenderFragment TableHeader { get; set; }
+    [Parameter]
+    public RenderFragment<TItem> TableRow { get; set; }
+    [Parameter]
+    public Func<DataTableResult<TItem>> FetchData { get; set; }
+    [Parameter]
+    public Func<Task<DataTableResult<TItem>>> FetchDataAsync { get; set; }
+
+    [Parameter]
+    public int CallNumber { get; set; }
+    [Parameter]
+    public int CurrentPage { get; set; } = -1;
+    private int _pageSize = 10;
+    [Parameter]
+    public int PageSize
+    {
+        get => _pageSize;
+        set => _pageSize = value == 0 ? 10 : value;
+    }
+    private int AmountOfItems;
+    private int AmountOfPages = 1;
+
+    private IList<TItem> Items { get; set; } = new List<TItem>();
+    private bool IsLoading = true;
+
+    public async Task SelectPage(int page)
+    {
+        CurrentPage = page;
+        CallNumber++;
+        IsLoading = true;
+        StateHasChanged();
+
+        var result = FetchData != null ? FetchData.Invoke() : await FetchDataAsync.Invoke();
+        if (result.CallNumber == CallNumber)
+        {
+            AmountOfItems = result.MaxItems;
+            Items = result.Results;
+            AmountOfPages = (int)Math.Ceiling(AmountOfItems / ((decimal)PageSize));
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (CurrentPage == 0) return;
+
+        await SelectPage(CurrentPage - 1);
+    }
+
+    private async Task NextPage()
+    {
+        if (CurrentPage == AmountOfPages - 1) return;
+
+        await SelectPage(CurrentPage + 1);
+    }
+}
