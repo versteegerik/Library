@@ -1,0 +1,83 @@
+﻿@page "/Books/Read/{BookId:guid}"
+@inject BookService BookService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @Resources.Details
+        @if (IsReadMode)
+        {
+            <div class="btn-group float-right" role="group">
+                <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Back</button>
+                <button class="btn btn-primary" type="button" @onclick="UpdateBook">@Resources.Action_Update</button>
+            </div>
+        }
+        else
+        {
+            <div class="btn-group float-right" role="group">
+                <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
+                <button class="btn btn-primary" type="button" @onclick="SaveUpdateBook">@Resources.Action_Save</button>
+            </div>
+        }
+    </h1>
+
+    @if (IsReadMode)
+    {
+        if (Book != null)
+        {
+            <FieldDisplayFor @bind-Value="Book.Title"></FieldDisplayFor>
+            <FieldDisplayFor @bind-Value="Book.Author"></FieldDisplayFor>
+            <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
+        }
+        else
+        {
+            @Resources.Action_Loading
+        }
+    }
+    else
+    {
+        <EditForm Model="@UpdateBookRequest">
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Title"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Author"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
+            </FieldEditorFor>
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter] public Guid BookId { get; set; }
+    private Book Book { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Book = BookService.GetBookById(BookId);
+    }
+    void GoBack()
+    {
+        NavigationManager.NavigateTo("Books");
+    }
+
+    private bool IsReadMode = true;
+    private UpdateBookRequest UpdateBookRequest = new UpdateBookRequest();
+    void UpdateBook()
+    {
+        UpdateBookRequest = new UpdateBookRequest(Book);
+        IsReadMode = false;
+    }
+    void CancelUpdateBook()
+    {
+        IsReadMode = true;
+    }
+    void SaveUpdateBook()
+    {
+        BookService.UpdateBook(UpdateBookRequest);
+        Book = BookService.GetBookById(BookId);
+        IsReadMode = true;
+    }
+}

@@ -1,0 +1,77 @@
+﻿@using System.Collections
+@using System.ComponentModel.DataAnnotations
+@using System.Linq.Expressions
+@using System.Reflection
+
+@typeparam TValue
+
+<div class="display-line">
+    @if (LabelOverride != null)
+    {
+        <label class="display-label">@LabelOverride</label>
+    }
+    else
+    {
+        <label class="display-label">@GetDisplayName()</label>
+    }
+    @if (ValueOverride != null)
+    {
+        <div class="display-field">@ValueOverride</div>
+    }
+    else
+    {
+        <div class="display-field">@ValueAsString</div>
+    }
+</div>
+
+@code {
+    [Parameter] public TValue Value { get; set; }
+    [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
+    [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+
+    [Parameter] public RenderFragment LabelOverride { get; set; }
+    [Parameter] public string ValueOverride { get; set; }
+
+    private string GetDisplayName()
+    {
+        var expression = (MemberExpression)ValueExpression.Body;
+        var value = expression.Member.GetCustomAttribute(typeof(DisplayAttribute)) as DisplayAttribute;
+        return value?.GetName() ?? expression.Member.Name;
+    }
+
+    private string ValueAsString
+    {
+        get
+        {
+            if (Value == null)
+            {
+                return "- - -";
+            }
+
+            var valueAsString = Convert.ToString(Value);
+            if (IsDate())
+            {
+                return Convert.ToDateTime(Value).ToString("dd-MM-yyyy");
+            }
+            else if (IsBoolean())
+            {
+                valueAsString = Convert.ToBoolean(Value) ? "ja" : "nee";
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(typeof(TValue)) && typeof(TValue) != typeof(string))
+            {
+                valueAsString = string.Empty;
+                foreach (var item in ((IEnumerable)Value))
+                {
+                    valueAsString += Convert.ToString(item) + Environment.NewLine;
+                }
+            }
+
+            return valueAsString;
+        }
+    }
+
+    private static bool IsBoolean() => typeof(TValue) == typeof(bool);
+    private static bool IsDate() => typeof(TValue) == typeof(DateTime);
+
+
+}

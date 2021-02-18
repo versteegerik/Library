@@ -199,3 +199,21 @@ app {
     display: inline-block;
     width: 59%;
 }
+
+.display-line {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5px;
+}
+
+.display-label {
+    display: inline-block;
+    width: 40%;
+    font-weight: bold;
+}
+
+.display-field {
+    display: inline-block;
+    width: 59%;
+}

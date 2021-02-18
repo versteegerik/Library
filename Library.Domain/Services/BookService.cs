@@ -31,5 +31,17 @@ namespace Library.Domain.Services
             Persistence.Commit();
             return book.Id;
         }
+        public void UpdateBook(UpdateBookRequest request)
+        {
+            Persistence.BeginTransaction();
+            if (!new UpdateBookRequestValidator().Validate(request).IsValid)
+            {
+                throw new Exception("UpdateBook validation error");
+            }
+
+            var book = GetBookById(request.Id);
+            book.Update(request);
+            Persistence.Commit();
+        }
     }
 }

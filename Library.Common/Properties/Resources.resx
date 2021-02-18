@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
   <data name="Action_Cancel" xml:space="preserve">
     <value>Annuleren</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Action_Save" xml:space="preserve">
     <value>Opslaan</value>
   </data>
+  <data name="Action_Update" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
   <data name="Book" xml:space="preserve">
     <value>Boek</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="Book_Title" xml:space="preserve">
     <value>Titel</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="Format_Add" xml:space="preserve">
     <value>{0} toevoegen</value>

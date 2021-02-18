@@ -11,4 +11,12 @@ namespace Library.Domain.Validators
             RuleFor(r => r.Author).NotEmpty();
         }
     }
+    public class UpdateBookRequestValidator : AbstractValidator<UpdateBookRequest>
+    {
+        public UpdateBookRequestValidator()
+        {
+            RuleFor(r => r.Title).NotEmpty();
+            RuleFor(r => r.Author).NotEmpty();
+        }
+    }
 }
