@@ -9,6 +9,8 @@ namespace Library.Domain.Requests
     {
         [Display(Name = nameof(Resources.Book_Title), ResourceType = typeof(Resources))]
         public string Title { get; set; }
+        [Display(Name = nameof(Resources.Book_AlternativeTitle), ResourceType = typeof(Resources))]
+        public string AlternativeTitle { get; set; }
         [Display(Name = nameof(Resources.Book_Author), ResourceType = typeof(Resources))]
         public string Author { get; set; }
         [Display(Name = nameof(Resources.Book_Isbn), ResourceType = typeof(Resources))]
@@ -30,6 +32,7 @@ namespace Library.Domain.Requests
         {
             Id = book.Id;
             Title = book.Title;
+            AlternativeTitle = book.AlternativeTitle;
             Author = book.Author;
             Isbn = book.Isbn;
         }

@@ -13,9 +13,15 @@
         <div class="clearfix"></div>
     </h1>
     <div class="clearfix"></div>
-    <EditForm Model="@CreateBookRequest">
+    <EditForm Model="@CreateBookRequest" OnValidSubmit="@AddNewBook">
+        <ValidationSummary />
+        <PeterLeslieMorris.Blazor.Validation.Validate />
+
         <FieldEditorFor @bind-Value="CreateBookRequest.Title">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Title"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateBookRequest.AlternativeTitle">
+            <Field><RadzenTextBox @bind-Value="CreateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Author">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Author"></RadzenTextBox></Field>
@@ -23,6 +29,7 @@
         <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
         </FieldEditorFor>
+        <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
     </EditForm>
 </div>
 

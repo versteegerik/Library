@@ -37,8 +37,14 @@
     else
     {
         <EditForm Model="@UpdateBookRequest">
+            <ValidationSummary/>
+            <PeterLeslieMorris.Blazor.Validation.Validate />
+
             <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
                 <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Title"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.AlternativeTitle">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
             </FieldEditorFor>
             <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
                 <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Author"></RadzenTextBox></Field>

@@ -9,6 +9,8 @@ namespace Library.Domain.Models
     {
         [Display(Name = nameof(Resources.Book_Title), ResourceType = typeof(Resources))]
         public virtual string Title { get; set; }
+        [Display(Name = nameof(Resources.Book_AlternativeTitle), ResourceType = typeof(Resources))]
+        public virtual string AlternativeTitle { get; set; }
         [Display(Name = nameof(Resources.Book_Author), ResourceType = typeof(Resources))]
         public virtual string Author { get; set; }
         [Display(Name = nameof(Resources.Book_Isbn), ResourceType = typeof(Resources))]
@@ -19,6 +21,7 @@ namespace Library.Domain.Models
         public Book(CreateBookRequest request) : this()
         {
             Title = request.Title;
+            AlternativeTitle = request.AlternativeTitle;
             Author = request.Author;
             Isbn = request.Isbn;
         }
@@ -26,6 +29,7 @@ namespace Library.Domain.Models
         public virtual void Update(UpdateBookRequest request)
         {
             Title = request.Title;
+            AlternativeTitle = request.AlternativeTitle;
             Author = request.Author;
             Isbn = request.Isbn;
         }

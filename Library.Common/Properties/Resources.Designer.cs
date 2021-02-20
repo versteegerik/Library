@@ -133,6 +133,15 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alternatieve titel.
+        /// </summary>
+        public static string Book_AlternativeTitle {
+            get {
+                return ResourceManager.GetString("Book_AlternativeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auteur.
         /// </summary>
         public static string Book_Author {

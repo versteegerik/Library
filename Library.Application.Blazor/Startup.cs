@@ -1,12 +1,14 @@
-using Library.Application.Blazor.Data;
+using FluentValidation.AspNetCore;
+using Library.Common.Properties;
 using Library.Domain.Services;
+using Library.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PeterLeslieMorris.Blazor.Validation;
 using System.Reflection;
 using Versteey.Infrastructure.Persistence.NHibernatePersistence;
 
@@ -26,9 +28,14 @@ namespace Library.Application.Blazor
         public void ConfigureServices(IServiceCollection services)
         {
             var assembly = Assembly.GetAssembly(typeof(BookService));
+            services.AddMvc()
+                .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(Resources)); })
+                .AddFluentValidation();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddFormValidation(config => config.AddDataAnnotationsValidation().AddFluentValidation(typeof(CreateBookRequestValidator).Assembly));
+
 
             //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

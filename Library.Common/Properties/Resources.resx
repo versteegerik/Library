@@ -144,6 +144,9 @@
   <data name="Books" xml:space="preserve">
     <value>Boeken</value>
   </data>
+  <data name="Book_AlternativeTitle" xml:space="preserve">
+    <value>Alternatieve titel</value>
+  </data>
   <data name="Book_Author" xml:space="preserve">
     <value>Auteur</value>
   </data>
