@@ -1,0 +1,58 @@
+﻿@page "/Authors/Update/{AuthorId:guid}"
+
+@inject AuthorService AuthorService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @string.Format(Resources.Format_Add, Resources.Author)
+    </h1>
+    @if (UpdateAuthorRequest != null)
+    {
+        <EditForm Model="@UpdateAuthorRequest" OnValidSubmit="@UpdateAuthor">
+            <ValidationSummary />
+            <PeterLeslieMorris.Blazor.Validation.Validate />
+
+        <FieldEditorFor @bind-Value="UpdateAuthorRequest.Initials">
+            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.Initials"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="UpdateAuthorRequest.FirstNames">
+            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.FirstNames"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="UpdateAuthorRequest.Prefix">
+            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.Prefix"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="UpdateAuthorRequest.LastName">
+            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.LastName"></RadzenTextBox></Field>
+        </FieldEditorFor>
+            <div class="btn-group float-right" role="group">
+                <button class="btn btn-danger" type="button" @onclick="CancelUpdateAuthor">@Resources.Action_Cancel</button>
+                <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
+            </div>
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter] public Guid AuthorId { get; set; }
+    private UpdateAuthorRequest UpdateAuthorRequest;
+    private Author Author { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Author = AuthorService.GetAuthorById(AuthorId);
+        UpdateAuthorRequest = new UpdateAuthorRequest(Author);
+    }
+
+    void CancelUpdateAuthor()
+    {
+        NavigationManager.NavigateTo($"Authors/Read/{AuthorId}");
+    }
+
+    void UpdateAuthor()
+    {
+        AuthorService.UpdateAuthor(UpdateAuthorRequest);
+
+        CancelUpdateAuthor();
+    }
+}

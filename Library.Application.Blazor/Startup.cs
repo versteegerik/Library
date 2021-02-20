@@ -51,6 +51,7 @@ namespace Library.Application.Blazor
             services.AddNHibernate(Configuration.GetConnectionString("DefaultConnection"), assembly);
 
             //Domain Services
+            services.AddTransient<AuthorService>();
             services.AddTransient<BookService>();
         }
 

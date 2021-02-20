@@ -124,6 +124,69 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auteur.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voornamen.
+        /// </summary>
+        public static string Author_FirstNames {
+            get {
+                return ResourceManager.GetString("Author_FirstNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volledige naam.
+        /// </summary>
+        public static string Author_FullName {
+            get {
+                return ResourceManager.GetString("Author_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initialen.
+        /// </summary>
+        public static string Author_Initials {
+            get {
+                return ResourceManager.GetString("Author_Initials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Achternaam.
+        /// </summary>
+        public static string Author_LastName {
+            get {
+                return ResourceManager.GetString("Author_LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tussenvoegsel.
+        /// </summary>
+        public static string Author_Prefix {
+            get {
+                return ResourceManager.GetString("Author_Prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auteurs.
+        /// </summary>
+        public static string Authors {
+            get {
+                return ResourceManager.GetString("Authors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boek.
         /// </summary>
         public static string Book {

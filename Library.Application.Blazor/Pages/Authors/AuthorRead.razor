@@ -1,0 +1,42 @@
+﻿@page "/Authors/Read/{AuthorId:guid}"
+@inject AuthorService AuthorService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @Resources.Details
+        <div class="btn-group float-right" role="group">
+            <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Back</button>
+            <button class="btn btn-primary" type="button" @onclick="UpdateAuthor">@Resources.Action_Update</button>
+        </div>
+    </h1>
+    @if (Author != null)
+    {
+        <FieldDisplayFor @bind-Value="Author.Initials"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Author.FirstNames"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Author.Prefix"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Author.LastName"></FieldDisplayFor>
+    }
+    else
+    {
+        @Resources.Action_Loading
+    }
+</div>
+
+@code {
+    [Parameter] public Guid AuthorId { get; set; }
+    private Author Author { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Author = AuthorService.GetAuthorById(AuthorId);
+    }
+    void GoBack()
+    {
+        NavigationManager.NavigateTo("Authors");
+    }
+    void UpdateAuthor()
+    {
+        NavigationManager.NavigateTo($"Authors/Update/{Author.Id}");
+    }
+}

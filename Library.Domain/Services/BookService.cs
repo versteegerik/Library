@@ -11,20 +11,18 @@ namespace Library.Domain.Services
     {
         public BookService(IPersistence persistence) : base(persistence) { }
 
-        public Book GetBookById(Guid id)
-        {
-            return Persistence.GetById<Book>(id);
-        }
+        public Book GetBookById(Guid id) => Persistence.GetById<Book>(id);
 
         public IQueryable<Book> GetAllBooks() => Persistence.Query<Book>().OrderBy(_ => _.Title);
 
         public Guid CreateBook(CreateBookRequest request)
         {
-            Persistence.BeginTransaction();
             if (!new CreateBookRequestValidator().Validate(request).IsValid)
             {
                 throw new Exception("CreateBook validation error");
             }
+
+            Persistence.BeginTransaction();
 
             var book = new Book(request);
             Persistence.Create(book);

@@ -1,0 +1,47 @@
+﻿@page "/Authors/Create"
+
+@inject AuthorService AuthorService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @string.Format(Resources.Format_Add, Resources.Author)
+    </h1>
+    <div class="clearfix"></div>
+    <EditForm Model="@CreateAuthorRequest" OnValidSubmit="@AddNewAuthor">
+        <ValidationSummary />
+        <PeterLeslieMorris.Blazor.Validation.Validate />
+
+        <FieldEditorFor @bind-Value="CreateAuthorRequest.Initials">
+            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.Initials"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateAuthorRequest.FirstNames">
+            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.FirstNames"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateAuthorRequest.Prefix">
+            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.Prefix"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateAuthorRequest.LastName">
+            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.LastName"></RadzenTextBox></Field>
+        </FieldEditorFor>
+        <div class="btn-group float-right" role="group">
+            <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
+            <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    private CreateAuthorRequest CreateAuthorRequest = new CreateAuthorRequest();
+    void GoBack()
+    {
+        NavigationManager.NavigateTo("Authors");
+    }
+
+    void AddNewAuthor()
+    {
+        var newAuthorId = AuthorService.CreateAuthor(CreateAuthorRequest);
+
+        NavigationManager.NavigateTo($"Authors/Read/{newAuthorId}");
+    }
+}

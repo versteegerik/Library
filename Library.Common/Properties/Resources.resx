@@ -138,6 +138,27 @@
   <data name="Action_Update" xml:space="preserve">
     <value>Bewerken</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="Authors" xml:space="preserve">
+    <value>Auteurs</value>
+  </data>
+  <data name="Author_FirstNames" xml:space="preserve">
+    <value>Voornamen</value>
+  </data>
+  <data name="Author_FullName" xml:space="preserve">
+    <value>Volledige naam</value>
+  </data>
+  <data name="Author_Initials" xml:space="preserve">
+    <value>Initialen</value>
+  </data>
+  <data name="Author_LastName" xml:space="preserve">
+    <value>Achternaam</value>
+  </data>
+  <data name="Author_Prefix" xml:space="preserve">
+    <value>Tussenvoegsel</value>
+  </data>
   <data name="Book" xml:space="preserve">
     <value>Boek</value>
   </data>

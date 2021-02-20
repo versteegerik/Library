@@ -1,0 +1,44 @@
+﻿@page "/Authors"
+
+@inject AuthorService AuthorService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @Resources.Authors
+        <div class="btn-group float-right" role="group">
+            <button class="btn btn-primary" type="button" @onclick="AddNewAuthor">@string.Format(Resources.Format_Add, Resources.Author)</button>
+        </div>
+        <div class="clearfix"></div>
+    </h1>
+    <hr />
+    <DataTable @ref="AuthorDataTable" FetchData="@GetAuthors">
+        <TableHeader>
+            <th>@Resources.Author_FullName</th>
+        </TableHeader>
+        <TableRow Context="author">
+            <td><NavLink class="nav-link" href="@($"Authors/Read/{author.Id}")">@author.FullName()</NavLink></td>
+        </TableRow>
+    </DataTable>
+</div>
+
+@code {
+    private DataTable<Author> AuthorDataTable { get; set; } = new DataTable<Author>();
+    private List<Author> AllAuthors = new List<Author>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        AllAuthors = AuthorService.GetAllAuthors().ToList();
+        await AuthorDataTable.SelectPage(0);
+    }
+
+    DataTableResult<Author> GetAuthors()
+    {
+        return new DataTableResult<Author>(AuthorDataTable.CallNumber, AllAuthors.AsQueryable(), AuthorDataTable.CurrentPage, AuthorDataTable.PageSize);
+    }
+
+    void AddNewAuthor()
+    {
+        NavigationManager.NavigateTo("Authors/Create");
+    }
+}

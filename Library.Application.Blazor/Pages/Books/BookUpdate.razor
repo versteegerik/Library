@@ -43,6 +43,7 @@
         Book = BookService.GetBookById(BookId);
         UpdateBookRequest = new UpdateBookRequest(Book);
     }
+
     void CancelUpdateBook()
     {
         NavigationManager.NavigateTo($"Books/Read/{BookId}");
