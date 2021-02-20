@@ -14,7 +14,7 @@
     {
         <FieldDisplayFor @bind-Value="Book.Title"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Book.AlternativeTitle"></FieldDisplayFor>
-        <FieldDisplayFor @bind-Value="Book.Author"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Book.Author" ValueOverride="@Book.Author.FullName()"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
     }
     else

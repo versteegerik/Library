@@ -1,5 +1,6 @@
 ﻿@page "/Books/Create"
 
+@inject AuthorService AuthorService
 @inject BookService BookService
 @inject NavigationManager NavigationManager
 
@@ -19,7 +20,9 @@
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Author">
-            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Author"></RadzenTextBox></Field>
+            <Field>
+                <RadzenDropDown @bind-Value="CreateBookRequest.AuthorId" AllowClear="true" Data=@AvailableAuthors ValueProperty="Id" TextProperty="FullName" Change=@(args => OnChange(args, CreateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" />
+            </Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
@@ -32,7 +35,16 @@
 </div>
 
 @code {
-    private CreateBookRequest CreateBookRequest = new CreateBookRequest();
+    private CreateBookViewModel CreateBookRequest = new CreateBookViewModel();
+    private List<Author> Authors = new List<Author>();
+    private List<AuthorDropDownRequest> AvailableAuthors = new List<AuthorDropDownRequest>();
+
+    protected override void OnInitialized()
+    {
+        Authors = AuthorService.GetAllAuthors().ToList();
+        AvailableAuthors.AddRange(Authors.Select(au => new AuthorDropDownRequest(au)));
+    }
+
     void GoBack()
     {
         NavigationManager.NavigateTo("Books");
@@ -43,5 +55,16 @@
         var newBookId = BookService.CreateBook(CreateBookRequest);
 
         NavigationManager.NavigateTo($"Books/Read/{newBookId}");
+    }
+
+
+    void OnChange(object value, Author author)
+    {
+        Guid? id = (Guid?)value;
+        if (id.HasValue && id != Guid.Empty)
+        {
+            CreateBookRequest.Author = Authors.Single(_ => _.Id == id.Value);
+        }
+        return;
     }
 }

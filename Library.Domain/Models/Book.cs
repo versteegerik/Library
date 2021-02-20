@@ -12,7 +12,7 @@ namespace Library.Domain.Models
         [Display(Name = nameof(Resources.Book_AlternativeTitle), ResourceType = typeof(Resources))]
         public virtual string AlternativeTitle { get; set; }
         [Display(Name = nameof(Resources.Book_Author), ResourceType = typeof(Resources))]
-        public virtual string Author { get; set; }
+        public virtual Author Author { get; set; }
         [Display(Name = nameof(Resources.Book_Isbn), ResourceType = typeof(Resources))]
         public virtual string Isbn { get; set; }
 

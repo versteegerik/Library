@@ -18,8 +18,8 @@
             <th>@Resources.Book_Author</th>
         </TableHeader>
         <TableRow Context="book">
-            <td><NavLink class="nav-link" href="@($"Books/Read/{book.Id}")">@book.Title</NavLink></td>
-            <td>@book.Author</td>
+            <td><NavLink href="@($"Books/Read/{book.Id}")">@book.Title</NavLink></td>
+            <td>@book.Author.FullName()</td>
         </TableRow>
     </DataTable>
 </div>

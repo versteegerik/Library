@@ -37,4 +37,17 @@ namespace Library.Domain.Requests
             LastName = author.LastName;
         }
     }
+
+    public class AuthorDropDownRequest
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; }
+
+        public AuthorDropDownRequest() { }
+        public AuthorDropDownRequest(Author author) : this()
+        {
+            Id = author.Id;
+            FullName = author.FullName();
+        }
+    }
 }
