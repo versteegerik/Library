@@ -26,6 +26,7 @@
         if (Book != null)
         {
             <FieldDisplayFor @bind-Value="Book.Title"></FieldDisplayFor>
+            <FieldDisplayFor @bind-Value="Book.AlternativeTitle"></FieldDisplayFor>
             <FieldDisplayFor @bind-Value="Book.Author"></FieldDisplayFor>
             <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
         }
@@ -37,7 +38,7 @@
     else
     {
         <EditForm Model="@UpdateBookRequest">
-            <ValidationSummary/>
+            <ValidationSummary />
             <PeterLeslieMorris.Blazor.Validation.Validate />
 
             <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
