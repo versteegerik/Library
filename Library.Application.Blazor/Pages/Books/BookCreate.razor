@@ -6,11 +6,6 @@
 <div class="container">
     <h1>
         @string.Format(Resources.Format_Add, Resources.Book)
-        <div class="btn-group float-right" role="group">
-            <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
-            <button class="btn btn-primary" type="button" @onclick="AddNewBook">@Resources.Action_Save</button>
-        </div>
-        <div class="clearfix"></div>
     </h1>
     <div class="clearfix"></div>
     <EditForm Model="@CreateBookRequest" OnValidSubmit="@AddNewBook">
@@ -29,7 +24,10 @@
         <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
         </FieldEditorFor>
-        <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
+        <div class="btn-group float-right" role="group">
+            <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
+            <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
+        </div>
     </EditForm>
 </div>
 

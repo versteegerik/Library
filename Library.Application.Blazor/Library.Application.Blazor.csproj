@@ -31,12 +31,20 @@
     </PackageReference>
     <PackageReference Include="PeterLeslieMorris.Blazor.FluentValidation" Version="1.6.0" />
     <PackageReference Include="Radzen.Blazor" Version="3.1.0" />
+    <PackageReference Include="Versteey.Common" Version="1.0.0" />
+    <PackageReference Include="Versteey.Infrastructure" Version="1.0.1" />
     <PackageReference Include="Versteey.Infrastructure.Persistence.NHibernate" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Library.Common\Library.Common.csproj" />
     <ProjectReference Include="..\Library.Domain\Library.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Updatescripts\Updatescript_v20210220_01_AddBooks.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

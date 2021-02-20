@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using Library.Application.Blazor.Data;
 using Library.Common.Properties;
 using Library.Domain.Services;
 using Library.Domain.Validators;
@@ -56,6 +57,9 @@ namespace Library.Application.Blazor
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var manager = new DatabaseManager(Configuration.GetConnectionString("DefaultConnection"));
+            manager.Initialize();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

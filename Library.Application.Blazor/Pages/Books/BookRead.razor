@@ -5,55 +5,21 @@
 <div class="container">
     <h1>
         @Resources.Details
-        @if (IsReadMode)
-        {
-            <div class="btn-group float-right" role="group">
-                <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Back</button>
-                <button class="btn btn-primary" type="button" @onclick="UpdateBook">@Resources.Action_Update</button>
-            </div>
-        }
-        else
-        {
-            <div class="btn-group float-right" role="group">
-                <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
-                <button class="btn btn-primary" type="button" @onclick="SaveUpdateBook">@Resources.Action_Save</button>
-            </div>
-        }
+        <div class="btn-group float-right" role="group">
+            <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Back</button>
+            <button class="btn btn-primary" type="button" @onclick="UpdateBook">@Resources.Action_Update</button>
+        </div>
     </h1>
-
-    @if (IsReadMode)
+    @if (Book != null)
     {
-        if (Book != null)
-        {
-            <FieldDisplayFor @bind-Value="Book.Title"></FieldDisplayFor>
-            <FieldDisplayFor @bind-Value="Book.AlternativeTitle"></FieldDisplayFor>
-            <FieldDisplayFor @bind-Value="Book.Author"></FieldDisplayFor>
-            <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
-        }
-        else
-        {
-            @Resources.Action_Loading
-        }
+        <FieldDisplayFor @bind-Value="Book.Title"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Book.AlternativeTitle"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Book.Author"></FieldDisplayFor>
+        <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
     }
     else
     {
-        <EditForm Model="@UpdateBookRequest">
-            <ValidationSummary />
-            <PeterLeslieMorris.Blazor.Validation.Validate />
-
-            <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Title"></RadzenTextBox></Field>
-            </FieldEditorFor>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.AlternativeTitle">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
-            </FieldEditorFor>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Author"></RadzenTextBox></Field>
-            </FieldEditorFor>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
-            </FieldEditorFor>
-        </EditForm>
+        @Resources.Action_Loading
     }
 </div>
 
@@ -69,22 +35,8 @@
     {
         NavigationManager.NavigateTo("Books");
     }
-
-    private bool IsReadMode = true;
-    private UpdateBookRequest UpdateBookRequest = new UpdateBookRequest();
     void UpdateBook()
     {
-        UpdateBookRequest = new UpdateBookRequest(Book);
-        IsReadMode = false;
-    }
-    void CancelUpdateBook()
-    {
-        IsReadMode = true;
-    }
-    void SaveUpdateBook()
-    {
-        BookService.UpdateBook(UpdateBookRequest);
-        Book = BookService.GetBookById(BookId);
-        IsReadMode = true;
+        NavigationManager.NavigateTo($"Books/Update/{Book.Id}");
     }
 }

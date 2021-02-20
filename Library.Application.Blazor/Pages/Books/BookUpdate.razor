@@ -1,0 +1,57 @@
+﻿@page "/Books/Update/{BookId:guid}"
+
+@inject BookService BookService
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h1>
+        @string.Format(Resources.Format_Add, Resources.Book)
+    </h1>
+    @if (UpdateBookRequest != null)
+    {
+        <EditForm Model="@UpdateBookRequest" OnValidSubmit="@UpdateBook">
+            <ValidationSummary />
+            <PeterLeslieMorris.Blazor.Validation.Validate />
+
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Title"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.AlternativeTitle">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Author"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
+                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
+            </FieldEditorFor>
+            <div class="btn-group float-right" role="group">
+                <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
+                <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
+            </div>
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter] public Guid BookId { get; set; }
+    private UpdateBookRequest UpdateBookRequest;
+    private Book Book { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Book = BookService.GetBookById(BookId);
+        UpdateBookRequest = new UpdateBookRequest(Book);
+    }
+    void CancelUpdateBook()
+    {
+        NavigationManager.NavigateTo($"Books/Read/{BookId}");
+    }
+
+    void UpdateBook()
+    {
+        BookService.UpdateBook(UpdateBookRequest);
+
+        CancelUpdateBook();
+    }
+}
