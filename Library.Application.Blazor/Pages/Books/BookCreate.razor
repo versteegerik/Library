@@ -20,9 +20,10 @@
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Author">
-            <Field>
-                <RadzenDropDown @bind-Value="CreateBookRequest.AuthorId" AllowClear="true" Data=@AvailableAuthors ValueProperty="Id" TextProperty="FullName" Change=@(args => OnChange(args, CreateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" />
-            </Field>
+            <Field><RadzenDropDown @bind-Value="CreateBookRequest.AuthorId" AllowClear="true" Data=@AvailableAuthors ValueProperty="Id" TextProperty="FullName" Change=@(args => OnChange(args, CreateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" /></Field>
+        </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateBookRequest.Genres">
+            <Field><RadzenDropDown @bind-Value="@SelectedGenres" TextProperty="Code" ValueProperty="Id" Data=@AvailableGenres Multiple="true" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Change=@(args => OnChangeGenre(args)) /></Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
@@ -38,11 +39,14 @@
     private CreateBookViewModel CreateBookRequest = new CreateBookViewModel();
     private List<Author> Authors = new List<Author>();
     private List<AuthorDropDownRequest> AvailableAuthors = new List<AuthorDropDownRequest>();
+    private IEnumerable<BookGenre> AvailableGenres = new List<BookGenre>();
+    private IEnumerable<Guid> SelectedGenres = new List<Guid>();
 
     protected override void OnInitialized()
     {
         Authors = AuthorService.GetAllAuthors().ToList();
         AvailableAuthors.AddRange(Authors.Select(au => new AuthorDropDownRequest(au)));
+        AvailableGenres = BookService.GetAllGenres().ToList();
     }
 
     void GoBack()
@@ -64,6 +68,21 @@
         if (id.HasValue && id != Guid.Empty)
         {
             CreateBookRequest.Author = Authors.Single(_ => _.Id == id.Value);
+        }
+        return;
+    }
+
+    void OnChangeGenre(object value)
+    {
+        IList<Guid> ids = ((IEnumerable<Guid>)value).ToList();
+        if (ids.Any())
+        {
+            CreateBookRequest.Genres = AvailableGenres.Where(_ => ids.Contains(_.Id)).ToList();
+            SelectedGenres = CreateBookRequest.Genres.Select(_ => _.Id);
+        }
+        else
+        {
+            CreateBookRequest.Genres.Clear();
         }
         return;
     }

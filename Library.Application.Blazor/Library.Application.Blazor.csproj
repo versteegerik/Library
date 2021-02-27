@@ -31,7 +31,7 @@
     </PackageReference>
     <PackageReference Include="PeterLeslieMorris.Blazor.FluentValidation" Version="1.6.0" />
     <PackageReference Include="Radzen.Blazor" Version="3.1.0" />
-    <PackageReference Include="Versteey.Common" Version="1.0.0" />
+    <PackageReference Include="Versteey.Common" Version="1.1.0" />
     <PackageReference Include="Versteey.Infrastructure" Version="1.0.1" />
     <PackageReference Include="Versteey.Infrastructure.Persistence.NHibernate" Version="1.0.1" />
   </ItemGroup>
@@ -43,6 +43,9 @@
 
   <ItemGroup>
     <None Update="Data\Updatescripts\Updatescript_v20210101_01_AddAuthor.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Updatescripts\Updatescript_v20210102_02_AddBookGenre.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Updatescripts\Updatescript_v20210102_01_AddBooks.sql">

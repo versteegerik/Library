@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using Library.Application.Blazor.Data;
+using Library.Application.Blazor.Data.NHibernateOverrides;
 using Library.Common.Properties;
 using Library.Domain.Services;
 using Library.Domain.Validators;
@@ -29,6 +30,7 @@ namespace Library.Application.Blazor
         public void ConfigureServices(IServiceCollection services)
         {
             var assembly = Assembly.GetAssembly(typeof(BookService));
+            var assemblyForOverrides = Assembly.GetAssembly(typeof(BookMap));
             services.AddMvc()
                 .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(Resources)); })
                 .AddFluentValidation();
@@ -48,7 +50,7 @@ namespace Library.Application.Blazor
             //    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
             //});
 
-            services.AddNHibernate(Configuration.GetConnectionString("DefaultConnection"), assembly);
+            services.AddNHibernate(Configuration.GetConnectionString("DefaultConnection"), assembly, assemblyForOverrides);
 
             //Domain Services
             services.AddTransient<AuthorService>();

@@ -162,6 +162,9 @@
   <data name="Book" xml:space="preserve">
     <value>Boek</value>
   </data>
+  <data name="BookGenre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
   <data name="Books" xml:space="preserve">
     <value>Boeken</value>
   </data>

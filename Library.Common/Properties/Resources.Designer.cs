@@ -232,6 +232,15 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Genre.
+        /// </summary>
+        public static string BookGenre {
+            get {
+                return ResourceManager.GetString("BookGenre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boeken.
         /// </summary>
         public static string Books {

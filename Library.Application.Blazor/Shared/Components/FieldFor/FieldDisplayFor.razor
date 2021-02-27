@@ -59,19 +59,32 @@
             }
             else if (typeof(IEnumerable).IsAssignableFrom(typeof(TValue)) && typeof(TValue) != typeof(string))
             {
-                valueAsString = string.Empty;
+                var tempString = string.Empty;
                 foreach (var item in ((IEnumerable)Value))
                 {
-                    valueAsString += Convert.ToString(item) + Environment.NewLine;
+                    if (item.GetType().IsSubclassOf(typeof(ReferenceData)))
+                    {
+                        tempString += (item as ReferenceData).Code + ", " + Environment.NewLine;
+                    }
+                    else
+                    {
+                        tempString += Convert.ToString(item) + Environment.NewLine;
+                    }
                 }
+
+                valueAsString = tempString.Substring(0, tempString.LastIndexOf(","));
+
+            }
+            else if (IsReferenceData())
+            {
+                valueAsString = (Value as ReferenceData).Code;
             }
 
-            return valueAsString;
+            return (string.IsNullOrWhiteSpace(valueAsString)) ? "- - -" : valueAsString;
         }
     }
 
     private static bool IsBoolean() => typeof(TValue) == typeof(bool);
     private static bool IsDate() => typeof(TValue) == typeof(DateTime);
-
-
+    private static bool IsReferenceData() => typeof(TValue).IsSubclassOf(typeof(ReferenceData));
 }

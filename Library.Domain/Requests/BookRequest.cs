@@ -1,7 +1,9 @@
 ﻿using Library.Common.Properties;
 using Library.Domain.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Versteey.Common.Extensions;
 
 namespace Library.Domain.Requests
 {
@@ -15,6 +17,8 @@ namespace Library.Domain.Requests
         public Author Author { get; set; }
         [Display(Name = nameof(Resources.Book_Isbn), ResourceType = typeof(Resources))]
         public string Isbn { get; set; }
+        [Display(Name = nameof(Resources.BookGenre), ResourceType = typeof(Resources))]
+        public IList<BookGenre> Genres { get; set; } = new List<BookGenre>();
     }
 
     public class CreateBookRequest : BookRequest
@@ -35,6 +39,7 @@ namespace Library.Domain.Requests
             AlternativeTitle = book.AlternativeTitle;
             Author = book.Author;
             Isbn = book.Isbn;
+            Genres.ReplaceWith(book.Genres);
         }
     }
 }

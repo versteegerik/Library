@@ -21,7 +21,10 @@
                 <Field><RadzenTextBox @bind-Value="UpdateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
             </FieldEditorFor>
             <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
-                <Field><RadzenDropDown @bind-Value="UpdateBookRequest.AuthorId" AllowClear="true" Data=@AvailableAuthors TextProperty="FullName" ValueProperty="Id" Change=@(args => OnChange(args, UpdateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" /></Field>
+                <Field><RadzenDropDown @bind-Value="UpdateBookRequest.AuthorId" Data=@AvailableAuthors  AllowClear="true" TextProperty="FullName" ValueProperty="Id" Change=@(args => OnChange(args, UpdateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" /></Field>
+            </FieldEditorFor>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.Genres">
+                <Field><RadzenDropDown @bind-Value="@SelectedGenres" TextProperty="Code" ValueProperty="Id" Data=@AvailableGenres  Multiple="true" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"Change=@(args => OnChangeGenre(args)) /></Field>
             </FieldEditorFor>
             <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
                 <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
@@ -40,13 +43,18 @@
     private Book Book { get; set; }
     private List<Author> Authors = new List<Author>();
     private List<AuthorDropDownRequest> AvailableAuthors = new List<AuthorDropDownRequest>();
+    private IEnumerable<BookGenre> AvailableGenres = new List<BookGenre>();
+    private IEnumerable<Guid> SelectedGenres = new List<Guid>();
 
     protected override void OnInitialized()
     {
         Book = BookService.GetBookById(BookId);
-        UpdateBookRequest = new UpdateBookViewModel(Book);
+        SelectedGenres = Book.Genres.Select(_ => _.Id);
+        AvailableGenres = BookService.GetAllGenres().ToList();
         Authors = AuthorService.GetAllAuthors().ToList();
         AvailableAuthors.AddRange(Authors.Select(au => new AuthorDropDownRequest(au)));
+
+        UpdateBookRequest = new UpdateBookViewModel(Book);
     }
 
     void CancelUpdateBook()
@@ -67,6 +75,21 @@
         if (id.HasValue && id != Guid.Empty)
         {
             UpdateBookRequest.Author = Authors.Single(_ => _.Id == id.Value);
+        }
+        return;
+    }
+
+    void OnChangeGenre(object value)
+    {
+        IList<Guid> ids = ((IEnumerable<Guid>)value).ToList();
+        if (ids.Any())
+        {
+            UpdateBookRequest.Genres = AvailableGenres.Where(_ => ids.Contains(_.Id)).ToList();
+            SelectedGenres = UpdateBookRequest.Genres.Select(_ => _.Id);
+        }
+        else
+        {
+            UpdateBookRequest.Genres.Clear();
         }
         return;
     }

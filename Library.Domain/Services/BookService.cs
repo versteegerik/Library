@@ -14,6 +14,7 @@ namespace Library.Domain.Services
         public Book GetBookById(Guid id) => Persistence.GetById<Book>(id);
 
         public IQueryable<Book> GetAllBooks() => Persistence.Query<Book>().OrderBy(_ => _.Title);
+        public IQueryable<BookGenre> GetAllGenres() => Persistence.Query<BookGenre>().OrderBy(_ => _.Code);
 
         public Guid CreateBook(CreateBookRequest request)
         {
