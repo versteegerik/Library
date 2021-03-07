@@ -266,5 +266,50 @@ namespace Library.Common.Properties {
                 return ResourceManager.GetString("Format_Add", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welkom.
+        /// </summary>
+        public static string Global_Welcome {
+            get {
+                return ResourceManager.GetString("Global_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open mijn boeken.
+        /// </summary>
+        public static string GoTo_Person_OwnedBooks {
+            get {
+                return ResourceManager.GetString("GoTo_Person_OwnedBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open mijn wensenlijst.
+        /// </summary>
+        public static string GoTo_Person_WishListBooks {
+            get {
+                return ResourceManager.GetString("GoTo_Person_WishListBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mijn boeken.
+        /// </summary>
+        public static string Person_OwnedBooks {
+            get {
+                return ResourceManager.GetString("Person_OwnedBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mijn wensenlijst voor boeken.
+        /// </summary>
+        public static string Person_WishListBooks {
+            get {
+                return ResourceManager.GetString("Person_WishListBooks", resourceCulture);
+            }
+        }
     }
 }

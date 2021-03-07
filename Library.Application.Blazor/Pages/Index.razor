@@ -1,7 +1,47 @@
 ﻿@page "/"
+@inject ApplicationUserManager UserManager
 
-<h1>Hello, world!</h1>
+<h1>@Resources.Global_Welcome</h1>
 
-Welcome to your new app.
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header"><h2>@Resources.Person_OwnedBooks</h2></div>
+                <div class="card-body">body</div>
+                <div class="card-footer">
+                    <NavLink class="nav-link" href="Person/OwnedBooks">
+                        <span class="oi oi-book" aria-hidden="true"></span> @Resources.GoTo_Person_OwnedBooks
+                    </NavLink>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header"><h2>@Resources.Person_WishListBooks</h2></div>
+                <div class="card-body">body</div>
+                <div class="card-footer">
+                    <NavLink class="nav-link" href="Person/WishListBooks">
+                        <span class="oi oi-envelope-open" aria-hidden="true"></span> @Resources.GoTo_Person_WishListBooks
+                    </NavLink>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    private string Test = "footer";
+
+    void Footer()
+    {
+        if (Test == "footer")
+        {
+            Test = "Aangepast";
+        }
+        else
+        {
+            Test = "footer";
+        }
+    }
+}

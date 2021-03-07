@@ -186,4 +186,19 @@
   <data name="Format_Add" xml:space="preserve">
     <value>{0} toevoegen</value>
   </data>
+  <data name="Global_Welcome" xml:space="preserve">
+    <value>Welkom</value>
+  </data>
+  <data name="GoTo_Person_OwnedBooks" xml:space="preserve">
+    <value>Open mijn boeken</value>
+  </data>
+  <data name="GoTo_Person_WishListBooks" xml:space="preserve">
+    <value>Open mijn wensenlijst</value>
+  </data>
+  <data name="Person_OwnedBooks" xml:space="preserve">
+    <value>Mijn boeken</value>
+  </data>
+  <data name="Person_WishListBooks" xml:space="preserve">
+    <value>Mijn wensenlijst voor boeken</value>
+  </data>
 </root>
