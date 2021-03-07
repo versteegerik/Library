@@ -1,11 +1,17 @@
 using FluentValidation.AspNetCore;
+using Library.Application.Blazor.Areas.Identity;
 using Library.Application.Blazor.Data;
 using Library.Application.Blazor.Data.NHibernateOverrides;
+using Library.Application.Providers;
+using Library.Application.Security;
 using Library.Common.Properties;
 using Library.Domain.Services;
 using Library.Domain.Validators;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,11 +45,18 @@ namespace Library.Application.Blazor
             services.AddServerSideBlazor();
             services.AddFormValidation(config => config.AddDataAnnotationsValidation().AddFluentValidation(typeof(CreateBookRequestValidator).Assembly));
 
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddUserStore<ApplicationUserStore>()
+                .AddUserManager<ApplicationUserManager>()
+                .AddRoleStore<ApplicationRoleStore>()
+                .AddRoleManager<ApplicationRoleManager>()
+                .AddSignInManager<ApplicationSignInManager>()
+                // You **cannot** use .AddEntityFrameworkStores() when you customize everything
+                //.AddEntityFrameworkStores<ApplicationDbContext, int>()
+                .AddDefaultTokenProviders();
 
-            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            ////services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
             //services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
             //{
             //    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
@@ -55,6 +68,10 @@ namespace Library.Application.Blazor
             //Domain Services
             services.AddTransient<AuthorService>();
             services.AddTransient<BookService>();
+            services.AddTransient<PersonService>();
+
+            //Providers
+            services.AddSingleton<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
