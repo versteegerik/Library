@@ -42,6 +42,7 @@ namespace Library.Application.Blazor
                 .AddFluentValidation();
 
             services.AddRazorPages();
+
             services.AddServerSideBlazor();
             services.AddFormValidation(config => config.AddDataAnnotationsValidation().AddFluentValidation(typeof(CreateBookRequestValidator).Assembly));
 
