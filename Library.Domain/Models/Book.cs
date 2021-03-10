@@ -24,18 +24,18 @@ namespace Library.Domain.Models
 
         public Book(CreateBookRequest request) : this()
         {
-            Title = request.Title;
-            AlternativeTitle = request.AlternativeTitle;
-            Author = request.Author;
-            Isbn = request.Isbn;
-            Genres.Clear();
-            Genres.ReplaceWith(request.Genres);
+            HandleRequest(request);
         }
 
         public virtual void Update(UpdateBookRequest request)
         {
-            Title = request.Title;
-            AlternativeTitle = request.AlternativeTitle;
+            HandleRequest(request);
+        }
+
+        private void HandleRequest(BookRequest request)
+        {
+            Title = request.Title?.Trim();
+            AlternativeTitle = request.AlternativeTitle?.Trim();
             Author = request.Author;
             Isbn = request.Isbn;
             Genres.ReplaceWith(request.Genres);

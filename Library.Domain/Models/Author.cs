@@ -52,10 +52,10 @@ namespace Library.Domain.Models
 
         private void HandleAuthorRequest(AuthorRequest request)
         {
-            Initials = request.Initials;
-            FirstNames = request.FirstNames;
-            Prefix = request.Prefix;
-            LastName = request.LastName;
+            Initials = request.Initials?.Trim();
+            FirstNames = request.FirstNames?.Trim();
+            Prefix = request.Prefix?.Trim();
+            LastName = request.LastName?.Trim();
         }
     }
 }
