@@ -74,8 +74,8 @@
 
     void OnChangeGenre(object value)
     {
-        IList<Guid> ids = ((IEnumerable<Guid>)value).ToList();
-        if (ids.Any())
+        IList<Guid> ids = ((IEnumerable<Guid>)value)?.ToList();
+        if (ids != null && ids.Any())
         {
             CreateBookRequest.Genres = AvailableGenres.Where(_ => ids.Contains(_.Id)).ToList();
             SelectedGenres = CreateBookRequest.Genres.Select(_ => _.Id);
