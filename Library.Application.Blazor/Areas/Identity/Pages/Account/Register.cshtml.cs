@@ -19,7 +19,7 @@ using Library.Domain.Services;
 
 namespace Library.Application.Blazor.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles = ApplicationRole.CreateApplicationUser)]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
