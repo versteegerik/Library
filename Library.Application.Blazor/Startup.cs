@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PeterLeslieMorris.Blazor.Validation;
 using System.Reflection;
+using System.Threading.Tasks;
 using Versteey.Infrastructure.Persistence.NHibernatePersistence;
 
 namespace Library.Application.Blazor
