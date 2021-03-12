@@ -2,6 +2,7 @@
 using Library.Domain.Requests;
 using Library.Domain.Validators;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Versteey.Infrastructure.Persistence;
 
@@ -14,6 +15,7 @@ namespace Library.Domain.Services
         }
 
         public Author GetAuthorById(Guid id) => Persistence.GetById<Author>(id);
+        public IList<Book> GetBooksByAuthor(Guid id) => Persistence.Query<Book>().Where(_ => _.Author.Id == id).OrderBy(_ => _.Title).ToList();
         public IQueryable<Author> GetAllAuthors() => Persistence.Query<Author>().OrderBy(_ => _.LastName);
 
         public Guid CreateAuthor(CreateAuthorRequest request)

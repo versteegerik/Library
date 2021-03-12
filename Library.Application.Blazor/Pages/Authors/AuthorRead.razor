@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>
-        @Resources.Details
+        @Resources.Details @Resources.Author
         <div class="btn-group float-right" role="group">
             <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Back</button>
             <button class="btn btn-primary" type="button" @onclick="UpdateAuthor">@Resources.Action_Update</button>
@@ -16,20 +16,41 @@
         <FieldDisplayFor @bind-Value="Author.FirstNames"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Author.Prefix"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Author.LastName"></FieldDisplayFor>
-    }
-    else
-    {
+        <hr/>
+        <h2>@Resources.Books</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Resources.Book_Title</th>
+                    <th>@Resources.Book_AlternativeTitle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Books)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.AlternativeTitle</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
         @Resources.Action_Loading
-    }
-</div>
+        }
+    </div>
 
 @code {
     [Parameter] public Guid AuthorId { get; set; }
     private Author Author { get; set; }
+    private IList<Book> Books { get; set; }
 
     protected override void OnInitialized()
     {
         Author = AuthorService.GetAuthorById(AuthorId);
+        Books = AuthorService.GetBooksByAuthor(Author.Id);
     }
     void GoBack()
     {
