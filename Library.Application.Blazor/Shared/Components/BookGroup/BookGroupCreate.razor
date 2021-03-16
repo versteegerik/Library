@@ -1,0 +1,22 @@
+﻿@inject BookGroupService BookGroupService
+@inject NavigationManager NavigationManager
+
+<EditForm Model="@CreateBookGroupRequest" OnValidSubmit="@CreateBookGroup">
+    <FieldEditorFor @bind-Value="CreateBookGroupRequest.Name">
+        <Field><RadzenTextBox @bind-Value="CreateBookGroupRequest.Name"></RadzenTextBox></Field>
+    </FieldEditorFor>
+    <div class="btn-group float-right" role="group">
+        <button class="btn btn-primary" type="submit">@Resources.Action_Create</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public Book Book { get; set; }
+    private CreateBookGroupRequest CreateBookGroupRequest = new CreateBookGroupRequest();
+
+    private void CreateBookGroup()
+    {
+        BookGroupService.CreateBookGroup(CreateBookGroupRequest, Book);
+        NavigationManager.NavigateTo($"Books/Read/{Book.Id}", true);
+    }
+}

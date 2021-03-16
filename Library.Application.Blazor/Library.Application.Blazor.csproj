@@ -51,6 +51,9 @@
     <None Update="Data\Updatescripts\Updatescript_v20210101_01_AddAuthor.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Data\Updatescripts\Updatescript_v20210301_03_AddBookGroup.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Updatescripts\Updatescript_v20210301_02_AddPersonToIdentity.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

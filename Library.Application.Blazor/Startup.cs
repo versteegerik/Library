@@ -70,6 +70,7 @@ namespace Library.Application.Blazor
             //Domain Services
             services.AddTransient<AuthorService>();
             services.AddTransient<BookService>();
+            services.AddTransient<BookGroupService>();
             services.AddTransient<PersonService>();
 
             //Providers

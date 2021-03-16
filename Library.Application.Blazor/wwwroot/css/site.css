@@ -171,3 +171,6 @@ app {
 .display-field {
   display: inline-block;
   width: 59%; }
+
+.buttonLineHeight {
+  line-height: 2.38; }

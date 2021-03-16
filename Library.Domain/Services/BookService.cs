@@ -30,6 +30,7 @@ namespace Library.Domain.Services
             Persistence.Commit();
             return book.Id;
         }
+
         public void UpdateBook(UpdateBookRequest request)
         {
             Persistence.BeginTransaction();
