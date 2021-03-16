@@ -17,6 +17,11 @@
         <FieldDisplayFor @bind-Value="Book.Author" ValueOverride="@Book.Author.FullName()"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Book.Genres"></FieldDisplayFor>
         <FieldDisplayFor @bind-Value="Book.Isbn"></FieldDisplayFor>
+
+        @if (Book.IsBookGroup)
+        {
+            <BookGroupComponent Book="Book"></BookGroupComponent>
+        }
     }
     else
     {

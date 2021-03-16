@@ -19,6 +19,8 @@ namespace Library.Domain.Models
         public virtual string Isbn { get; set; }
         [Display(Name = nameof(Resources.BookGenre), ResourceType = typeof(Resources))]
         public virtual IList<BookGenre> Genres { get; set; } = new List<BookGenre>();
+        [Display(Name = nameof(Resources.Book_IsBookGroup), ResourceType = typeof(Resources))]
+        public virtual bool IsBookGroup { get; set; }
 
         public Book() { }
 
@@ -39,6 +41,7 @@ namespace Library.Domain.Models
             Author = request.Author;
             Isbn = request.Isbn;
             Genres.ReplaceWith(request.Genres);
+            IsBookGroup = request.IsBookGroup;
         }
     }
 }

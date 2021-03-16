@@ -29,6 +29,9 @@
             <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
                 <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
             </FieldEditorFor>
+        <FieldEditorFor @bind-Value="UpdateBookRequest.IsBookGroup">
+            <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="UpdateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
+        </FieldEditorFor>
             <div class="btn-group float-right" role="group">
                 <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
                 <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>

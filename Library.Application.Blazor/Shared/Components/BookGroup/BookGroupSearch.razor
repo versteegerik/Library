@@ -1,0 +1,71 @@
+﻿@inject BookGroupService BookGroupService
+@inject NavigationManager NavigationManager
+
+<EditForm Model="@SearchBookGroupRequest" OnValidSubmit="@SearchBookGroup">
+    <p>@Resources.Component_BookGroupSearch_SearchText</p>
+    <ValidationSummary />
+    <PeterLeslieMorris.Blazor.Validation.Validate />
+    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Name">
+        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Name"></RadzenTextBox></Field>
+    </FieldEditorFor>
+    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Title">
+        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Title"></RadzenTextBox></Field>
+    </FieldEditorFor>
+    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Author">
+        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Author"></RadzenTextBox></Field>
+    </FieldEditorFor>
+    <div class="btn-group float-right" role="group">
+        <button class="btn btn-secondary" type="button" @onclick="CancelSearch">@Resources.Action_Cancel</button>
+        <button class="btn btn-primary" type="submit">@Resources.Action_Search</button>
+    </div>
+</EditForm>
+
+@if (AvailableBookGroups.Any())
+{
+    <EditForm Model="@SearchBookGroupRequest" OnValidSubmit="@SearchBookGroup">
+        <table class="table table-striped">
+            <tr><th class="col-12" colspan="2">@Resources.SearchResults</th></tr>
+            @foreach (var availableBookGroup in AvailableBookGroups)
+            {
+                <tr>
+                    <td class="col-3">
+                        <button class="btn btn-outline-info" @onclick="() => AddBookToBookGroup(availableBookGroup)">@Resources.Action_Choose</button>
+                    </td>
+                    <td class="col-9">
+                        <p class="buttonLineHeight">@availableBookGroup.Name</p>
+                    </td>
+                </tr>
+            }
+        </table>
+    </EditForm>
+}
+else if (HasSearched)
+{
+    <div>@Resources.BookGroup_Create_Warning</div>
+    <BookGroupCreate Book="Book"></BookGroupCreate>
+}
+
+@code {
+    [Parameter] public EventCallback<string> CancelSearchParent { get; set; }
+    [Parameter] public Book Book { get; set; }
+    private SearchBookGroupRequest SearchBookGroupRequest = new SearchBookGroupRequest();
+    private bool HasSearched { get; set; }
+    private IList<BookGroup> AvailableBookGroups = new List<BookGroup>();
+    public async Task CancelSearch()
+    {
+        HasSearched = false;
+        await CancelSearchParent.InvokeAsync();
+    }
+
+    private void SearchBookGroup()
+    {
+        AvailableBookGroups.ReplaceWith(BookGroupService.SearchBookGroup(SearchBookGroupRequest));
+        HasSearched = true;
+    }
+
+    private void AddBookToBookGroup(BookGroup bookGroup)
+    {
+        BookGroupService.AddBookToBookGroup(bookGroup.Id, Book);
+        NavigationManager.NavigateTo($"Books/Read/{Book.Id}", true);
+    }
+}

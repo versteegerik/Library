@@ -1,0 +1,49 @@
+﻿@using Library.Application.Blazor.Shared.Components.BookGroup
+@inject BookGroupService BookGroupService
+
+<h2>
+    @Resources.BookGroup @(BookGroup != null ? BookGroup.Name : "")
+
+    <div class="btn-group float-right" role="group">
+        @if (!IsSearching)
+        {
+            <button class="btn btn-primary" type="button" @onclick="StartSearchBookGroup">@Resources.Action_Update</button>
+        }
+    </div>
+</h2>
+@if (BookGroup != null)
+{
+    <div>
+        <h3>@Resources.Books</h3>
+        @foreach (var book in BookGroup.Books)
+        {
+            <FieldDisplayFor @bind-Value="book.Title"></FieldDisplayFor>
+        }
+    </div>
+}
+@if (IsSearching)
+{
+    <BookGroupSearch Book="Book" CancelSearchParent="CancelSearchBookGroup"></BookGroupSearch>
+}
+
+@code {
+    [Parameter] public Book Book { get; set; }
+    private BookGroup BookGroup { get; set; }
+
+    protected override void OnInitialized()
+    {
+        BookGroup = BookGroupService.GetBookGroupByBookId(Book.Id);
+    }
+
+    private bool IsSearching { get; set; } = false;
+    private void StartSearchBookGroup()
+    {
+        IsSearching = true;
+        BookGroup = null;
+    }
+
+    private void CancelSearchBookGroup()
+    {
+        IsSearching = false;
+    }
+}

@@ -28,6 +28,9 @@
         <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
             <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
         </FieldEditorFor>
+        <FieldEditorFor @bind-Value="CreateBookRequest.IsBookGroup">
+            <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="CreateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
+        </FieldEditorFor>
         <div class="btn-group float-right" role="group">
             <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
             <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>

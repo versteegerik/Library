@@ -79,6 +79,24 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kies.
+        /// </summary>
+        public static string Action_Choose {
+            get {
+                return ResourceManager.GetString("Action_Choose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nieuw.
+        /// </summary>
+        public static string Action_Create {
+            get {
+                return ResourceManager.GetString("Action_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bezig met laden.....
         /// </summary>
         public static string Action_Loading {
@@ -111,6 +129,15 @@ namespace Library.Common.Properties {
         public static string Action_Save {
             get {
                 return ResourceManager.GetString("Action_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoeken.
+        /// </summary>
+        public static string Action_Search {
+            get {
+                return ResourceManager.GetString("Action_Search", resourceCulture);
             }
         }
         
@@ -223,6 +250,15 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is een serie.
+        /// </summary>
+        public static string Book_IsBookGroup {
+            get {
+                return ResourceManager.GetString("Book_IsBookGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Titel.
         /// </summary>
         public static string Book_Title {
@@ -241,11 +277,47 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Serie.
+        /// </summary>
+        public static string BookGroup {
+            get {
+                return ResourceManager.GetString("BookGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zorg ervoor dat er goed is gezocht op de juiste serie. Anders is het mogelijk om de serie er dubbel in te zetten..
+        /// </summary>
+        public static string BookGroup_Create_Warning {
+            get {
+                return ResourceManager.GetString("BookGroup_Create_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam serie.
+        /// </summary>
+        public static string BookGroup_Name {
+            get {
+                return ResourceManager.GetString("BookGroup_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Boeken.
         /// </summary>
         public static string Books {
             get {
                 return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoek op basis van serienaam, boektitel en/of auteur naar een serie..
+        /// </summary>
+        public static string Component_BookGroupSearch_SearchText {
+            get {
+                return ResourceManager.GetString("Component_BookGroupSearch_SearchText", resourceCulture);
             }
         }
         
@@ -309,6 +381,33 @@ namespace Library.Common.Properties {
         public static string Person_WishListBooks {
             get {
                 return ResourceManager.GetString("Person_WishListBooks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auteur (Voornaam / Achternaam).
+        /// </summary>
+        public static string SearchBookGroupRequest_Author {
+            get {
+                return ResourceManager.GetString("SearchBookGroupRequest_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vul 1 van de onderstaande velden in met minimaal 2 karakters..
+        /// </summary>
+        public static string SearchBookGroupRequest_RequiredMessage {
+            get {
+                return ResourceManager.GetString("SearchBookGroupRequest_RequiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoekresultaten.
+        /// </summary>
+        public static string SearchResults {
+            get {
+                return ResourceManager.GetString("SearchResults", resourceCulture);
             }
         }
     }
