@@ -11,4 +11,11 @@ namespace Library.Domain.Validators
             RuleFor(_ => _).Must(_ => $"{_.Name}{_.Title}{_.Author}".Length > 1).WithMessage(Resources.SearchBookGroupRequest_RequiredMessage);
         }
     }
+    public class CreateBookGroupRequestValidator : AbstractValidator<CreateBookGroupRequest>
+    {
+        public CreateBookGroupRequestValidator()
+        {
+            RuleFor(_ => _.Name).NotEmpty();
+        }
+    }
 }

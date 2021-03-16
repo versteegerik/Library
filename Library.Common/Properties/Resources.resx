@@ -178,7 +178,7 @@
     <value>Serie</value>
   </data>
   <data name="BookGroup_Create_Warning" xml:space="preserve">
-    <value>Zorg ervoor dat er goed is gezocht op de juiste serie. Anders is het mogelijk om de serie er dubbel in te zetten.</value>
+    <value>Er zijn 0 resultaten gevonden. Verander uw zoekopdracht of voeg onderstaand de serie toe.</value>
   </data>
   <data name="BookGroup_Name" xml:space="preserve">
     <value>Naam serie</value>

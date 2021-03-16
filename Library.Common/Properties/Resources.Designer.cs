@@ -286,7 +286,7 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zorg ervoor dat er goed is gezocht op de juiste serie. Anders is het mogelijk om de serie er dubbel in te zetten..
+        ///   Looks up a localized string similar to Er zijn 0 resultaten gevonden. Verander uw zoekopdracht of voeg onderstaand de serie toe..
         /// </summary>
         public static string BookGroup_Create_Warning {
             get {

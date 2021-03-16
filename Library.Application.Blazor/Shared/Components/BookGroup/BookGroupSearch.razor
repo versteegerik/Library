@@ -19,7 +19,7 @@
         <button class="btn btn-primary" type="submit">@Resources.Action_Search</button>
     </div>
 </EditForm>
-
+<div class="clearfix"></div>
 @if (AvailableBookGroups.Any())
 {
     <EditForm Model="@SearchBookGroupRequest" OnValidSubmit="@SearchBookGroup">
@@ -42,6 +42,7 @@
 else if (HasSearched)
 {
     <div>@Resources.BookGroup_Create_Warning</div>
+    <h3>@Resources.Action_Create @Resources.BookGroup</h3>
     <BookGroupCreate Book="Book"></BookGroupCreate>
 }
 
