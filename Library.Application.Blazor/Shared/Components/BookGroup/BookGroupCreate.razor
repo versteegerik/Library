@@ -2,6 +2,8 @@
 @inject NavigationManager NavigationManager
 
 <EditForm Model="@CreateBookGroupRequest" OnValidSubmit="@CreateBookGroup">
+    <ValidationSummary />
+    <PeterLeslieMorris.Blazor.Validation.Validate />
     <FieldEditorFor @bind-Value="CreateBookGroupRequest.Name">
         <Field><RadzenTextBox @bind-Value="CreateBookGroupRequest.Name"></RadzenTextBox></Field>
     </FieldEditorFor>
