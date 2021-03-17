@@ -1,5 +1,4 @@
-﻿@using Library.Application.Blazor.Shared.Components.BookGroup
-@inject BookGroupService BookGroupService
+﻿@inject BookGroupService BookGroupService
 
 <h2>
     @Resources.BookGroup @(BookGroup != null ? BookGroup.Name : "")
@@ -14,10 +13,9 @@
 @if (BookGroup != null)
 {
     <div>
-        <h3>@Resources.Books</h3>
         @foreach (var book in BookGroup.Books)
         {
-            <FieldDisplayFor @bind-Value="book.Title"></FieldDisplayFor>
+            <FieldDisplayFor @bind-Value="book.Title" NavigationUrl="@($"Books/Read/{book.Id}")"></FieldDisplayFor>
         }
     </div>
 }
@@ -39,7 +37,6 @@
     private void StartSearchBookGroup()
     {
         IsSearching = true;
-        BookGroup = null;
     }
 
     private void CancelSearchBookGroup()

@@ -3,6 +3,8 @@
 @using System.Linq.Expressions
 @using System.Reflection
 
+@inject NavigationManager NavigationManager;
+
 @typeparam TValue
 
 <div class="display-line">
@@ -18,6 +20,12 @@
     {
         <div class="display-field">@ValueOverride</div>
     }
+    else if (NavigationUrl != null)
+    {
+        <div class="display-field">
+            <NavLink class="nav-link" href="@NavigationUrl" @onclick="HandleNavigationClick">@ValueAsString</NavLink>
+        </div>
+    }
     else
     {
         <div class="display-field">@ValueAsString</div>
@@ -28,6 +36,7 @@
     [Parameter] public TValue Value { get; set; }
     [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
     [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+    [Parameter] public string NavigationUrl { get; set; }
 
     [Parameter] public RenderFragment LabelOverride { get; set; }
     [Parameter] public string ValueOverride { get; set; }
@@ -87,4 +96,9 @@
     private static bool IsBoolean() => typeof(TValue) == typeof(bool);
     private static bool IsDate() => typeof(TValue) == typeof(DateTime);
     private static bool IsReferenceData() => typeof(TValue).IsSubclassOf(typeof(ReferenceData));
+    
+    private void HandleNavigationClick()
+    {
+        NavigationManager.NavigateTo(NavigationUrl, true);
+    }
 }
