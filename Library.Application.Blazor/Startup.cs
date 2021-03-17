@@ -54,6 +54,7 @@ namespace Library.Application.Blazor
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddRoleManager<ApplicationRoleManager>()
                 .AddSignInManager<ApplicationSignInManager>()
+                .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory>()
                 // You **cannot** use .AddEntityFrameworkStores() when you customize everything
                 //.AddEntityFrameworkStores<ApplicationDbContext, int>()
                 .AddDefaultTokenProviders();
@@ -66,6 +67,7 @@ namespace Library.Application.Blazor
             //});
 
             services.AddNHibernate(Configuration.GetConnectionString("DefaultConnection"), assembly, assemblyForOverrides);
+            services.AddHttpContextAccessor();
 
             //Domain Services
             services.AddTransient<AuthorService>();

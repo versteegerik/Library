@@ -1,0 +1,35 @@
+﻿@page "/OwnedBooks"
+@inject BookService BookService
+
+<div class="container">
+    <h1>
+        @Resources.Person_OwnedBooks
+    </h1>
+    <hr />
+    <DataTable @ref="BookDataTable" FetchData="@GetBooks">
+        <TableHeader>
+            <th>@Resources.Book_Title</th>
+            <th>@Resources.Book_Author</th>
+        </TableHeader>
+        <TableRow Context="book">
+            <td><NavLink href="@($"Books/Read/{book.Id}")">@book.Title</NavLink></td>
+            <td>@book.Author.FullName()</td>
+        </TableRow>
+    </DataTable>
+</div>
+
+@code {
+    private DataTable<Book> BookDataTable { get; set; } = new DataTable<Book>();
+    private List<Book> OwnedBooks = new List<Book>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        OwnedBooks = BookService.GetOwnedBooks().ToList();
+        await BookDataTable.SelectPage(0);
+    }
+
+    DataTableResult<Book> GetBooks()
+    {
+        return new DataTableResult<Book>(BookDataTable.CallNumber, OwnedBooks.AsQueryable(), BookDataTable.CurrentPage, BookDataTable.PageSize);
+    }
+}

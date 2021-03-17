@@ -11,6 +11,7 @@ namespace Library.Application.Blazor.Data.NHibernateOverrides
             mapping.HasManyToMany(_ => _.WishListBooks)
                 .Cascade.None();
             mapping.HasManyToMany(_ => _.OwnedBooks)
+                .Table("PersonToOwnedBooks")
                 .Cascade.None();
         }
     }

@@ -1,19 +1,25 @@
 ﻿using Library.Domain.Models;
 using Library.Domain.Requests;
 using Library.Domain.Validators;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
 using Versteey.Infrastructure.Persistence;
 
 namespace Library.Domain.Services
 {
-    public class BookService : BaseService
+    public class BookService : BasePersonService
     {
-        public BookService(IPersistence persistence) : base(persistence) { }
+        public BookService(IPersistence persistence, IHttpContextAccessor httpContextAccessor) : base(persistence, httpContextAccessor) { }
 
         public Book GetBookById(Guid id) => Persistence.GetById<Book>(id);
 
         public IQueryable<Book> GetAllBooks() => Persistence.Query<Book>().OrderBy(_ => _.Title);
+        public IQueryable<Book> GetOwnedBooks()
+        {
+            var person = GetCurrentPerson();
+            return person.OwnedBooks.AsQueryable().OrderBy(_ => _.Title);
+        }
         public IQueryable<BookGenre> GetAllGenres() => Persistence.Query<BookGenre>().OrderBy(_ => _.Code);
 
         public Guid CreateBook(CreateBookRequest request)
