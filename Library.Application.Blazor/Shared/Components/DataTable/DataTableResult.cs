@@ -29,5 +29,4 @@ namespace Library.Application.Blazor.Shared.Components.DataTable
             Results = start == end ? Enumerable.Empty<T>().ToArray() : query.Skip(start).Take(end).ToArray();
         }
     }
-
 }

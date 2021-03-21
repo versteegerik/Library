@@ -97,6 +97,15 @@ namespace Library.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verwijder.
+        /// </summary>
+        public static string Action_Delete {
+            get {
+                return ResourceManager.GetString("Action_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bezig met laden.....
         /// </summary>
         public static string Action_Loading {

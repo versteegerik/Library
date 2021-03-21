@@ -74,6 +74,7 @@ namespace Library.Application.Blazor
             services.AddTransient<BookService>();
             services.AddTransient<BookGroupService>();
             services.AddTransient<PersonService>();
+            services.AddTransient<PersonBookService>();
 
             //Providers
             services.AddSingleton<IEmailSender, EmailSender>();

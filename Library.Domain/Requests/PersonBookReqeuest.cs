@@ -4,7 +4,6 @@ namespace Library.Domain.Requests
 {
     public abstract class PersonBookRequest
     {
-        public Guid PersonId { get; set; }
         public Guid BookId { get; set; }
     }
 

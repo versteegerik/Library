@@ -14,7 +14,15 @@ namespace Library.Domain.Services
 
         public Book GetBookById(Guid id) => Persistence.GetById<Book>(id);
 
-        public IQueryable<Book> GetAllBooks() => Persistence.Query<Book>().OrderBy(_ => _.Title);
+        public IQueryable<Book> GetAllBooks(SearchBookRequest request)
+        {
+            var query = Persistence.Query<Book>();
+            if (!string.IsNullOrWhiteSpace(request.Title))
+            {
+                query = query.Where(_ => _.Title.Contains(request.Title) || _.AlternativeTitle.Contains(request.Title));
+            }
+            return query.OrderBy(_ => _.Title);
+        }
         public IQueryable<Book> GetOwnedBooks()
         {
             var person = GetCurrentPerson();

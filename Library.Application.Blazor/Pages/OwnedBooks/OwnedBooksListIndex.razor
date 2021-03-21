@@ -1,5 +1,6 @@
 ﻿@page "/OwnedBooks"
 @inject BookService BookService
+@inject PersonBookService PersonBookService
 
 <div class="container">
     <h1>
@@ -7,29 +8,59 @@
     </h1>
     <hr />
     <DataTable @ref="BookDataTable" FetchData="@GetBooks">
+        <SearchArea>
+            <EditForm Model="@SearchBookRequest" OnValidSubmit="@Search">
+                <FieldEditorFor @bind-Value="SearchBookRequest.Title">
+                    <Field><RadzenTextBox @bind-Value="SearchBookRequest.Title"></RadzenTextBox></Field>
+                </FieldEditorFor>
+                <FieldEditorFor @bind-Value="SearchBookRequest.Author">
+                    <Field><RadzenTextBox @bind-Value="SearchBookRequest.Author"></RadzenTextBox></Field>
+                </FieldEditorFor>
+                <div class="btn-group float-right">
+                    <button class="btn btn-primary" type="submit">@Resources.Action_Search</button>
+                </div>
+            </EditForm>
+        </SearchArea>
         <TableHeader>
             <th>@Resources.Book_Title</th>
             <th>@Resources.Book_Author</th>
+            <th></th>
         </TableHeader>
         <TableRow Context="book">
             <td><NavLink href="@($"Books/Read/{book.Id}")">@book.Title</NavLink></td>
             <td>@book.Author.FullName()</td>
+            <td>
+                <div class="btn-group"><button class="btn btn-info" type="button" @onclick="async () => await RemoveFromOwnedBooks(book)">@Resources.Action_Delete</button></div>
+            </td>
         </TableRow>
     </DataTable>
 </div>
 
 @code {
+    private SearchBookRequest SearchBookRequest = new SearchBookRequest();
     private DataTable<Book> BookDataTable { get; set; } = new DataTable<Book>();
-    private List<Book> OwnedBooks = new List<Book>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        OwnedBooks = BookService.GetOwnedBooks().ToList();
-        await BookDataTable.SelectPage(0);
+        if (firstRender)
+        {
+            await BookDataTable.SelectPage(0);
+        }
     }
 
     DataTableResult<Book> GetBooks()
     {
-        return new DataTableResult<Book>(BookDataTable.CallNumber, OwnedBooks.AsQueryable(), BookDataTable.CurrentPage, BookDataTable.PageSize);
+        return new DataTableResult<Book>(BookDataTable.CallNumber, BookService.GetOwnedBooks(), BookDataTable.CurrentPage, BookDataTable.PageSize);
+    }
+
+    private void Search()
+    {
+        GetBooks();
+    }
+
+    private async Task RemoveFromOwnedBooks(Book book)
+    {
+        await PersonBookService.RemoveFromOwnedBooks(book);
+        StateHasChanged();
     }
 }

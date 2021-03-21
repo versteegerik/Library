@@ -45,4 +45,12 @@ namespace Library.Domain.Requests
             IsBookGroup = book.IsBookGroup;
         }
     }
+
+    public class SearchBookRequest
+    {
+        [Display(Name = nameof(Resources.Book_Title), ResourceType = typeof(Resources))]
+        public string Title { get; set; }
+        [Display(Name = nameof(Resources.Book_Author), ResourceType = typeof(Resources))]
+        public string Author { get; set; }
+    }
 }

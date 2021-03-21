@@ -1,62 +1,47 @@
 ﻿using Library.Domain.Models;
-using Library.Domain.Requests;
+using Microsoft.AspNetCore.Http;
 using System.Linq;
+using System.Threading.Tasks;
 using Versteey.Infrastructure.Persistence;
 
 namespace Library.Domain.Services
 {
-    public class PersonBookService : BaseService
+    public class PersonBookService : BasePersonService
     {
-        public PersonBookService(IPersistence persistence) : base(persistence) { }
+        public PersonBookService(IPersistence persistence, IHttpContextAccessor httpContextAccessor) : base(persistence, httpContextAccessor) { }
 
-        public void AddBookToWishList(AddBookToWishListRequest request)
+        public bool HasAsOwnedBooks(Book book) => GetCurrentPerson().OwnedBooks.Any(_ => _ == book);
+
+        public async Task AddToOwnedBooks(Book book)
         {
             Persistence.BeginTransaction();
-            var person = Persistence.GetById<Person>(request.PersonId);
-            if (person.WishListBooks.Any(b => b.Id == request.BookId))
+
+            var person = GetCurrentPerson();
+            if (person.OwnedBooks.Any(b => b.Id == book.Id))
             {
                 //Person already has this book on his WishList
                 return;
             }
-
-            var book = Persistence.GetById<Book>(request.BookId);
-            person.WishListBooks.Add(book);
-            Persistence.Commit();
-        }
-
-        public void RemoveBookFromWishListRequest(AddBookToWishListRequest request)
-        {
-            Persistence.BeginTransaction();
-            var person = Persistence.GetById<Person>(request.PersonId);
-
-            var book = Persistence.GetById<Book>(request.BookId);
-            person.WishListBooks.Remove(book);
-            Persistence.Commit();
-        }
-
-        public void AddBookToOwnedListRequest(AddBookToWishListRequest request)
-        {
-            Persistence.BeginTransaction();
-            var person = Persistence.GetById<Person>(request.PersonId);
-            if (person.OwnedBooks.Any(b => b.Id == request.BookId))
-            {
-                //Person already has this book on his WishList
-                return;
-            }
-
-            var book = Persistence.GetById<Book>(request.BookId);
             person.OwnedBooks.Add(book);
-            Persistence.Commit();
+
+            await Persistence.Update(person);
+            await Persistence.Commit();
         }
 
-        public void RemoveBookFromOwnedListRequest(AddBookToWishListRequest request)
+        public async Task RemoveFromOwnedBooks(Book book)
         {
             Persistence.BeginTransaction();
-            var person = Persistence.GetById<Person>(request.PersonId);
 
-            var book = Persistence.GetById<Book>(request.BookId);
-            person.OwnedBooks.Remove(book);
-            Persistence.Commit();
+            var person = GetCurrentPerson();
+            if (!person.OwnedBooks.Any(b => b.Id == book.Id))
+            {
+                //Person already has this book on his WishList
+                return;
+            }
+            person.OwnedBooks.Remove(book); 
+
+            await Persistence.Update(person);
+            await Persistence.Commit();
         }
     }
 }

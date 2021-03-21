@@ -129,6 +129,9 @@
   <data name="Action_Create" xml:space="preserve">
     <value>Nieuw</value>
   </data>
+  <data name="Action_Delete" xml:space="preserve">
+    <value>Verwijder</value>
+  </data>
   <data name="Action_Loading" xml:space="preserve">
     <value>Bezig met laden....</value>
   </data>
