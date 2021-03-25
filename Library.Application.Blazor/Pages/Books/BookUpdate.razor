@@ -23,9 +23,7 @@
                 <Field><RadzenDropDown @bind-Value="@SelectedGenres" TextProperty="Code" ValueProperty="Id" Data=@AvailableGenres  Multiple="true" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"Change=@(args => OnChangeGenre(args)) /></Field>
             </FieldEditorFor>
             <FieldEditorForString @bind-Value="UpdateBookRequest.Isbn"></FieldEditorForString>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.IsBookGroup">
-                <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="UpdateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
-            </FieldEditorFor>
+            <FieldEditorForBoolean @bind-Value="UpdateBookRequest.IsBookGroup"></FieldEditorForBoolean>
             <div class="btn-group float-right" role="group">
                 <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
                 <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>

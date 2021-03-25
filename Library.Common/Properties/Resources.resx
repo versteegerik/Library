@@ -222,6 +222,9 @@
   <data name="GoTo_Person_WishListBooks" xml:space="preserve">
     <value>Open mijn wensenlijst</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Nee</value>
+  </data>
   <data name="Person_OwnedBooks" xml:space="preserve">
     <value>Mijn boeken</value>
   </data>
@@ -236,5 +239,11 @@
   </data>
   <data name="SearchResults" xml:space="preserve">
     <value>Zoekresultaten</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Onbekend</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>

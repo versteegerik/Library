@@ -109,7 +109,7 @@ app {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.valid.modified:not([type=checkbox]) {
+.valid.modified:not([type=checkbox],[type=radio]) {
     outline: 1px solid #26b050;
 }
 

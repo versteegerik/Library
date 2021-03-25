@@ -1,0 +1,31 @@
+﻿@inherits EditorOptionsForBoolean
+
+<div class="editor-line">
+    @if (LabelOverride != null)
+    {
+        <label class="editor-label">@LabelOverride</label>
+    }
+    else
+    {
+        <label class="editor-label">@GetDisplayName()</label>
+    }
+    @if (FieldOverride != null)
+    {
+        <div class="editor-field">
+            @FieldOverride
+        </div>
+    }
+    else
+    {
+        <div class="editor-field">
+            <EditorForBoolean @bind-Value="@Value" Type="Type"></EditorForBoolean>
+        </div>
+    }
+    @*<ValidationMessage For="ValueExpression"></ValidationMessage>*@
+</div>
+
+
+@code {
+    [Parameter] public RenderFragment LabelOverride { get; set; }
+    [Parameter] public RenderFragment FieldOverride { get; set; }
+}

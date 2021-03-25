@@ -1,0 +1,38 @@
+﻿@inherits EditorOptionsForBoolean
+
+@if (Type == BooleanType.Checkbox)
+{
+    <InputCheckbox @bind-Value="Value"></InputCheckbox>
+}
+else
+{
+    <InputRadioGroup @bind-Value="ValueString" class="form-check-inline">
+        <div class="form-check form-check-inline">
+            <InputRadio class="form-check-input" Value="@("true")" />
+            <label class="form-check-label">@Resources.Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <InputRadio class="form-check-input" Value="@("false")" />
+            <label class="form-check-label">@Resources.No</label>
+        </div>
+    </InputRadioGroup>
+}
+
+@code {
+    // 2021-03-25: This is required because InputRadioGroup Only sypports string, int or Enum as value
+    private string _valueString;
+    private string ValueString
+    {
+        get => _valueString;
+        set
+        {
+            _valueString = value;
+            Value = Convert.ToBoolean(_valueString);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        _valueString = Value.ToString();
+    }
+}
