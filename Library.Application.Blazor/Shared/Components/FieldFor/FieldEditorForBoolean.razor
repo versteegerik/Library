@@ -18,12 +18,11 @@
     else
     {
         <div class="editor-field">
-            <EditorForBoolean @bind-Value="@Value" Type="Type"></EditorForBoolean>
+            <EditorForBoolean @bind-Value="@Value"></EditorForBoolean>
         </div>
     }
     @*<ValidationMessage For="ValueExpression"></ValidationMessage>*@
 </div>
-
 
 @code {
     [Parameter] public RenderFragment LabelOverride { get; set; }

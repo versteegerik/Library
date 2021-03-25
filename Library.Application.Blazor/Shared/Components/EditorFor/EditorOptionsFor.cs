@@ -39,15 +39,8 @@ namespace Library.Application.Blazor.Shared.Components.EditorFor
         }
     }
 
-    public enum BooleanType
-    {
-        Checkbox = 0,
-        YesNo = 1
-    }
-
     public class EditorOptionsForBoolean : EditorOptionsFor<bool>
     {
-        [Parameter] public BooleanType Type { get; set; } = BooleanType.Checkbox;
     }
 
     public class EditorOptionsForString : EditorOptionsFor<string>
