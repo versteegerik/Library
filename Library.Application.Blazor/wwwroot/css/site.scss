@@ -117,10 +117,6 @@ app {
     outline: 1px solid red;
 }
 
-.validation-message {
-    color: red;
-}
-
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -189,7 +185,7 @@ app {
 .editor-line {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: baseline;
     margin-bottom: 5px;
@@ -233,4 +229,14 @@ app {
 
 .buttonLineHeight {
     line-height: 2.38;
+}
+
+//OVERRIDE bootstrap
+.form-control{
+    display: inline-block !important;
+}
+
+.validation-message {
+    color: red;
+    flex-basis: 100%;
 }

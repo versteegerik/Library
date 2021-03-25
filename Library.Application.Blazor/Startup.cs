@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Library.Application.Blazor.Areas.Identity;
 using Library.Application.Blazor.Data;
 using Library.Application.Blazor.Data.NHibernateOverrides;
+using Library.Application.Blazor.Pages.Books;
 using Library.Application.Providers;
 using Library.Application.Security;
 using Library.Common.Properties;
@@ -17,6 +18,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PeterLeslieMorris.Blazor.Validation;
+using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 using Versteey.Infrastructure.Persistence.NHibernatePersistence;
@@ -40,12 +43,29 @@ namespace Library.Application.Blazor
             var assemblyForOverrides = Assembly.GetAssembly(typeof(BookMap));
             services.AddMvc()
                 .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(Resources)); })
-                .AddFluentValidation();
+                .AddFluentValidation(options => {
+                    options.LocalizationEnabled = true;
+                    options.ValidatorOptions.DisplayNameResolver = (type, member, expression) =>
+                    {
+                        if (expression != null)
+                        {
+                            var memberExpression = expression.Body as MemberExpression;
+                            if (memberExpression != null)
+                            {
+                                var value = memberExpression.Member.GetCustomAttribute(typeof(DisplayAttribute)) as DisplayAttribute;
+                                return value?.GetName() ?? memberExpression.Member.Name;
+                            }
+
+                            return "NOT FOUND!";
+                        }
+                        return "NOT FOUND!";
+                    };
+                });
 
             services.AddRazorPages();
 
             services.AddServerSideBlazor();
-            services.AddFormValidation(config => config.AddDataAnnotationsValidation().AddFluentValidation(typeof(CreateBookRequestValidator).Assembly));
+            services.AddFormValidation(config => config.AddDataAnnotationsValidation().AddFluentValidation(typeof(CreateBookRequestValidator).Assembly, typeof(CreateBookViewModelValidator).Assembly));
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)

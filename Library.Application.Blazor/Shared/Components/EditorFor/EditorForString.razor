@@ -2,11 +2,11 @@
 
 @if (IsTextArea)
 {
-    <InputTextArea class="form-control" @bind-Value="Value"></InputTextArea>
+    <InputTextArea DisplayName="@GetDisplayName()" class="form-control" @bind-Value="Value"></InputTextArea>
 }
 else
 {
-    <InputText class="form-control" @bind-Value="@Value"></InputText>
+    <InputText DisplayName="@GetDisplayName()" class="form-control" @bind-Value="@Value"></InputText>
 }
 
 @code {
