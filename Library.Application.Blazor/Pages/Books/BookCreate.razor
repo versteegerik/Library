@@ -13,21 +13,15 @@
         <ValidationSummary />
         <PeterLeslieMorris.Blazor.Validation.Validate />
 
-        <FieldEditorFor @bind-Value="CreateBookRequest.Title">
-            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Title"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="CreateBookRequest.AlternativeTitle">
-            <Field><RadzenTextBox @bind-Value="CreateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
-        </FieldEditorFor>
+        <FieldEditorForString @bind-Value="CreateBookRequest.Title"></FieldEditorForString>
+        <FieldEditorForString @bind-Value="CreateBookRequest.AlternativeTitle"></FieldEditorForString>
         <FieldEditorFor @bind-Value="CreateBookRequest.Author">
             <Field><RadzenDropDown @bind-Value="CreateBookRequest.AuthorId" AllowClear="true" Data=@AvailableAuthors ValueProperty="Id" TextProperty="FullName" Change=@(args => OnChange(args, CreateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" /></Field>
         </FieldEditorFor>
         <FieldEditorFor @bind-Value="CreateBookRequest.Genres">
             <Field><RadzenDropDown @bind-Value="@SelectedGenres" TextProperty="Code" ValueProperty="Id" Data=@AvailableGenres Multiple="true" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Change=@(args => OnChangeGenre(args)) /></Field>
         </FieldEditorFor>
-        <FieldEditorFor @bind-Value="CreateBookRequest.Isbn">
-            <Field><RadzenTextBox @bind-Value="CreateBookRequest.Isbn"></RadzenTextBox></Field>
-        </FieldEditorFor>
+        <FieldEditorForString @bind-Value="CreateBookRequest.Isbn"></FieldEditorForString>
         <FieldEditorFor @bind-Value="CreateBookRequest.IsBookGroup">
             <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="CreateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
         </FieldEditorFor>

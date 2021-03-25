@@ -12,19 +12,10 @@
         <EditForm Model="@UpdateAuthorRequest" OnValidSubmit="@UpdateAuthor">
             <ValidationSummary />
             <PeterLeslieMorris.Blazor.Validation.Validate />
-
-        <FieldEditorFor @bind-Value="UpdateAuthorRequest.Initials">
-            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.Initials"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="UpdateAuthorRequest.FirstNames">
-            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.FirstNames"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="UpdateAuthorRequest.Prefix">
-            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.Prefix"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="UpdateAuthorRequest.LastName">
-            <Field><RadzenTextBox @bind-Value="UpdateAuthorRequest.LastName"></RadzenTextBox></Field>
-        </FieldEditorFor>
+            <FieldEditorForString @bind-Value="@UpdateAuthorRequest.Initials"></FieldEditorForString>
+            <FieldEditorForString @bind-Value="@UpdateAuthorRequest.FirstNames"></FieldEditorForString>
+            <FieldEditorForString @bind-Value="@UpdateAuthorRequest.Prefix"></FieldEditorForString>
+            <FieldEditorForString @bind-Value="UpdateAuthorRequest.LastName"></FieldEditorForString>
             <div class="btn-group float-right" role="group">
                 <button class="btn btn-danger" type="button" @onclick="CancelUpdateAuthor">@Resources.Action_Cancel</button>
                 <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
@@ -46,7 +37,7 @@
 
     void CancelUpdateAuthor()
     {
-        NavigationManager.NavigateTo($"Authors/Read/{AuthorId}");
+        NavigationManager.NavigateTo($"Authors/Read/{AuthorId}", true);
     }
 
     void UpdateAuthor()

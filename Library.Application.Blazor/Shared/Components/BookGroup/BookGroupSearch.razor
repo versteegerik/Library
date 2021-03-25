@@ -5,15 +5,9 @@
     <p>@Resources.Component_BookGroupSearch_SearchText</p>
     <ValidationSummary />
     <PeterLeslieMorris.Blazor.Validation.Validate />
-    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Name">
-        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Name"></RadzenTextBox></Field>
-    </FieldEditorFor>
-    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Title">
-        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Title"></RadzenTextBox></Field>
-    </FieldEditorFor>
-    <FieldEditorFor @bind-Value="SearchBookGroupRequest.Author">
-        <Field><RadzenTextBox @bind-Value="SearchBookGroupRequest.Author"></RadzenTextBox></Field>
-    </FieldEditorFor>
+    <FieldEditorForString @bind-Value="SearchBookGroupRequest.Name"></FieldEditorForString>
+    <FieldEditorForString @bind-Value="SearchBookGroupRequest.Title"></FieldEditorForString>
+    <FieldEditorForString @bind-Value="SearchBookGroupRequest.Author"></FieldEditorForString>
     <div class="btn-group float-right" role="group">
         <button class="btn btn-secondary" type="button" @onclick="CancelSearch">@Resources.Action_Cancel</button>
         <button class="btn btn-primary" type="submit">@Resources.Action_Search</button>

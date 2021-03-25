@@ -10,12 +10,8 @@
     <DataTable @ref="BookDataTable" FetchData="@GetBooks">
         <SearchArea>
             <EditForm Model="@SearchBookRequest" OnValidSubmit="@Search">
-                <FieldEditorFor @bind-Value="SearchBookRequest.Title">
-                    <Field><RadzenTextBox @bind-Value="SearchBookRequest.Title"></RadzenTextBox></Field>
-                </FieldEditorFor>
-                <FieldEditorFor @bind-Value="SearchBookRequest.Author">
-                    <Field><RadzenTextBox @bind-Value="SearchBookRequest.Author"></RadzenTextBox></Field>
-                </FieldEditorFor>
+                <FieldEditorForString @bind-Value="SearchBookRequest.Title"></FieldEditorForString>
+                <FieldEditorForString @bind-Value="SearchBookRequest.Author"></FieldEditorForString>
                 <div class="btn-group float-right">
                     <button class="btn btn-primary" type="submit">@Resources.Action_Search</button>
                 </div>

@@ -4,9 +4,7 @@
 <EditForm Model="@CreateBookGroupRequest" OnValidSubmit="@CreateBookGroup">
     <ValidationSummary />
     <PeterLeslieMorris.Blazor.Validation.Validate />
-    <FieldEditorFor @bind-Value="CreateBookGroupRequest.Name">
-        <Field><RadzenTextBox @bind-Value="CreateBookGroupRequest.Name"></RadzenTextBox></Field>
-    </FieldEditorFor>
+    <FieldEditorForString @bind-Value="CreateBookGroupRequest.Name"></FieldEditorForString>
     <div class="btn-group float-right" role="group">
         <button class="btn btn-primary" type="submit">@Resources.Action_Create</button>
     </div>

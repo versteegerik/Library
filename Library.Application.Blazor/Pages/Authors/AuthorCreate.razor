@@ -12,18 +12,10 @@
         <ValidationSummary />
         <PeterLeslieMorris.Blazor.Validation.Validate />
 
-        <FieldEditorFor @bind-Value="CreateAuthorRequest.Initials">
-            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.Initials"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="CreateAuthorRequest.FirstNames">
-            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.FirstNames"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="CreateAuthorRequest.Prefix">
-            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.Prefix"></RadzenTextBox></Field>
-        </FieldEditorFor>
-        <FieldEditorFor @bind-Value="CreateAuthorRequest.LastName">
-            <Field><RadzenTextBox @bind-Value="CreateAuthorRequest.LastName"></RadzenTextBox></Field>
-        </FieldEditorFor>
+        <FieldEditorForString @bind-Value="CreateAuthorRequest.Initials"></FieldEditorForString>
+        <FieldEditorForString @bind-Value="CreateAuthorRequest.FirstNames"></FieldEditorForString>
+        <FieldEditorForString @bind-Value="CreateAuthorRequest.Prefix"></FieldEditorForString>
+        <FieldEditorForString @bind-Value="CreateAuthorRequest.LastName"></FieldEditorForString>
         <div class="btn-group float-right" role="group">
             <button class="btn btn-danger" type="button" @onclick="GoBack">@Resources.Action_Cancel</button>
             <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>

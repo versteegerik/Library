@@ -14,24 +14,18 @@
             <ValidationSummary />
             <PeterLeslieMorris.Blazor.Validation.Validate />
 
-            <FieldEditorFor @bind-Value="UpdateBookRequest.Title">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Title"></RadzenTextBox></Field>
-            </FieldEditorFor>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.AlternativeTitle">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.AlternativeTitle"></RadzenTextBox></Field>
-            </FieldEditorFor>
+            <FieldEditorForString @bind-Value="UpdateBookRequest.Title"></FieldEditorForString>
+            <FieldEditorForString @bind-Value="UpdateBookRequest.AlternativeTitle"></FieldEditorForString>
             <FieldEditorFor @bind-Value="UpdateBookRequest.Author">
                 <Field><RadzenDropDown @bind-Value="UpdateBookRequest.AuthorId" Data=@AvailableAuthors  AllowClear="true" TextProperty="FullName" ValueProperty="Id" Change=@(args => OnChange(args, UpdateBookRequest.Author)) FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.StartsWith" AllowFiltering="true" /></Field>
             </FieldEditorFor>
             <FieldEditorFor @bind-Value="UpdateBookRequest.Genres">
                 <Field><RadzenDropDown @bind-Value="@SelectedGenres" TextProperty="Code" ValueProperty="Id" Data=@AvailableGenres  Multiple="true" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"Change=@(args => OnChangeGenre(args)) /></Field>
             </FieldEditorFor>
-            <FieldEditorFor @bind-Value="UpdateBookRequest.Isbn">
-                <Field><RadzenTextBox @bind-Value="UpdateBookRequest.Isbn"></RadzenTextBox></Field>
+            <FieldEditorForString @bind-Value="UpdateBookRequest.Isbn"></FieldEditorForString>
+            <FieldEditorFor @bind-Value="UpdateBookRequest.IsBookGroup">
+                <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="UpdateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
             </FieldEditorFor>
-        <FieldEditorFor @bind-Value="UpdateBookRequest.IsBookGroup">
-            <Field><Radzen.Blazor.RadzenCheckBox @bind-Value="UpdateBookRequest.IsBookGroup"></Radzen.Blazor.RadzenCheckBox></Field>
-        </FieldEditorFor>
             <div class="btn-group float-right" role="group">
                 <button class="btn btn-danger" type="button" @onclick="CancelUpdateBook">@Resources.Action_Cancel</button>
                 <button class="btn btn-primary" type="submit">@Resources.Action_Save</button>
